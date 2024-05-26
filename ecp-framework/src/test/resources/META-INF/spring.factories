@@ -1,0 +1,6 @@
+
+# sandy  auto-configurations
+
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+    com.sandy.ecp.framework.autoconfigure.EndpointAutoConfiguration,\
+    com.sandy.ecp.framework.context.SpringContextUtil

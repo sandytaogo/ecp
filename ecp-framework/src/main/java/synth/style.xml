@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<synth>
+    <!-- Style that all regions will use, it is good practice to do this -->
+    <style id="backingStyle">
+        <opaque value="false"/>
+        <font name="Dialog" size="42"/>
+        <state>
+            <color type="BACKGROUND" value="#000000"/>
+            <color type="FOREGROUND" value="#9400d3"/>
+            <color type="TEXT_FOREGROUND" value="#3C3C3C"/>
+        </state>
+    </style>
+    <bind style="backingStyle" type="region" key=".*"/>
+    
+    <style id="button">
+        <property key="Button.defaultButtonFollowsFocus" type="boolean" 
+        	value="false"/>
+        <!-- Shift the text one pixel when pressed -->
+        <property key="Button.textShiftOffset" type="integer" value="1"/>
+        <!-- set size of buttons -->
+        <insets top="3" left="3" bottom="3" right="3"/>
+        <!-- The state behavior is like an cascading filter -->
+        <font name="宋体" size="52"/>
+        <state>
+        	<color type="BACKGROUND" value="red"/>
+        </state>
+        <state value="DEFAULT">
+        	<color type="BACKGROUND" value="#D8D987"/>
+        	<color type="" value="#D8D987"/>
+        </state>
+        <state value="PRESSED">
+       	 <color type="BACKGROUND" value="#D8D987"/>
+        </state>
+        <state value="MOUSE_OVER">
+        <color type="BACKGROUND" value="red"/>
+        </state>
+        <state value="FOCUSED">
+        <color type="BACKGROUND" value="red"/>
+        </state>
+        <state value="DISABLED">
+        <color type="BACKGROUND" value="red"/>
+        </state>
+    </style>
+    <bind style="button" type="region" key="Button"/>
+    
+    <style id="rootpane">
+        <state>
+            <color type="BACKGROUND" value="WHITE"/>
+        </state>
+    </style>
+    <bind style="rootpane" type="region" key="RootPane"/>
+</synth>
