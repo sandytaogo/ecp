@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.0.RELEASE</version>
+		<relativePath/>
+	</parent>
+
+	<groupId>com.sandy.framework</groupId>
+	<artifactId>ecp</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>ecp</name>
+	<url>http://maven.apache.org</url>
+
+	<!-- https://search.maven.org/ -->
+	<!-- https://mvnrepository.com/ -->
+	<!-- http://www.bootstrapmb.com/ -->
+	<!-- https://www.w3cschool.cn/ -->
+	<!-- https://docs.oracle.com/javase/9/docs/api/java/util/concurrent/Flow.html -->
+	<!-- https://openresty.org/cn/ -->
+	<!-- 210522197305195619 -->
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<bitwalker.version>1.21</bitwalker.version>
+	</properties>
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+                <groupId>eu.bitwalker</groupId>
+                <artifactId>UserAgentUtils</artifactId>
+                <version>${bitwalker.version}</version>
+            </dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+
+	<!-- https://github.com/sandytaogo -->
+	<developers>
+		<developer>
+			<id>sandytao</id>
+			<name>txf</name>
+			<email>sandytaogo@163.com</email>
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<timezone>+8</timezone>
+		</developer>
+		<developer>
+			<id>jasontao</id>
+			<name>jason</name>
+			<email>sandytaogo@163.com</email>
+			<roles>
+				<role>SystemDesign</role>
+			</roles>
+			<timezone>+8</timezone>
+		</developer>
+	</developers>
+
+	<modules>
+		<module>ecp-config</module>
+		<module>ecp-framework</module>
+		<module>ecp-media</module>
+		<module>ecp-boot</module>
+		<module>ecp-web</module>
+		<module>ecp-zuul</module>
+		<module>ecp-gateway</module>
+  </modules>
+
+	<distributionManagement>
+		<repository>
+			<id>localRepository</id>
+			<url>file:C:/Users/Sandy/.m2/repository</url>
+		</repository>
+	</distributionManagement>
+</project>
