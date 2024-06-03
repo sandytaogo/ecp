@@ -1,11 +1,11 @@
 /*
- * Copyright 2018 the original author or authors.
+ * Copyright 2018-2030 the original author or authors.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the company, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      http://www.company.com/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -13,22 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.sandy.ecp.framework.func;
-
+package com.sandy.ecp.framework.annotation;
 
 /**
- * java 流式编程接口.
+ * An enum for specifying a logical operation that can be used for 
+ * interpreting authorization annotations 
  * @author Sandy
- * @param <T> bean object.
- * @since 1.0.0 2022-03-03 12:12:12
+ * @since 1.1.0
  */
-@FunctionalInterface
-public interface IFunction<T> {
-
-	/**
-	 * 调用流式函数.
-	 * @return 泛型对象.
-	 */
-	T apply();
+public enum Logical {
+    
+	
+	
+	AND, OR
+	
+	
+	
 	
 }

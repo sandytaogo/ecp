@@ -15,6 +15,7 @@
  */
 package com.sandy.ecp.framework.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.sandy.ecp.framework.domain.AbstractIdEntity;
@@ -31,10 +32,28 @@ public abstract class AbstractObjectTransfer<VO extends AbstractVO<PK>, PO exten
 
 	public abstract PO toPO(VO vo);	
 	
-	public abstract List<PO> toPO(List<VO> vos);
-	
 	public abstract VO toVO(PO po);	
 	
-	public abstract List<VO> toVO(List<PO> pos);
+	public List<PO> toPO(List<VO> vos) {
+		List<PO> pos = new ArrayList<PO>();
+		if(null == vos) {
+			return pos;
+		}
+		for (VO vo : vos) {
+			pos.add(toPO(vo));
+		}
+		return pos;
+	}
+	
+	public List<VO> toVO(List<PO> pos) {
+		List<VO> vos = new ArrayList<VO>();
+		if(null == pos) {
+			return vos;
+		}
+		for (PO po : pos) {
+			vos.add(toVO(po));
+		}
+		return vos;
+	}
 	
 }

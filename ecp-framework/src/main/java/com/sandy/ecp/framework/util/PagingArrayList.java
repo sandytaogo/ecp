@@ -21,6 +21,8 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
+import com.sandy.ecp.framework.dao.Paging;
+
 /**
  * paging array list
  * @author Sandy
@@ -34,10 +36,33 @@ public class PagingArrayList<E> implements PagingList<E>, Serializable {
 	public static final int DEFAULT_PAGE_SIZE = 10;
 	public static final int MAX_PAGE_SIZE = 100;
 	
-	private List<E> data = new ArrayList<E>();
+	private List<E> data;
 	private int page;
 	private int pageSize;
-	private long total;
+	private int total;
+	private Paging paging;
+	
+	public PagingArrayList() {
+		super();
+		this.data = new ArrayList<E>();
+        this.total = 0;
+	}
+	
+	public PagingArrayList(List<E> data, int total) {
+		super();
+		this.data = data;
+        this.total = total;
+	}
+	
+	public PagingArrayList(List<E> data, Paging paging, int total) {
+        this.data = data;
+        this.paging = paging;
+        if (this.paging != null) {
+        	this.page = paging.getPageNumber();
+        	this.pageSize = paging.getPageSize();
+        }
+        this.total = total;
+    }
 	
 	public Iterator<E> iterator() {
 		return data.iterator();
@@ -86,13 +111,6 @@ public class PagingArrayList<E> implements PagingList<E>, Serializable {
 	public void setTotal(Integer total) {
 		this.total = total;
 	}
-	
-	public void setTotal(long total) {
-		this.total = total;
-	}
-	
-	 //  String conversion
-
     /**
      * Returns a string representation of this collection.  The string
      * representation consists of a list of the collection's elements in the

@@ -28,7 +28,9 @@ public class SessionVO extends AbstractVO<String> {
 
 	private static final long serialVersionUID = 7243856603048287782L;
 
-	public static final String KEY = "SessionVO_AUTH_KEY";
+	public static final String KEY = "SESSIONVO_AUTH_KEY";
+	
+	public static final String BG_KEY = "BG_SESSIONVO_AUTH_KEY";
 	
 	private Long userId;
 	private String account;
