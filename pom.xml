@@ -74,6 +74,7 @@
 		<module>ecp-config</module>
 		<module>ecp-framework</module>
 		<module>ecp-media</module>
+		<module>ecp-mybatis</module>
 		<module>ecp-boot</module>
 		<module>ecp-web</module>
 		<module>ecp-zuul</module>
