@@ -2,7 +2,6 @@
 *.class
 
 *Sm2Util.java
-*Sm4Util.java
 *Sm2KeyGenerator.java
 *SM2EngineExtend.java
 
