@@ -13,17 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.sandy.cloud.gateway;
+package com.sandy.cloud.configuration;
 
-import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+import org.springframework.http.codec.ServerCodecConfigurer;
+import org.springframework.http.codec.support.DefaultServerCodecConfigurer;
+
 /**
+ * server gateway.
  * @author Sandy
  * @since 1.0.0 2023-01-01 12:12:12 
  */
-public class AppGatewayFilterFactory extends AbstractGatewayFilterFactory<Object> {
+@Configuration
+public class GatewayConfiguration {
 
-	@Override
-	public org.springframework.cloud.gateway.filter.GatewayFilter apply(Object config) {
-		return null;
+	@Bean
+	@Primary
+	public ServerCodecConfigurer serverCodecConfigurer() {
+		
+		return new DefaultServerCodecConfigurer();
 	}
 }
