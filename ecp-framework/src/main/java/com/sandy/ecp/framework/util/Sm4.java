@@ -15,6 +15,7 @@
  */
 package com.sandy.ecp.framework.util;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 
 /**
@@ -23,6 +24,8 @@ import java.util.Arrays;
  * @since 1.0.0 2023-05-06 22:22:22
  */
 public class Sm4 {
+	
+	public static final String ENCODING = "UTF-8";
 	
 	private static final int ENCRYPT = 1;
 	private static final int DECRYPT = 0;
@@ -238,14 +241,14 @@ public class Sm4 {
 	 * @param: key（密钥）
 	 * @return: byte[]
 	 */
-	private static byte[] encodeSMS4(String plaintext, byte[] key) {
+	public static byte[] encode(String plaintext, byte[] key) {
 		if (plaintext == null || "".equals(plaintext)) {
 			return null;
 		}
 		for (int i = plaintext.getBytes().length % 16; i < 16; i++) {
 			plaintext += '\0';
 		}
-		return Sm4.encodeSMS4(plaintext.getBytes(), key);
+		return encode(plaintext.getBytes(), key);
 	}
 
 	/**
@@ -254,7 +257,7 @@ public class Sm4 {
 	 * @param: key（密钥）
 	 * @return: byte类型的明文加密结果
 	 */
-	private static byte[] encodeSMS4(byte[] plainText, byte[] key) {
+	private static byte[] encode(byte[] plainText, byte[] key) {
 		byte[] ciphertext = new byte[plainText.length];
 		int k = 0;
 		int plainLen = plainText.length;
@@ -278,7 +281,7 @@ public class Sm4 {
 	 * @param: key（密钥）
 	 * @return: byte[]
 	 */
-	private static byte[] decodeSMS4(byte[] cipherText, byte[] key) {
+	public static byte[] decode(byte[] cipherText, byte[] key) {
 		byte[] plaintext = new byte[cipherText.length];
 		int k = 0;
 		int cipherLen = cipherText.length;
@@ -301,11 +304,12 @@ public class Sm4 {
 	 * @param: cipherText（密文）
 	 * @param: key（密钥）
 	 * @return: java.lang.String
+	 * @throws UnsupportedEncodingException 
 	 */
-	private static String decodeSMS4toString(byte[] cipherText, byte[] key) {
+	public static String decodeToString(byte[] cipherText, byte[] key) throws UnsupportedEncodingException {
 		byte[] plaintext = new byte[cipherText.length];
-		plaintext = decodeSMS4(cipherText, key);
-		return new String(plaintext);
+		plaintext = decode(cipherText, key);
+		return new String(plaintext, ENCODING);
 	}
 
 	/**
@@ -338,7 +342,7 @@ public class Sm4 {
 	 * @param: byteArray
 	 * @return: java.lang.String
 	 */
-	private static String toHexString(byte[] byteArray) {
+	public static String toHexString(byte[] byteArray) {
 		if (byteArray == null || byteArray.length < 1) {
 			throw new IllegalArgumentException("this byteArray must not be null or empty");
 		}
@@ -351,22 +355,5 @@ public class Sm4 {
 			hexString.append(Integer.toHexString(0xFF & byteArray[i]));
 		}
 		return hexString.toString().toLowerCase();
-	}
-
-	public static void main(String[] args) {
-		// 密钥
-		byte[] key = { 0x01, 0x23, 0x45, 0x67, (byte) 0x89, (byte) 0xab, (byte) 0xcd, (byte) 0xef, (byte) 0xfe,
-				(byte) 0xdc, (byte) 0xba, (byte) 0x98, 0x76, 0x54, 0x32, 0x10 };
-		String plainText = "SMS4测试，大数据实战演练！";
-		byte[] enOut = encodeSMS4(plainText, key);
-		System.out.println("加密结果：");
-		System.out.println(toHexString(enOut));
-
-		byte[] deOut = decodeSMS4(enOut, key);
-		System.out.println("\n解密结果(return byte[])：");
-		System.out.println(Arrays.toString(deOut));
-
-		String deOutStr = decodeSMS4toString(enOut, key);
-		System.out.println("\n解密结果(return String)：\n" + deOutStr);
 	}
 }

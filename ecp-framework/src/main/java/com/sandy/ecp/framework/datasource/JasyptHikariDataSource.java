@@ -28,7 +28,7 @@ import com.zaxxer.hikari.HikariDataSource;
 /**
  * 数据源密码加密支持.
  * @author Sandy
- * @date 2023-03-02 12:12:12
+ * 2023-03-02
  */
 public class JasyptHikariDataSource implements BeanPostProcessor {
 

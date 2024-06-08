@@ -31,7 +31,7 @@ import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.pqc.math.linearalgebra.ByteUtils;
 
 /**
- * 国密sm4工具.
+ * 
  * @author Sandy
  * @date 2023-05-23 12:12:12
  */

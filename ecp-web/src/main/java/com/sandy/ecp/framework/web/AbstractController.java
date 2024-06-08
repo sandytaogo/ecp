@@ -26,8 +26,15 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import com.sandy.ecp.framework.dao.PageRequest;
+import com.sandy.ecp.framework.dao.Paging;
+import com.sandy.ecp.framework.dao.Sort;
+import com.sandy.ecp.framework.dao.Sort.Direction;
+import com.sandy.ecp.framework.dao.Sort.Order;
 import com.sandy.ecp.framework.net.URLDecoder;
 import com.sandy.ecp.framework.session.SessionVO;
+import com.sandy.ecp.framework.util.ConvertUtil;
+import com.sandy.ecp.framework.util.StringUtil;
 import com.sandy.ecp.framework.web.context.EcpWebSecurityContextHolder;
 
 /**
@@ -41,15 +48,41 @@ public abstract class AbstractController {
 	protected Logger logger = LoggerFactory.getLogger(getClass());
 
 	protected static final ThreadLocal<Object> THREAD_LOCAL = new InheritableThreadLocal<Object>();
-
-	public SessionVO getSessionVO() {
-		return EcpWebSecurityContextHolder.getSessionVO();
-	}
 	
 	public HttpServletRequest getRequest() {
         final HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
         return request;
     }
+	
+	public SessionVO getSessionVO() {
+		return EcpWebSecurityContextHolder.getSessionVO();
+	}
+	
+	public SessionVO getSessionVO(HttpServletRequest request) {
+		HttpSession session = request.getSession(false);
+		if (session != null) {
+			Object details = session.getAttribute(SessionVO.KEY);
+			if (details instanceof SessionVO) {
+				return (SessionVO) details;
+			}
+		}
+		return null;
+	}
+	
+	public Paging getPaging(HttpServletRequest request) {
+		String pageNum = request.getParameter("pageNum");
+		String pageSize = request.getParameter("pageSize");
+		Integer pageNo = 1, pageSizeNo = 10;
+		if (StringUtil.isNumber(pageNum)) {
+			pageNo = ConvertUtil.toInteger(pageNum);
+		}
+		if (StringUtil.isNumber(pageSize)) {
+			pageSizeNo = ConvertUtil.toInteger(pageSize);
+		}
+		Sort sort = new Sort(new Order(Direction.ASC, "SORT"), new Order(Direction.DESC, "CREATED_TIME"));
+		Paging paging = new PageRequest(pageNo, pageSizeNo, sort);
+		return paging;
+	}
 
 	protected ModelMap paramToMap(final HttpServletRequest request) {
 		final ModelMap model = new ModelMap();
@@ -63,15 +96,5 @@ public abstract class AbstractController {
 		}
 		return model;
 	}
-
-	public SessionVO getSessionVO(HttpServletRequest request) {
-		HttpSession session = request.getSession(false);
-		if (session != null) {
-			Object details = session.getAttribute(SessionVO.KEY);
-			if (details instanceof SessionVO) {
-				return (SessionVO) details;
-			}
-		}
-		return null;
-	}
+	
 }

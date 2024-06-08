@@ -27,6 +27,9 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<bitwalker.version>1.21</bitwalker.version>
+		<liquibase.version>3.7.0</liquibase.version>
+		<swagger.version>1.6.3</swagger.version>
+		<springfox.version>2.9.2</springfox.version>
 	</properties>
 	
 	<dependencyManagement>
@@ -36,6 +39,28 @@
                 <artifactId>UserAgentUtils</artifactId>
                 <version>${bitwalker.version}</version>
             </dependency>
+            <dependency>
+				<groupId>org.liquibase</groupId>
+				<artifactId>liquibase-core</artifactId>
+				<version>${liquibase.version}</version>
+			</dependency>
+			<dependency>
+			    <groupId>io.swagger</groupId>
+			    <artifactId>swagger-models</artifactId>
+			    <version>${swagger.version}</version>
+			</dependency>
+			<dependency>
+			    <groupId>io.springfox</groupId>
+			    <artifactId>springfox-swagger2</artifactId>
+			    <scope>provided</scope>
+			    <version>${springfox.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger-ui</artifactId>
+				<version>${springfox.version}</version>
+				<scope>provided</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -74,11 +99,11 @@
 		<module>ecp-config</module>
 		<module>ecp-framework</module>
 		<module>ecp-media</module>
-		<module>ecp-mybatis</module>
 		<module>ecp-boot</module>
 		<module>ecp-web</module>
 		<module>ecp-zuul</module>
 		<module>ecp-gateway</module>
+    	<module>ecp-mybatis</module>
   </modules>
 
 	<distributionManagement>

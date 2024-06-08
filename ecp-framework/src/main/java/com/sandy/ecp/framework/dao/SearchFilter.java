@@ -32,7 +32,7 @@ public class SearchFilter {
 	public enum Operator {
 		EQ("="), LIKE("like"), GT(">"), LT("<"), GTE(">="), LTE("<=");
 		
-		private String symbol;		// 鎿嶄綔绗﹀彿
+		private String symbol;
 		
 		Operator(String symbol) {
 			this.symbol = symbol;
