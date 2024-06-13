@@ -26,14 +26,27 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<spring.boot.version>3.0.0</spring.boot.version>
+		<spring.cloud.version>2.2.7.RELEASE</spring.cloud.version>
+		<javax-persistence.version>2.2</javax-persistence.version>
 		<bitwalker.version>1.21</bitwalker.version>
 		<liquibase.version>3.7.0</liquibase.version>
+		<itextpdf.version>5.5.8</itextpdf.version>
+		<poi.version>3.8</poi.version>
+		<quasar.version>0.7.9</quasar.version>
 		<swagger.version>1.6.3</swagger.version>
 		<springfox.version>2.9.2</springfox.version>
+		<version>0.0.1-SNAPSHOT</version>
 	</properties>
 	
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+		   		<groupId>co.paralleluniverse</groupId>
+		    	<artifactId>quasar-core</artifactId>
+		    	<classifier>jdk8</classifier>
+		    	<version>${quasar.version}</version>
+		    </dependency>
 			<dependency>
                 <groupId>eu.bitwalker</groupId>
                 <artifactId>UserAgentUtils</artifactId>
@@ -49,6 +62,13 @@
 			    <artifactId>swagger-models</artifactId>
 			    <version>${swagger.version}</version>
 			</dependency>
+			
+			<dependency>
+			    <groupId>commons-fileupload</groupId>
+			    <artifactId>commons-fileupload</artifactId>
+			    <version>1.2.2</version>
+			</dependency>
+			
 			<dependency>
 			    <groupId>io.springfox</groupId>
 			    <artifactId>springfox-swagger2</artifactId>
@@ -61,10 +81,23 @@
 				<version>${springfox.version}</version>
 				<scope>provided</scope>
 			</dependency>
+			
+<!-- 			<dependency> -->
+<!-- 			    <groupId>org.springframework.cloud</groupId> -->
+<!-- 			    <artifactId>spring-cloud-dependencies</artifactId> -->
+<!-- 			    <version>2021.0.9</version> -->
+<!-- 			    <type>pom</type> -->
+<!-- 			    <scope>import</scope> -->
+<!-- 			</dependency> -->
 		</dependencies>
 	</dependencyManagement>
 
 	<dependencies>
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>1</version>
+		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>

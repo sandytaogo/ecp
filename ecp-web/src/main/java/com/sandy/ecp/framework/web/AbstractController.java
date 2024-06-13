@@ -29,8 +29,6 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import com.sandy.ecp.framework.dao.PageRequest;
 import com.sandy.ecp.framework.dao.Paging;
 import com.sandy.ecp.framework.dao.Sort;
-import com.sandy.ecp.framework.dao.Sort.Direction;
-import com.sandy.ecp.framework.dao.Sort.Order;
 import com.sandy.ecp.framework.net.URLDecoder;
 import com.sandy.ecp.framework.session.SessionVO;
 import com.sandy.ecp.framework.util.ConvertUtil;
@@ -69,7 +67,7 @@ public abstract class AbstractController {
 		return null;
 	}
 	
-	public Paging getPaging(HttpServletRequest request) {
+	public Paging getPaging(HttpServletRequest request, Sort sort) {
 		String pageNum = request.getParameter("pageNum");
 		String pageSize = request.getParameter("pageSize");
 		Integer pageNo = 1, pageSizeNo = 10;
@@ -79,7 +77,6 @@ public abstract class AbstractController {
 		if (StringUtil.isNumber(pageSize)) {
 			pageSizeNo = ConvertUtil.toInteger(pageSize);
 		}
-		Sort sort = new Sort(new Order(Direction.ASC, "SORT"), new Order(Direction.DESC, "CREATED_TIME"));
 		Paging paging = new PageRequest(pageNo, pageSizeNo, sort);
 		return paging;
 	}

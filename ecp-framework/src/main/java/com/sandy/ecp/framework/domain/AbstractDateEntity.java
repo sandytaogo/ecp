@@ -19,6 +19,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * Abstract Date Entity
@@ -37,10 +39,12 @@ public abstract class AbstractDateEntity<PK> extends AbstractIdEntity<PK> {
 
 	@Column(name = "CREATED_ID", columnDefinition = "Long", length = 20, precision = 0, nullable = false)
 	private Long createdId;
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "CREATED_TIME", columnDefinition = "Date", length = 0, precision = 0, nullable = false)
 	private Date createdTime;
 	@Column(name = "UPDATED_ID", columnDefinition = "Long", length = 20, precision = 0, nullable = true)
 	private Long updatedId;
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "UPDATED_TIME", columnDefinition = "Date", length = 0, precision = 0, nullable = true)
 	private Date updatedTime;
 	

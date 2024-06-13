@@ -69,6 +69,10 @@ public class Sort implements Iterable<Order>, Serializable
         }
     }
     
+    public boolean add(Order e) {
+    	return orders.add(e);
+    }
+    
     public Order getOrderFor(final String property) {
         for (final Order order : this) {
             if (order.getProperty().equals(property)) {
