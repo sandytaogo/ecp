@@ -8,11 +8,14 @@ import java.io.OutputStream;
 
 import org.apache.poi.hwpf.HWPFDocument;
 import org.apache.poi.hwpf.usermodel.Range;
-
+import org.junit.Ignore;
+import org.junit.Test;
 
 
 public class POIWrodRangeTest {
 	
+	@Test
+	@Ignore
 	public void test() throws IOException {
 		
 		String templatePath = "E:\\test.doc";  
@@ -30,10 +33,4 @@ public class POIWrodRangeTest {
 		   OutputStream os = new FileOutputStream("e:\\newLine2.doc");  
 		   doc.write(os);
 	}
-
-	public static void main(String [] args) throws IOException {
-		
-		new POIWrodRangeTest().test();
-	}
-	
 }

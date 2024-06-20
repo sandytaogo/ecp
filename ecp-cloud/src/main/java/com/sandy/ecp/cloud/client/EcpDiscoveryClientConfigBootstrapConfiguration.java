@@ -1,11 +1,11 @@
 /*
- * Copyright 2018-2030 the original author or authors.
+ * Copyright 2018 the original author or authors.
  *
- * Licensed under the company, Version 2.0 (the "License");
+ * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *      http://www.company.com/licenses/LICENSE-2.0
+ *      http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -13,27 +13,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.sandy.ecp.framework.web.config;
+package com.sandy.ecp.cloud.client;
 
-import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.commons.util.UtilAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Import;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ * 企业云平台服务服务发现配置.
+ * @author Sandy
+ * @date 2024-03-05 22:22:22
+ */
+@ConditionalOnProperty(value = "ecp.cloud.config.discovery.enabled", matchIfMissing = false)
 @Configuration
-public class RestTemplateConfigruation {
-
-	@Bean
-	@Primary
-	@LoadBalanced
-	public RestTemplate restTemplate(RestTemplateBuilder builder){
-	    return builder.build();
-	}
+@Import({ UtilAutoConfiguration.class })
+@EnableDiscoveryClient
+public class EcpDiscoveryClientConfigBootstrapConfiguration {
 	
 	@Bean
-	@Primary
 	@LoadBalanced
 	public RestTemplate restTemplate() {
 		return new RestTemplate();

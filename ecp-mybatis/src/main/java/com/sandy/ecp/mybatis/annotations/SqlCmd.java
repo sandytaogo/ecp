@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 the original author or authors.
+ * Copyright 2024-2030 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,20 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.sandy.ecp.framework.web;
+package com.sandy.ecp.mybatis.annotations;
 
-import java.util.Map;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-/**
- * 框架遠程跨服務接口聲明.
- * @author Sandy
- * @date 2023-10-05 22:22:22
- */
-public interface MappService {
-
-	public static final MappService INSTANCE = new DefaultMappService();
+@Target(ElementType.METHOD)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface SqlCmd {
 	
-	<T> T doGet(String paramString, Class<T> paramClass, Object... paramVarArgs);
 	
-	<T> T doGet(String appName, String paramString, Map<String, Object> paramMap, Class<T> paramClass);
+    String value();
 }

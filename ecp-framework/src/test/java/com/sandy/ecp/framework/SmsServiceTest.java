@@ -1,15 +1,16 @@
 package com.sandy.ecp.framework;
 
-import org.junit.Ignore;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
+import org.junit.platform.runner.JUnitPlatform;
+import org.junit.runner.RunWith;
 
 import com.sandy.ecp.framework.service.JavaSmsSenderImpl;
 
-
+@RunWith(JUnitPlatform.class)
 public class SmsServiceTest {
 	
 	@Test
-	@Ignore
 	public void test() {
 		JavaSmsSenderImpl s = new JavaSmsSenderImpl();
 		s.setUrl("http://utf8.api.smschinese.cn");

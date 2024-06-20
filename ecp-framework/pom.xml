@@ -75,11 +75,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-		</dependency>
-
-		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 		</dependency>
@@ -121,17 +116,6 @@
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-core</artifactId>
 		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-commons</artifactId>
-			<version>2.0.0.RELEASE</version>
-		</dependency>
 		
 		<dependency>
 			<groupId>com.zaxxer</groupId>
@@ -142,6 +126,34 @@
 		    <groupId>com.belerweb</groupId>
 		    <artifactId>pinyin4j</artifactId>
 		    <version>2.5.1</version>
+		</dependency>
+		
+		<dependency>
+	        <groupId>org.junit.jupiter</groupId>
+	        <artifactId>junit-jupiter</artifactId>
+	        <version>${junit-jupiter.version}</version>
+	        <scope>test</scope>
+	    </dependency>
+	    
+	    <dependency>
+	        <groupId>org.junit.jupiter</groupId>
+	        <artifactId>junit-jupiter-params</artifactId>
+	        <version>${junit-jupiter.version}</version>
+	        <scope>test</scope>
+	    </dependency>
+		
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+	       	<artifactId>junit-platform-launcher</artifactId>
+	       	<version>${junit-platform.version}</version>
+		    <scope>test</scope>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.junit.platform</groupId>
+		    <artifactId>junit-platform-runner</artifactId>
+		    <version>${junit-platform.version}</version>
+		    <scope>test</scope>
 		</dependency>
 
 		<dependency>
@@ -188,6 +200,91 @@
 					<target>${java.version}</target>
 				</configuration>
 			</plugin>
+			
+			<plugin>
+	  			<groupId>org.apache.maven.plugins</groupId>
+	            <artifactId>maven-surefire-plugin</artifactId>
+	            <configuration>
+	                <skipTests>false</skipTests>
+	                <testFailureIgnore>true</testFailureIgnore>
+	                <forkMode>once</forkMode>
+	            </configuration>
+	        </plugin>
+			
+			<plugin>
+			    <groupId>org.jacoco</groupId>
+			    <artifactId>jacoco-maven-plugin</artifactId>
+			    <version>${jcoco.version}</version>
+			    <configuration>
+					<!--<destFile>target/jacoco-unit.exec</destFile> -->
+			        <dataFile> ${project.build.directory}/jacoco-unit.exec</dataFile>
+			        <outputDirectory>${project.build.directory}/jacoco</outputDirectory>
+			        <!--
+			           	 默认情况下，Surefire 插件将自动包含具有以下通配符模式的所有测试类：
+			            "**/Test*.java"- 包括其所有子目录和所有以“Test”开头的 Java 文件名。
+			            "**/*Test.java"- 包括其所有子目录和所有以“Test”结尾的 Java 文件名。
+			            "**/*Tests.java"- 包括其所有子目录和所有以“Tests”结尾的 Java 文件名。
+			            "**/*TestCase.java"- 包括其所有子目录和所有以“TestCase”结尾的 Java 文件名。
+			           	 如果测试类不遵循默认通配符模式，则才需要额外包含以下文件
+			        -->
+			        <includes>
+			        	<include>com/sandy/ecp/framework/**</include>
+			        </includes>
+			         <!-- 注意，如果想要输出代码覆盖率报告，则此处应该为false -->
+			        <skipTests>false</skipTests>
+			        <!-- 参数 forkCount 定义 Surefire 为执行测试而同时生成的 JVM 进程的最大数量 -->
+			        <!-- JaCoCo要求不能为0，此处设置的其实是默认值 -->
+			        <forkCount>1</forkCount>
+			        <!-- JaCoCo要求不能是Never，此处设置的其实是默认值 -->
+			        <forkMode>once</forkMode>
+			        <sourceEncoding>UTF-8</sourceEncoding>
+			        <!--HTML报告的标题-->
+			        <title>${project.name}-单元测试报告</title>
+			        
+			        <!-- rules裏面指定覆蓋規則 -->
+	                <rules>
+	                    <rule implementation="org.jacoco.maven.RuleConfiguration">
+	                        <element>BUNDLE</element>
+	                        <limits>　　
+	                            <!-- 指定方法覆盖率到50% -->
+	                            <limit implementation="org.jacoco.report.check.Limit">
+	                                <counter>METHOD</counter>
+	                                <value>COVEREDRATIO</value>
+	                                <minimum>0.50</minimum>
+	                            </limit>
+	                            <!-- 指定分支覆盖到50% -->
+	                            <limit implementation="org.jacoco.report.check.Limit">
+	                                <counter>BRANCH</counter>
+	                                <value>COVEREDRATIO</value>
+	                                <minimum>0.50</minimum>
+	                            </limit>
+	                            <!-- 指定类覆盖到100% -->
+	                            <limit implementation="org.jacoco.report.check.Limit">
+	                                <counter>CLASS</counter>
+	                                <value>MISSEDCOUNT</value>
+	                                <maximum>0</maximum>
+	                            </limit>
+	                        </limits>
+	                    </rule>
+	                </rules>
+			    </configuration>
+			    <executions>
+			        <execution>
+			            <id>jacoco-initialize</id>
+			            <goals>
+			                <goal>prepare-agent</goal>
+			            </goals>
+			        </execution>
+			        <execution>
+			            <id>generate-code-coverage-report</id>
+			            <phase>test</phase>
+			            <goals>
+			                <goal>report</goal>
+			            </goals>
+			        </execution>
+			    </executions>
+			</plugin>
+			
 		</plugins>
 	</build>
 </project>
