@@ -143,6 +143,7 @@
 	<modules>
 		<module>ecp-config</module>
 		<module>ecp-framework</module>
+		<module>ecp-rule</module>
 		<module>ecp-media</module>
 		<module>ecp-boot</module>
 		<module>ecp-web</module>
@@ -151,7 +152,7 @@
 		<module>ecp-gateway</module>
     	<module>ecp-mybatis</module>
     	<module>ecp-test</module>
-	</modules>
+  </modules>
 
   <distributionManagement>
 	<repository>
@@ -178,6 +179,7 @@
 		    <configuration>
 				<source>${java.version}</source>
 				<target>${java.version}</target>
+				<encoding>${project.build.sourceEncoding}</encoding>
 			</configuration>
 			<executions>
 				<execution>

@@ -11,7 +11,7 @@
 
 #### 安装教程
 
-1.  xxxx
+1.  基于  apache maven deploy 进行自行发布
 2.  xxxx
 3.  xxxx
 
@@ -20,6 +20,8 @@
 1.  xxxx
 2.  xxxx
 3.  xxxx
+基于 Spring cloud
+采用  Drools（JBoss Rules Engine) , Activiti Flowable 工作流引擎
 
 #### 参与贡献
 
