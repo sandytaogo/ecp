@@ -1106,5 +1106,37 @@ public final class ConvertUtil {
         }
 		return typeMap;
     }
+    
+    /**
+     * 转换为Long数组<br>
+     * 
+     * @param str 被转换的值
+     * @return 结果
+     */
+    public static Long[] toLongArray(String str)
+    {
+        return toLongArray(str, ",");
+    }
+    
+    /**
+     * 转换为Long数组<br>
+     * @param str 被转换的值
+     * @param split 分隔符
+     * @return 结果
+     */
+    public static Long[] toLongArray(String str, String split) {
+        if (StringUtil.isEmpty(str))
+        {
+            return new Long[] {};
+        }
+        String[] arr = str.split(split);
+        final Long[] longs = new Long[arr.length];
+        for (int i = 0; i < arr.length; i++)
+        {
+            final Long v = toLong(arr[i]);
+            longs[i] = v;
+        }
+        return longs;
+    }
 }
 

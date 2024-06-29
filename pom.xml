@@ -166,8 +166,21 @@
   	<pluginManagement>
   		<plugins>
 	  		<plugin>
+	  			<groupId>org.apache.maven.plugins</groupId>
 	            <artifactId>maven-surefire-plugin</artifactId>
 	            <version>${maven-surefire-plugin.version}</version>
+	            <configuration>
+	            	<reportsDirectory>${project.build.directory}/surefire-report</reportsDirectory>
+	            </configuration>
+	        </plugin>
+	        
+	        <plugin>
+	        	<groupId>org.apache.maven.plugins</groupId>
+	            <artifactId>maven-surefire-report-plugin</artifactId>
+	            <version>${maven-surefire-plugin.version}</version>
+	            <configuration>
+	            	<reportsDirectory>${project.build.directory}/surefire-report</reportsDirectory>
+	            </configuration>
 	        </plugin>
   		</plugins>
   	</pluginManagement>
@@ -203,6 +216,13 @@
   			<groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-surefire-plugin</artifactId>
         </plugin>
+        <plugin>
+        	<groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-report-plugin</artifactId>
+            <configuration>
+            	<title>${project.name}-junit test report</title>
+            </configuration>
+        </plugin>
   		<plugin>
 		    <groupId>org.jacoco</groupId>
 		    <artifactId>jacoco-maven-plugin</artifactId>
@@ -230,6 +250,8 @@
 		        <forkCount>1</forkCount>
 		        <!-- JaCoCo要求不能是Never，此处设置的其实是默认值 -->
 		        <forkMode>once</forkMode>
+		        <!--HTML报告的标题-->
+			    <title>${project.name}-Java Code Coverage Report</title>
 		    </configuration>
 		    <executions>
 		        <execution>
@@ -247,7 +269,6 @@
 		        </execution>
 		    </executions>
 		</plugin>
-       
   	</plugins>
   </build>
 </project>

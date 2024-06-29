@@ -240,7 +240,7 @@
 			        <forkMode>once</forkMode>
 			        <sourceEncoding>UTF-8</sourceEncoding>
 			        <!--HTML报告的标题-->
-			        <title>${project.name}-单元测试报告</title>
+			        <title>${project.name}-java code coverage report</title>
 			        
 			        <!-- rules裏面指定覆蓋規則 -->
 	                <rules>

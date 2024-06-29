@@ -50,6 +50,10 @@ import sun.net.www.protocol.https.HttpsURLConnectionImpl;
 @SuppressWarnings("restriction")
 public class WebUtil {
 	
+	public static int CONNECT_TIMEOUT = 3000;
+	
+	public static int READ_TIMEOUT = 15000;
+	
 	static {
 		httpAllHost();
 	}
@@ -119,8 +123,8 @@ public class WebUtil {
 				conn = (java.net.HttpURLConnection) new URL(url).openConnection();
 			}
 			conn.setRequestMethod("GET");
-			conn.setConnectTimeout(2000);
-			conn.setReadTimeout(10000);
+			conn.setConnectTimeout(CONNECT_TIMEOUT);
+			conn.setReadTimeout(READ_TIMEOUT);
 			if (headers != null) {
 				for (String key : headers.keySet() ) {
 					conn.setRequestProperty(key, headers.get(key));
@@ -133,7 +137,7 @@ public class WebUtil {
 			conn.setDoInput(true);
 			conn.setUseCaches(false);
 			final int statusCode = conn.getResponseCode();
-			if (statusCode == 200) {
+			if (statusCode == HttpStatus.OK.value()) {
 				in = conn.getInputStream();
 			} else {
 				in = conn.getErrorStream();
@@ -144,7 +148,7 @@ public class WebUtil {
 				sb.append(readLine);
 			}
 			in.close();
-			if (statusCode == 200) {
+			if (statusCode == HttpStatus.OK.value()) {
 				return sb.toString();
 			}
 		} catch (Exception e) {
@@ -166,8 +170,8 @@ public class WebUtil {
 			URL urls = new URL(null, url, new Handler());
 			conn = (HttpsURLConnection) urls.openConnection();
 			conn.setRequestMethod("GET");
-			conn.setConnectTimeout(3000);
-			conn.setReadTimeout(10000);
+			conn.setConnectTimeout(CONNECT_TIMEOUT);
+			conn.setReadTimeout(READ_TIMEOUT);
 			if (headers != null) {
 				for (String key : headers.keySet() ) {
 					conn.setRequestProperty(key, headers.get(key));
@@ -220,8 +224,8 @@ public class WebUtil {
 				conn = (java.net.HttpURLConnection) new URL(url).openConnection();
 			}
 			conn.setRequestMethod("POST");
-			conn.setConnectTimeout(2000);
-			conn.setReadTimeout(10000);
+			conn.setConnectTimeout(CONNECT_TIMEOUT);
+			conn.setReadTimeout(READ_TIMEOUT);
 			conn.setRequestProperty("Charset", charset);
 			conn.setRequestProperty("Content-Type", "application/json");
 			conn.setRequestProperty("Content-Encoding", charset);

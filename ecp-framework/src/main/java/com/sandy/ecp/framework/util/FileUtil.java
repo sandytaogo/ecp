@@ -9,7 +9,11 @@
 package com.sandy.ecp.framework.util;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Calendar;
+
+import org.springframework.util.DigestUtils;
 
 /**
  * File Utils
@@ -18,6 +22,16 @@ import java.util.Calendar;
  * @since 1.0.0 12th 12 2016
  */
 public class FileUtil {
+	
+	/**
+	 * 读取文件MD5
+	 * @param path
+	 * @return md5 digest as hex
+	 * @throws IOException
+	 */
+	public static String md5AsHex(String path) throws IOException {
+		return DigestUtils.md5DigestAsHex(new FileInputStream (new File(path)));
+	}
 
 	/**
 	 * @param name

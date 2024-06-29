@@ -46,7 +46,7 @@ public class EcpBookDiscountTest {
 		}
 		System.out.println("before rule engine book discount test");
 	}
- 
+
     @Test
     @org.junit.Test
     public void buyBookTest() {
