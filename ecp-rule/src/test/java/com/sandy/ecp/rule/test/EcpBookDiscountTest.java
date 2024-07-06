@@ -54,7 +54,7 @@ public class EcpBookDiscountTest {
         KieContainer kieContainer = kieServices.newKieClasspathContainer();
         // 从Kie容器对象中获取会话对象（默认session对象
         KieSession kieSession = kieContainer.newKieSession();
-        Order order = new Order();
+        OrderTestRule order = new OrderTestRule();
         order.setOriginalPrice(160d);
  
         // 将order对象插入工作内存

@@ -140,9 +140,49 @@ public class EcpDiskFileItem implements FileItem, FileItemHeadersSupport {
 
     // ----------------------------------------------------------- Constructors
 
+    /**
+     * Constructs a new <code>EcpDiskFileItem</code> instance.
+     * @param fileName      The original filename in the user's filesystem, or
+     *                      <code>null</code> if not specified.
+     * @param sizeThreshold The threshold, in bytes, below which items will be
+     *                      retained in memory and above which they will be
+     *                      stored as a file.
+     * @param repository    The data repository, which is the directory in
+     *                      which files will be created, should the item size
+     *                      exceed the threshold.
+     */
+    public EcpDiskFileItem(String fileName, int sizeThreshold, File repository) {
+        this.fieldName = null;
+        this.contentType = null;
+        this.isFormField = false;
+        this.fileName = fileName;
+        this.sizeThreshold = sizeThreshold;
+        this.repository = repository;
+        
+        this.tempFile = new File(repository, fileName);
+        this.size = this.tempFile.length();
+        
+        byte[] fileData = new byte[(int) getSize()];
+        FileInputStream fis = null;
+        try {
+            fis = new FileInputStream(tempFile);
+            fis.read(fileData);
+            this.cachedContent = fileData;
+        } catch (IOException e) {
+            fileData = null;
+        } finally {
+            if (fis != null) {
+                try {
+                    fis.close();
+                } catch (IOException e) {
+                    // ignore
+                }
+            }
+        }
+    }
 
     /**
-     * Constructs a new <code>DiskFileItem</code> instance.
+     * Constructs a new <code>EcpDiskFileItem</code> instance.
      *
      * @param fieldName     The name of the form field.
      * @param contentType   The content type passed by the browser or
@@ -574,6 +614,14 @@ public class EcpDiskFileItem implements FileItem, FileItemHeadersSupport {
             tempFile = new File(tempDir, tempFileName);
         }
         return tempFile;
+    }
+    
+    /**
+     * 临时文件是否存在.
+     * @return
+     */
+    public boolean tempFileExists() {
+    	return this.getTempFile().exists();
     }
 
     // -------------------------------------------------------- Private methods

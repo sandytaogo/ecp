@@ -17,6 +17,9 @@ package com.sandy.ecp.framework.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.YearMonth;
+import java.time.ZoneOffset;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.regex.Pattern;
@@ -71,6 +74,10 @@ public class DateUtil {
 		return null;
 	}
 	
+	public static Date toDate(int year, int month, int day) {
+		return Date.from(LocalDate.of(year, month, day).atStartOfDay(ZoneOffset.ofHours(8)).toInstant());
+	}
+	
 	public static Date toDate(String date, String pattern) {
 		if (StringUtil.isBlank(date) || "undefined".equals(date)) {
 			return null;
@@ -103,5 +110,17 @@ public class DateUtil {
 	
 	public static int toMinutes(Date fromDate, Date toDate) {
 		return (int) (( toDate.getTime() - fromDate.getTime() ) / (1000 * 60));
+	}
+	
+	/**
+	 * 获取月份总天数
+	 * @param year
+	 * @param month
+	 * @return days.
+	 */
+	public static int lengthOfMonth(int year, int month) {
+		YearMonth yearMonth = YearMonth.of(year, month);
+        int daysInMonth = yearMonth.lengthOfMonth();
+        return daysInMonth;
 	}
 }

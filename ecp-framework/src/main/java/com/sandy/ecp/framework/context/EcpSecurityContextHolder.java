@@ -19,9 +19,16 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-import com.sandy.ecp.framework.session.AuthenticationToken;
+import com.sandy.ecp.framework.session.EcpAuthenticationToken;
 import com.sandy.ecp.framework.session.SessionVO;
 
+/**
+ * Enterprise Cloud Platform Security Context Holder.
+ * @author Sandy
+ * @param <PK>
+ * @version 1.0.0
+ * @since 1.0.0 04th 12 2022
+ */
 public class EcpSecurityContextHolder {
 	
 	public static SecurityContext getContext() {
@@ -43,7 +50,7 @@ public class EcpSecurityContextHolder {
 	
 	public static void setSessionVO(Object session) {
 		SecurityContext sc = EcpSecurityContextHolder.getContext();
-		AuthenticationToken authentication = new AuthenticationToken();
+		EcpAuthenticationToken authentication = new EcpAuthenticationToken(null, null);
 		authentication.setDetails(session);
 		sc.setAuthentication(authentication);
 	}

@@ -26,7 +26,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Order {
+public class OrderTestRule {
     private Double  originalPrice; // 订单原始价格，即优惠前的价格
     private Double realPrice; // 订单真实价格，即优惠后的价格
 	public Double getOriginalPrice() {

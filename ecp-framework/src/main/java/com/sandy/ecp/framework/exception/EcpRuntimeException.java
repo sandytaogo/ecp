@@ -16,39 +16,53 @@
 package com.sandy.ecp.framework.exception;
 
 /**
- * 企业云平台寻找异常声明.
+ * 企业云平台运行时异常声明.
  * @author Sandy
- * @date 2023-04-04 13:12:12
+ * @date 2022-04-04 13:12:12
  * @since 1.0.0
  */
-public class FindException extends EcpRuntimeException {
+public class EcpRuntimeException extends RuntimeException {
 
-	private static final long serialVersionUID = 6998016710769738641L;
-	
+	private static final long serialVersionUID = 1457558421552624756L;
+
 	/** Constructs a new runtime exception with {@code null} as its
      * detail message.  The cause is not initialized, and may subsequently be
      * initialized by a call to {@link #initCause}.
      */
-    public FindException() {
+    public EcpRuntimeException() {
         super();
     }
 
-	/** Constructs a new runtime exception with the specified detail message.
+    /** Constructs a new runtime exception with the specified detail message.
      * The cause is not initialized, and may subsequently be initialized by a
      * call to {@link #initCause}.
      *
      * @param   message   the detail message. The detail message is saved for
      *          later retrieval by the {@link #getMessage()} method.
      */
-    public FindException(String message) {
+    public EcpRuntimeException(String message) {
         super(message);
     }
-    
-	public FindException(String message, Throwable cause) {
+
+    /**
+     * Constructs a new runtime exception with the specified detail message and
+     * cause.  <p>Note that the detail message associated with
+     * {@code cause} is <i>not</i> automatically incorporated in
+     * this runtime exception's detail message.
+     *
+     * @param  message the detail message (which is saved for later retrieval
+     *         by the {@link #getMessage()} method).
+     * @param  cause the cause (which is saved for later retrieval by the
+     *         {@link #getCause()} method).  (A <tt>null</tt> value is
+     *         permitted, and indicates that the cause is nonexistent or
+     *         unknown.)
+     * @since  1.4
+     */
+    public EcpRuntimeException(String message, Throwable cause) {
         super(message, cause);
     }
-	
-	 /** Constructs a new runtime exception with the specified cause and a
+
+    /** Constructs a new runtime exception with the specified cause and a
      * detail message of <tt>(cause==null ? null : cause.toString())</tt>
      * (which typically contains the class and detail message of
      * <tt>cause</tt>).  This constructor is useful for runtime exceptions
@@ -60,7 +74,7 @@ public class FindException extends EcpRuntimeException {
      *         unknown.)
      * @since  1.4
      */
-    public FindException(Throwable cause) {
+    public EcpRuntimeException(Throwable cause) {
         super(cause);
     }
 
@@ -76,9 +90,10 @@ public class FindException extends EcpRuntimeException {
      *                          or disabled
      * @param writableStackTrace whether or not the stack trace should
      *                           be writable
+     *
      * @since 1.7
      */
-    protected FindException(String message, Throwable cause,
+    protected EcpRuntimeException(String message, Throwable cause,
                                boolean enableSuppression,
                                boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);

@@ -15,6 +15,8 @@
  */
 package com.sandy.ecp.framework.web;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
@@ -94,4 +96,19 @@ public abstract class AbstractController {
 		return model;
 	}
 	
+	/**
+	 * 读入HTTP body data 注意只能读取一次IO
+	 * @param request
+	 * @return String
+	 * @throws IOException
+	 */
+	protected String readerString(final HttpServletRequest request) throws IOException {
+		BufferedReader br = request.getReader();
+		StringBuilder sb = new StringBuilder();
+		String line;
+		while((line = br.readLine()) != null) {
+			sb.append(line);
+		}
+		return sb.toString();
+	}
 }

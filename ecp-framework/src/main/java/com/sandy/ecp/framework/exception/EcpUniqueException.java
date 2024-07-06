@@ -16,20 +16,21 @@
 package com.sandy.ecp.framework.exception;
 
 /**
- * 企业云平台寻找异常声明.
+ * 企业云平台唯一性异常声明.
  * @author Sandy
  * @date 2023-04-04 13:12:12
  * @since 1.0.0
  */
-public class FindException extends EcpRuntimeException {
+public class EcpUniqueException extends EcpRuntimeException {
 
-	private static final long serialVersionUID = 6998016710769738641L;
 	
+	private static final long serialVersionUID = -7516269892441552773L;
+
 	/** Constructs a new runtime exception with {@code null} as its
      * detail message.  The cause is not initialized, and may subsequently be
      * initialized by a call to {@link #initCause}.
      */
-    public FindException() {
+    public EcpUniqueException() {
         super();
     }
 
@@ -40,11 +41,11 @@ public class FindException extends EcpRuntimeException {
      * @param   message   the detail message. The detail message is saved for
      *          later retrieval by the {@link #getMessage()} method.
      */
-    public FindException(String message) {
+    public EcpUniqueException(String message) {
         super(message);
     }
     
-	public FindException(String message, Throwable cause) {
+	public EcpUniqueException(String message, Throwable cause) {
         super(message, cause);
     }
 	
@@ -60,7 +61,7 @@ public class FindException extends EcpRuntimeException {
      *         unknown.)
      * @since  1.4
      */
-    public FindException(Throwable cause) {
+    public EcpUniqueException(Throwable cause) {
         super(cause);
     }
 
@@ -78,7 +79,7 @@ public class FindException extends EcpRuntimeException {
      *                           be writable
      * @since 1.7
      */
-    protected FindException(String message, Throwable cause,
+    protected EcpUniqueException(String message, Throwable cause,
                                boolean enableSuppression,
                                boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
