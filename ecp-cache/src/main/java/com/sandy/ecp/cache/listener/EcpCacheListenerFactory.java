@@ -1,5 +1,5 @@
 /*
- * Copyright 2024-2030 the original author or authors.
+ * Copyright 2020-2030 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,17 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.sandy.ecp.framework.util;
+package com.sandy.ecp.cache.listener;
 
-import org.junit.Test;
+/**
+ * 企业云平台框架缓存监听器工厂声明.
+ * @author Sandy
+ * @date 2020-04-04 12:12:12
+ * @since 0.0.1
+ */
+public class EcpCacheListenerFactory {
 
-public class StringUtilTest {
-
-	
-	@Test
-	public void toFirstTest() {
-		System.out.println(StringUtil.toFirstChar("贵州茅台"));
-		System.out.println(StringUtil.toFirstChar("寧德時代"));
-	}
-	
 }

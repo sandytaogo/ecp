@@ -1,5 +1,5 @@
 /*
- * Copyright 2024-2030 the original author or authors.
+ * Copyright 2018 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,13 +17,25 @@ package com.sandy.ecp.framework.util;
 
 import org.junit.Test;
 
-public class StringUtilTest {
+/**  
+ * Description: 
+ * @author Sandy
+ * @Date 2022年4月3日 下午6:44:23
+ * @since 1.0.0
+ */
+public class ChineseCalendarTest {
 
+	@Test
+	public void simpleTest() {
+		
+		ChineseCalendar.oneDay(2022, 05, 04);
+		System.out.println(ChineseCalendar.today());
+	}
 	
 	@Test
-	public void toFirstTest() {
-		System.out.println(StringUtil.toFirstChar("贵州茅台"));
-		System.out.println(StringUtil.toFirstChar("寧德時代"));
+	public void twotest() {
+		ChineseCalendar c = new ChineseCalendar();
+		c.lunar(2020, 01);
 	}
 	
 }

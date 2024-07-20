@@ -5,5 +5,5 @@
 &&&&&&&&&&  &&         && && &&,,
 &&          &&         && 
 &&&&&&&&&&  &&&    &&  && 
-&&&&&&&&&&    &&&&&   && ,,,,,,,,
+&&&&&&&&&&    &&&&&    && ,,,,,,,,
 ::Spring Boot Enterprise Cloud Platform ${spring.application.name}::${spring-boot.formatted-version}

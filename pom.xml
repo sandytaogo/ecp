@@ -141,6 +141,8 @@
 	</developers>
 
 	<modules>
+		<module>ecp-cache</module>
+		<module>ecp-jpa</module>
 		<module>ecp-config</module>
 		<module>ecp-framework</module>
 		<module>ecp-rule</module>
@@ -152,7 +154,8 @@
 		<module>ecp-gateway</module>
     	<module>ecp-mybatis</module>
     	<module>ecp-test</module>
-  </modules>
+    	<module>aaaaa</module>
+	</modules>
 
   <distributionManagement>
 	<repository>

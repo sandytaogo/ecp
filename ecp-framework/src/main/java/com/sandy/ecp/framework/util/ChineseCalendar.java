@@ -164,8 +164,7 @@ public class ChineseCalendar implements Serializable, Cloneable, Comparable<Chin
 	 * @param m
 	 * @return
 	 */
-	@SuppressWarnings("unused")
-	final private long[] Lunar(int y, int m) {
+	public long[] lunar(int y, int m) {
 		long[] nongDate = new long[7];
 		int i = 0, temp = 0, leap = 0;
 		Date baseDate = new GregorianCalendar(1900 + 1900, 1, 31).getTime();

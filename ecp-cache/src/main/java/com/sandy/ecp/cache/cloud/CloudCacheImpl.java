@@ -1,5 +1,5 @@
 /*
- * Copyright 2024-2030 the original author or authors.
+ * Copyright 2020-2030 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,22 +13,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.sandy.ecp.framework.util;
+package com.sandy.ecp.cache.cloud;
 
-import org.junit.Test;
+import java.util.Observable;
 
-import com.sandy.ecp.framework.ip.IPSeeker;
-
-/**  
- * Description: 
+import com.sandy.ecp.cache.ICache;
+/**
+ * 基礎緩存服務接口聲明.
  * @author Sandy
- * @Date 2024年4月3日 下午6:44:23
- * @since 1.0.0
+ * @date 2020-04-04 12:12:12
+ * @param <K>
+ * @param <V>
  */
-public class IpAddressTest {
+public class CloudCacheImpl<K, V> extends Observable implements ICache<K, V> {
 
-	@Test
-	public void ipAddressTest() {
-		System.out.println(IPSeeker.getInstance().getAddress("120.79.95.13"));
+	@Override
+	public V get(K key) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void put(K key, V value) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void clear() {
+		// TODO Auto-generated method stub
+		
 	}
 }

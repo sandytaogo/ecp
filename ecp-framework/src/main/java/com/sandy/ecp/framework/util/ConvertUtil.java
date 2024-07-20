@@ -35,7 +35,7 @@ import javax.sql.rowset.serial.SerialClob;
 import com.sandy.ecp.framework.exception.FindException;
 
 /**
- * 
+ * 企业云平台数据转换工具类.
  * @author Sandy
  * @date 2023-05-23 12:12:12
  */

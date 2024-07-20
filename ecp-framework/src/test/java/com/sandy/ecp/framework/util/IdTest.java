@@ -1,5 +1,5 @@
 /*
- * Copyright 2024-2030 the original author or authors.
+ * Copyright 2020-2030 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,14 +16,27 @@
 package com.sandy.ecp.framework.util;
 
 import org.junit.Test;
-
-public class StringUtilTest {
-
+/**  
+ * Description: 
+ * @author Sandy
+ * @Date 2024年4月3日 下午6:44:23
+ * @since 1.0.0
+ */
+public class IdTest {
+	
 	
 	@Test
-	public void toFirstTest() {
-		System.out.println(StringUtil.toFirstChar("贵州茅台"));
-		System.out.println(StringUtil.toFirstChar("寧德時代"));
+	public void utilTest() {
+		System.out.println(IdUtil.getUUID());
+	}
+	
+	@Test
+	public void getLongIdTest() {
+		System.out.println(IdUtil.getLongId());
+	}
+	@Test
+	public void getUUID2Test() {
+		System.out.println(IdUtil.getUUID2());
 	}
 	
 }

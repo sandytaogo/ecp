@@ -1,5 +1,5 @@
 /*
- * Copyright 2024-2030 the original author or authors.
+ * Copyright 2020-2030 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,17 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.sandy.ecp.framework.util;
+package com.sandy.ecp.cache.factory;
 
-import org.junit.Test;
+/**
+ * 基礎緩存服務接口聲明.
+ * @author Sandy
+ * @date 2020-04-04 12:12:12
+ * @param <K>
+ * @param <V>
+ */
+public class EhcacheFactory {
 
-public class StringUtilTest {
-
-	
-	@Test
-	public void toFirstTest() {
-		System.out.println(StringUtil.toFirstChar("贵州茅台"));
-		System.out.println(StringUtil.toFirstChar("寧德時代"));
-	}
-	
+	public static final EhcacheFactory INSTANCE = new EhcacheFactory();
 }

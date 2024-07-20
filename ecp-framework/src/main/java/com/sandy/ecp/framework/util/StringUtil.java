@@ -70,6 +70,10 @@ public class StringUtil extends StringUtils {
 	public static String escapeHtml4(String input) {
 		return StringEscapeUtils.escapeHtml4(input);
 	}
+	
+	public static String unescapeHtml4(String input) {
+		return StringEscapeUtils.unescapeHtml4(input);
+	}
 
 	public static int hashCode(String v) {
 		int h = 0;
