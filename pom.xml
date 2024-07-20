@@ -154,7 +154,6 @@
 		<module>ecp-gateway</module>
     	<module>ecp-mybatis</module>
     	<module>ecp-test</module>
-    	<module>aaaaa</module>
 	</modules>
 
   <distributionManagement>
