@@ -31,6 +31,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import com.sandy.ecp.framework.dao.PageRequest;
 import com.sandy.ecp.framework.dao.Paging;
 import com.sandy.ecp.framework.dao.Sort;
+import com.sandy.ecp.framework.dao.Sort.Direction;
 import com.sandy.ecp.framework.net.URLDecoder;
 import com.sandy.ecp.framework.session.SessionVO;
 import com.sandy.ecp.framework.util.ConvertUtil;
@@ -67,6 +68,22 @@ public abstract class AbstractController {
 			}
 		}
 		return null;
+	}
+	
+	/**
+	 * 获取排序对象.
+	 * @param request HttpServletRequest.
+	 * @param args [sortName, order:asc or DESC].
+	 * @return Sort
+	 */
+	public Sort getSort(HttpServletRequest request, String ...args) {
+		String sort = request.getParameter("sort");
+		String order = request.getParameter("order");
+		Sort sortOrder = null;
+		if (StringUtil.isNotEmptyString(sort) && StringUtil.isNotEmptyString(order)) {
+			sortOrder = new Sort(Direction.fromString(order), sort);
+		}
+		return sortOrder;
 	}
 	
 	public Paging getPaging(HttpServletRequest request, Sort sort) {
