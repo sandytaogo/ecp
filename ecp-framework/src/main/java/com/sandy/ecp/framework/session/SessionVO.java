@@ -36,6 +36,7 @@ public class SessionVO extends AbstractVO<String> {
 	private String account;
 	private String mobile;
 	private String nickName;
+	private String userSmTwoPublicKey;
 	public Long getUserId() {
 		return userId;
 	}
@@ -60,7 +61,12 @@ public class SessionVO extends AbstractVO<String> {
 	public void setNickName(String nickName) {
 		this.nickName = nickName;
 	}
-	
+	public String getUserSmTwoPublicKey() {
+		return userSmTwoPublicKey;
+	}
+	public void setUserSmTwoPublicKey(String userSmTwoPublicKey) {
+		this.userSmTwoPublicKey = userSmTwoPublicKey;
+	}
 	@Override
 	public String toString() {
 		return "SessionVO [userId=" + userId + ", account=" + account + ", mobile=" + mobile + ", nickName=" + nickName
