@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.sandy.framework</groupId>
+    <artifactId>ecp</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>ecp-recognition</artifactId>
+  <name>ecp-recognition</name>
+  <url>http://maven.apache.org</url>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <dependencies>
+  
+  	<dependency>
+		<groupId>net.java.dev.jna</groupId>
+		<artifactId>jna</artifactId>
+	</dependency>
+	
+	<dependency>
+	    <groupId>net.sourceforge.lept4j</groupId>
+	    <artifactId>lept4j</artifactId>
+	    <version>1.18.0</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>net.sourceforge.tess4j</groupId>
+	    <artifactId>tess4j</artifactId>
+	    <version>5.9.0</version>
+	</dependency>
+  	
+	<dependency>
+         <groupId>org.opencv</groupId>
+         <artifactId>opencv</artifactId>
+         <version>4.0.1</version>
+         <scope>system</scope>
+         <systemPath>${basedir}/opencv-401.jar</systemPath>
+     </dependency>
+  	
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>
