@@ -16,6 +16,21 @@
   <dependencies>
   
   	<dependency>
+    	<groupId>org.springframework</groupId>
+      	<artifactId>spring-core</artifactId>
+	</dependency>
+	
+	<dependency>
+    	<groupId>org.springframework</groupId>
+      	<artifactId>spring-context</artifactId>
+	</dependency>
+  
+  	<dependency>
+    	<groupId>com.google.guava</groupId>
+      	<artifactId>guava</artifactId>
+	</dependency>
+  
+  	<dependency>
 		<groupId>net.java.dev.jna</groupId>
 		<artifactId>jna</artifactId>
 	</dependency>
@@ -35,9 +50,9 @@
 	<dependency>
          <groupId>org.opencv</groupId>
          <artifactId>opencv</artifactId>
-         <version>4.0.1</version>
-         <scope>system</scope>
-         <systemPath>${basedir}/opencv-401.jar</systemPath>
+         <version>460</version>
+<!--          <scope>system</scope> -->
+<!--          <systemPath>${basedir}/opencv-460.jar</systemPath> -->
      </dependency>
   	
     <dependency>

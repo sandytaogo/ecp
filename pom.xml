@@ -34,7 +34,7 @@
 		<liquibase.version>3.7.0</liquibase.version>
 		<itextpdf.version>5.5.8</itextpdf.version>
 		<poi.version>3.8</poi.version>
-		<jna.version>5.13.0</jna.version>
+		<jna.version>5.14.0</jna.version>
 		<quasar.version>0.7.9</quasar.version>
 		<swagger.version>1.6.3</swagger.version>
 		<springfox.version>2.9.2</springfox.version>
