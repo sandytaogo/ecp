@@ -34,7 +34,7 @@
 		<liquibase.version>3.7.0</liquibase.version>
 		<itextpdf.version>5.5.8</itextpdf.version>
 		<poi.version>3.8</poi.version>
-		<jna.version>5.14.0</jna.version>
+<!-- 		<jna.version>5.14.0</jna.version> -->
 		<quasar.version>0.7.9</quasar.version>
 		<swagger.version>1.6.3</swagger.version>
 		<springfox.version>2.9.2</springfox.version>
@@ -164,6 +164,13 @@
 		<id>localRepository</id>
 		<url>file:C:/Users/Sandy/.m2/repository</url>
 	</repository>
+	
+<!-- 	<mirror> -->
+<!-- 	    <id>aliyunmaven</id> -->
+<!-- 	    <mirrorOf>*</mirrorOf> -->
+<!-- 	    <name>阿里云公共仓库</name> -->
+<!-- 	    <url>https://maven.aliyun.com/repository/public</url> -->
+<!-- 	</mirror> -->
   </distributionManagement>
   
   <build>

@@ -1,5 +1,22 @@
 # 企业管理云平台
 
+![Java](https://img.shields.io/badge/Java-8-blue.svg)
+![IDE](https://img.shields.io/badge/IDE-IntelliJ%20IDEA-brightgreen.svg)
+![License](https://img.shields.io/badge/License-Apache2-orange.svg)
+[![CircleCI](https://circleci.com/gh/alibaba/spring-cloud-alibaba/tree/2023.x.svg?style=svg)](https://circleci.com/gh/alibaba/spring-cloud-alibaba/tree/2023.x)
+[![Maven Central](https://img.shields.io/maven-central/v/com.alibaba.cloud/spring-cloud-alibaba-dependencies.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:com.alibaba.cloud%20AND%20a:spring-cloud-alibaba-dependencies)
+[![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
+[![actions](https://github.com/alibaba/spring-cloud-alibaba/workflows/Integration%20Testing/badge.svg)](https://github.com/alibaba/spring-cloud-alibaba/actions)
+[![Leaderboard](https://img.shields.io/badge/SCA-Check%20Your%20Contribution-orange)]
+
+> System : Windows 10
+>
+> Intellij IDEA : Ultimate 2020.3.4
+>
+> Java : 1.8.0_171
+>
+> MySQL : 8.0.30
+
 #### 介绍
 企业管理云平台（Enterprise Cloud Platform,缩写为：ECP）打造适合中国企业综合管理平台框架、采用云计算SAAS平台利用高速化的互联网传输能力，为软件开发商搭建一个高效、灵活的软件架构；同时根据需求智能分配计算资源，满足中小企业日益增长的信息化管理要求，也为大型集团企业提供高效、安全、稳定的一站式专业级软件应用服务。
 
