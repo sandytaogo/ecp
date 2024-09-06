@@ -27,6 +27,7 @@ import net.sourceforge.tess4j.Tesseract;
 import net.sourceforge.tess4j.TesseractException;
 
 /**
+ * https://digi.bib.uni-mannheim.de/tesseract/
  * Description: 
  * https://tess4j.sourceforge.net/
  * 4：如果是识别中文图片，则需要自行下载中文检测包chi_sim.traineddata，并将chi_sim.traineddata文件放到tessdata文件夹下
@@ -46,23 +47,21 @@ public class CarLicensePlateTest {
 	    //如果需要识别英文之外的语种，需要指定识别语种，并且需要将对应的语言包放进项目中
 	    // chi_sim ：简体中文， eng 根据需求选择语言库
 	    instance.setLanguage("chi_sim");
-	    
 //	    instance.setVariable("tessedit_char_whitelist", "acekopxyABCEHKMOPTXY0123456789");
-	    
 	    //使用OSD进行自动页面分割以进行图像处理.
-	    instance.setPageSegMode(1);
+//	    instance.setPageSegMode(1);
 	    //设置引擎模式是网络LSTM引擎
-//	    instance.setOcrEngineMode(TessOcrEngineMode.OEM_LSTM_ONLY);
-	    instance.setOcrEngineMode(TessOcrEngineMode.OEM_DEFAULT);
+	    instance.setOcrEngineMode(TessOcrEngineMode.OEM_LSTM_ONLY);
+//	    instance.setOcrEngineMode(TessOcrEngineMode.OEM_DEFAULT);
 	    // 指定识别图片
 	    File imgDir = new File("C:\\Users\\Sandy\\Desktop\\car.jpg");
 	    imgDir = new File("C:\\Users\\Sandy\\Desktop\\8jd5vfe42g.jpeg");
+	    imgDir = new File("C:\\Users\\Sandy\\Desktop\\aa.jpg");
 //	    imgDir = new File("C:\\Users\\Sandy\\Desktop\\aa.jpg");
 //	    imgDir = new File("C:\\Users\\Sandy\\Desktop\\cc.jpg");
 //	    imgDir = new File("C:\\Users\\Sandy\\Desktop\\ddd.jpg");
 //	    imgDir = new File("C:\\Users\\Sandy\\Desktop\\fff.jpg");
 //	    imgDir = new File("C:\\Users\\Sandy\\Desktop\\gg.jpg");
-	    
 	    long startTime = System.currentTimeMillis();
 	    String ocrResult = null;
 		try {
@@ -81,7 +80,13 @@ public class CarLicensePlateTest {
 	}
 	
 	public static void main(String[] args) {
-		new CarLicensePlateTest().toString();
+		int counter = 0;
+		for (;;) {
+			if (100 < counter) {
+				break;
+			}
+			new CarLicensePlateTest().toString();
+			counter ++;
+		}
 	}
-	
 }

@@ -1,17 +1,31 @@
 /*
- * Copyright 2016-2018 the original author or authors.
+ * Copyright 2024-2030 the original author or authors.
  *
- * Licensed under the HUIFU  License, Version 1.0 (the "License");
+ * Licensed under the company, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- *      http://huifuwang.com
+ *      http://www.company.com/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package com.sandy.ecp.framework.util;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.attribute.PosixFilePermission;
+import java.nio.file.attribute.PosixFilePermissions;
 import java.util.Calendar;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.springframework.util.DigestUtils;
 
@@ -21,7 +35,35 @@ import org.springframework.util.DigestUtils;
  * @author Sandy
  * @since 1.0.0 12th 12 2016
  */
-public class FileUtil {
+public final class FileUtil {
+	
+	private FileUtil() {
+		super();
+	}
+	
+	/**
+	 * 创建目录.
+	 * @param file 文件对象.
+	 * @throws IOException
+	 */
+	public static boolean createDirectory(File file) throws IOException {
+		if(!file.exists()) {
+			String os = System.getProperty("os.name");
+			if (os != null && 0 <= os.indexOf("Windows")) {
+				return file.mkdirs();
+			} else {
+				Set<PosixFilePermission> perms = new HashSet<PosixFilePermission>();
+				perms.add(PosixFilePermission.OWNER_READ);
+				perms.add(PosixFilePermission.OWNER_WRITE);
+				perms.add(PosixFilePermission.OWNER_EXECUTE);
+				perms.add(PosixFilePermission.OTHERS_READ);
+				Path path = Paths.get(file.getPath());
+				Files.createDirectories(path, PosixFilePermissions.asFileAttribute(perms));
+				return true;
+			}
+		}
+		return false;
+	}
 	
 	/**
 	 * 读取文件MD5
@@ -113,5 +155,4 @@ public class FileUtil {
 		return value.append(calendar.get(Calendar.YEAR)).append("/").append((calendar.get(Calendar.MARCH) + 1))
 				.append("/").append(calendar.get(Calendar.DATE)).append("/").toString();
 	}
-
 }

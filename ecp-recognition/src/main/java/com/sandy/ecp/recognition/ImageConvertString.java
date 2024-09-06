@@ -45,6 +45,8 @@ public class ImageConvertString {
 	
 	private String datapath;
 	
+	private ITesseract tesseractInstance = new Tesseract();
+	
 	public String getDatapath() {
 		if (datapath == null) {
 			@SuppressWarnings("unused")
@@ -64,25 +66,23 @@ public class ImageConvertString {
 	}
 	
 	public String doOCR(BufferedImage bi) throws TesseractException {
-		ITesseract instance = new Tesseract();
-		instance.setDatapath(getDatapath());
+		tesseractInstance.setDatapath(getDatapath());
 		//instance.setDatapath("h:\\tessdata");
 		// chi_sim ：简体中文， eng 根据需求选择语言库
-		instance.setLanguage("chi_sim");
+		tesseractInstance.setLanguage("chi_sim");
 		// 设置引擎模式是网络LSTM引擎
-//		instance.setOcrEngineMode(TessOcrEngineMode.OEM_LSTM_ONLY);
-		instance.setOcrEngineMode(TessOcrEngineMode.OEM_DEFAULT);
-		String ocrResult = instance.doOCR(bi);
+		//设置引擎模式是网络LSTM引擎
+		tesseractInstance.setOcrEngineMode(TessOcrEngineMode.OEM_LSTM_ONLY);
+		String ocrResult = tesseractInstance.doOCR(bi);
 		return ocrResult;
 	}
 
 	public String doOCR(String path) throws TesseractException {
-		ITesseract instance = new Tesseract();
 		// 如果未将tessdata放在根目录下需要指定绝对路径
-		instance.setDatapath(getDatapath());
+		tesseractInstance.setDatapath(getDatapath());
 		// 如果需要识别英文之外的语种，需要指定识别语种，并且需要将对应的语言包放进项目中
 		// chi_sim ：简体中文， eng 根据需求选择语言库
-		instance.setLanguage("chi_sim");
+		tesseractInstance.setLanguage("chi_sim");
 		// instance.setVariable("tessedit_char_whitelist",
 		// "acekopxyABCEHKMOPTXY0123456789");
 		// 使用OSD进行自动页面分割以进行图像处理.
@@ -90,6 +90,6 @@ public class ImageConvertString {
 		// 设置引擎模式是网络LSTM引擎
 		// instance.setOcrEngineMode(1);
 		// 指定识别图片
-		return  instance.doOCR(new File(path));
+		return tesseractInstance.doOCR(new File(path));
 	}
 }
