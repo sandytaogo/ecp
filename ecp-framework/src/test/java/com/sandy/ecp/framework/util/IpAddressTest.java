@@ -15,8 +15,20 @@
  */
 package com.sandy.ecp.framework.util;
 
-import org.junit.Test;
+import java.util.HashMap;
+import java.util.Map;
 
+import org.junit.Before;
+import org.junit.Test;
+import org.springframework.beans.factory.support.BeanDefinitionBuilder;
+import org.springframework.beans.factory.support.BeanDefinitionRegistry;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.core.env.MapPropertySource;
+import org.springframework.core.env.MutablePropertySources;
+import org.springframework.core.env.PropertySource;
+import org.springframework.core.env.StandardEnvironment;
+
+import com.sandy.ecp.framework.context.SpringContextUtil;
 import com.sandy.ecp.framework.ip.IPSeeker;
 
 /**  
@@ -26,9 +38,30 @@ import com.sandy.ecp.framework.ip.IPSeeker;
  * @since 1.0.0
  */
 public class IpAddressTest {
+	
+	@Before
+	public void testBefore() {
+		AnnotationConfigApplicationContext axt = new AnnotationConfigApplicationContext(SpringContextUtil.class);
+		BeanDefinitionRegistry registry = (BeanDefinitionRegistry) axt.getAutowireCapableBeanFactory();
+		 // 创建 bean 信息
+        BeanDefinitionBuilder beanDefinitionBuilder = BeanDefinitionBuilder.genericBeanDefinition(SpringContextUtil.class);
+        // 动态注册 bean
+        registry.registerBeanDefinition("springContextUtil", beanDefinitionBuilder.getBeanDefinition());
+        StandardEnvironment env = axt.getBean(StandardEnvironment.class);
+        // 获取可变属性源集合
+        MutablePropertySources propertySources = env.getPropertySources();
+        // 创建一个新的属性源
+        Map<String, Object> map = new HashMap<>();
+        map.put("ip.address.path", "h:/qqwry.dat");
+        PropertySource<?> myPropertySource = new MapPropertySource("MyPropertySource", map);
+        // 将新的属性源添加到环境中
+        propertySources.addLast(myPropertySource);
+        
+	}
 
 	@Test
 	public void ipAddressTest() {
+		
 		System.out.println(IPSeeker.getInstance().getAddress("120.79.95.13"));
 	}
 }

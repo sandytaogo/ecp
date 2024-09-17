@@ -16,18 +16,24 @@
 package com.sandy.ecp.framework.util;
 
 import java.io.File;
+import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.attribute.PosixFilePermission;
 import java.nio.file.attribute.PosixFilePermissions;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.Vector;
 
 import org.springframework.util.DigestUtils;
+import com.sandy.ecp.framework.exception.EcpRuntimeException;
 
 /**
  * File Utils
@@ -64,6 +70,111 @@ public final class FileUtil {
 		}
 		return false;
 	}
+	
+	public static boolean copyAndRename(String from, String to) {
+        Path sourcePath      = Paths.get(from);
+        Path destinationPath = Paths.get(to);
+        try {
+            Files.copy(sourcePath, destinationPath);
+        } catch(FileAlreadyExistsException e) {
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
+	
+	/**
+     * 
+     * @param dir
+     * @param filename
+     * @param recursive
+     * @return
+     */
+    public static List<File> listFile(File dir, final String fileType, boolean recursive) {
+        if (!dir.exists()) {
+            throw new EcpRuntimeException("目录：" + dir + "不存在");
+        }
+
+        if (!dir.isDirectory()) {
+            throw new EcpRuntimeException(dir + "不是目录");
+        }
+
+        FileFilter ff = null;
+        if (fileType == null || fileType.length() == 0) {
+            ff = new FileFilter() {
+                @Override
+                public boolean accept(File pathname) {
+                    return true;
+                }
+            };
+        } else {
+            ff = new FileFilter() {
+                @Override
+                public boolean accept(File pathname) {
+                    if (pathname.isDirectory()) {
+                        return true;
+                    }
+                    String name = pathname.getName().toLowerCase();
+                    String format = name.substring(name.lastIndexOf(".") + 1);
+                    if (fileType.contains(format)) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            };
+        }
+        return listFile(dir, ff, recursive);
+    }
+    
+    /**
+     * 
+     * @param dir
+     * @param ff
+     * @param recursive 是否遍历子目录
+     * @return
+     */
+    public static List<File> listFile(File dir, FileFilter ff, boolean recursive) {
+        List<File> list = new ArrayList<File>();
+        File[] files = dir.listFiles(ff);
+        if (files != null && files.length > 0) {
+            for (File f : files) {
+                // 如果是文件,添加文件到list中
+                if (f.isFile() || (f.isDirectory() && !f.getName().startsWith("."))) {
+                    list.add(f);
+                } else if (recursive) {
+                    // 获取子目录中的文件,添加子目录中的经过过滤的所有文件添加到list
+                    list.addAll(listFile(f, ff, true));
+                }
+            }
+        }
+        return list;
+    }
+    
+    /**
+     * 递归获取文件信息
+     * @param path String类型
+     * @param files
+     */
+    public static void getFiles(final String path, Vector<String> files) {
+        getFiles(new File(path), files);
+    }
+    
+    /**
+     * 递归获取文件信息
+     * @param dir FIle类型
+     * @param files
+     */
+    private static void getFiles(final File dir, Vector<String> files) {
+        File[] filelist = dir.listFiles();
+        for (File file : filelist) {
+            if (file.isDirectory()) {
+                getFiles(file, files);
+            } else {
+                files.add(file.getAbsolutePath());
+            }
+        }
+    }
 	
 	/**
 	 * 读取文件MD5
