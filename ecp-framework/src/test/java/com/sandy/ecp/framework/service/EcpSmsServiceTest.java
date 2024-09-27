@@ -7,8 +7,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 
-import com.sandy.ecp.framework.service.JavaSmsSenderImpl;
-
 @RunWith(JUnitPlatform.class)
 public class EcpSmsServiceTest {
 	
