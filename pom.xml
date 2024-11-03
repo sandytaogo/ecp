@@ -1,250 +1,232 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.0.RELEASE</version>
-		<relativePath/>
-	</parent>
-
-	<groupId>com.sandy.framework</groupId>
-	<artifactId>ecp</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
-
-	<name>ecp</name>
-	<url>http://maven.apache.org</url>
-
-	<!-- https://search.maven.org/ -->
-	<!-- https://mvnrepository.com/ -->
-	<!-- http://www.bootstrapmb.com/ -->
-	<!-- https://www.w3cschool.cn/ -->
-	<!-- https://caniuse.com/ -->
-	<!-- https://docs.oracle.com/javase/9/docs/api/java/util/concurrent/Flow.html -->
-	<!-- https://openresty.org/cn/ -->
-	<!-- 210522197305195619 surefire-report:report -->
-
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<spring.boot.version>2.0.0.RELEASE</spring.boot.version>
-		<spring.cloud.version>2.0.0.RELEASE</spring.cloud.version>
-		<javax-persistence.version>2.2</javax-persistence.version>
-		<bitwalker.version>1.21</bitwalker.version>
-		<liquibase.version>3.7.0</liquibase.version>
-		<itextpdf.version>5.5.8</itextpdf.version>
-		<poi.version>3.8</poi.version>
-		<jna.version>5.10.0</jna.version>
-		<quasar.version>0.7.9</quasar.version>
-		<swagger.version>1.6.3</swagger.version>
-		<springfox.version>2.9.2</springfox.version>
-		<guava.version>20.0</guava.version>
-		<jcoco.version>0.8.12</jcoco.version>
-		<junit-jupiter.version>5.4.0</junit-jupiter.version>
-		<junit-platform.version>1.4.0</junit-platform.version>
-		<maven.deploy.version>3.0.0</maven.deploy.version>
-		<maven-surefire-plugin.version>3.0.0</maven-surefire-plugin.version>
-		<version>0.0.1-SNAPSHOT</version>
-		<junit5.version>5.0.0-ALPHA</junit5.version>
-	</properties>
-	
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-		    	<groupId>com.google.guava</groupId>
-		      	<artifactId>guava</artifactId>
-		    	<version>${guava.version}</version>
-			</dependency>
-			<dependency>
-		   		<groupId>co.paralleluniverse</groupId>
-		    	<artifactId>quasar-core</artifactId>
-		    	<classifier>jdk8</classifier>
-		    	<version>${quasar.version}</version>
-		    </dependency>
-			<dependency>
-                <groupId>eu.bitwalker</groupId>
-                <artifactId>UserAgentUtils</artifactId>
-                <version>${bitwalker.version}</version>
-            </dependency>
-            <dependency>
-				<groupId>org.liquibase</groupId>
-				<artifactId>liquibase-core</artifactId>
-				<version>${liquibase.version}</version>
-			</dependency>
-			<dependency>
-			    <groupId>io.swagger</groupId>
-			    <artifactId>swagger-models</artifactId>
-			    <version>${swagger.version}</version>
-			</dependency>
-			
-			<dependency>
-			    <groupId>commons-fileupload</groupId>
-			    <artifactId>commons-fileupload</artifactId>
-			    <version>1.2.2</version>
-			</dependency>
-			
-			<dependency>
-			    <groupId>io.springfox</groupId>
-			    <artifactId>springfox-swagger2</artifactId>
-			    <scope>provided</scope>
-			    <version>${springfox.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>io.springfox</groupId>
-				<artifactId>springfox-swagger-ui</artifactId>
-				<version>${springfox.version}</version>
-				<scope>provided</scope>
-			</dependency>
-			
-<!-- 			<dependency> -->
-<!-- 			    <groupId>org.springframework.cloud</groupId> -->
-<!-- 			    <artifactId>spring-cloud-dependencies</artifactId> -->
-<!-- 			    <version>2021.0.9</version> -->
-<!-- 			    <type>pom</type> -->
-<!-- 			    <scope>import</scope> -->
-<!-- 			</dependency> -->
-		</dependencies>
-	</dependencyManagement>
-
-	<dependencies>
-		<dependency>
-			<groupId>javax.inject</groupId>
-			<artifactId>javax.inject</artifactId>
-			<version>1</version>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
-
-
-	<!-- https://github.com/sandytaogo -->
-	<developers>
-		<developer>
-			<id>sandytao</id>
-			<name>txf</name>
-			<email>sandytaogo@163.com</email>
-			<roles>
-				<role>Developer</role>
-			</roles>
-			<timezone>+8</timezone>
-		</developer>
-		<developer>
-			<id>jasontao</id>
-			<name>jason</name>
-			<email>sandytaogo@163.com</email>
-			<roles>
-				<role>SystemDesign</role>
-			</roles>
-			<timezone>+8</timezone>
-		</developer>
-	</developers>
-
-	<modules>
-		<module>ecp-cache</module>
-		<module>ecp-jpa</module>
-		<module>ecp-config</module>
-		<module>ecp-framework</module>
-		<module>ecp-rule</module>
-		<module>ecp-media</module>
-		<module>ecp-boot</module>
-		<module>ecp-web</module>
-		<module>ecp-zuul</module>
-		<module>ecp-cloud</module>
-		<module>ecp-gateway</module>
-    	<module>ecp-mybatis</module>
-    	<module>ecp-recognition</module>
-    	<module>ecp-test</module>
-	</modules>
-
+<?xml version="1.0" encoding="UTF-8"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.0.0.RELEASE</version>
+    <relativePath/>
+  </parent>
+  <groupId>com.sandy.framework</groupId>
+  <artifactId>ecp</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>ecp</name>
+  <url>http://maven.apache.org</url>
+  <!-- https://search.maven.org/ -->
+  <!-- https://mvnrepository.com/ -->
+  <!-- http://www.bootstrapmb.com/ -->
+  <!-- https://www.w3cschool.cn/ -->
+  <!-- https://caniuse.com/ -->
+  <!-- https://docs.oracle.com/javase/9/docs/api/java/util/concurrent/Flow.html -->
+  <!-- https://openresty.org/cn/ -->
+  <!-- 210522197305195619 surefire-report:report -->
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <spring.boot.version>2.0.0.RELEASE</spring.boot.version>
+    <spring.cloud.version>2.0.0.RELEASE</spring.cloud.version>
+    <javax-persistence.version>2.2</javax-persistence.version>
+    <bitwalker.version>1.21</bitwalker.version>
+    <liquibase.version>3.7.0</liquibase.version>
+    <itextpdf.version>5.5.8</itextpdf.version>
+    <poi.version>3.8</poi.version>
+    <jna.version>5.10.0</jna.version>
+    <quasar.version>0.7.9</quasar.version>
+    <swagger.version>1.6.3</swagger.version>
+    <springfox.version>2.9.2</springfox.version>
+    <guava.version>20.0</guava.version>
+    <jcoco.version>0.8.12</jcoco.version>
+    <junit-jupiter.version>5.4.0</junit-jupiter.version>
+    <junit-platform.version>1.4.0</junit-platform.version>
+    <maven.deploy.version>3.0.0</maven.deploy.version>
+    <maven-surefire-plugin.version>3.0.0</maven-surefire-plugin.version>
+    <version>0.0.1-SNAPSHOT</version>
+    <junit5.version>5.0.0-ALPHA</junit5.version>
+  </properties>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.google.guava</groupId>
+        <artifactId>guava</artifactId>
+        <version>${guava.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>co.paralleluniverse</groupId>
+        <artifactId>quasar-core</artifactId>
+        <classifier>jdk8</classifier>
+        <version>${quasar.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>eu.bitwalker</groupId>
+        <artifactId>UserAgentUtils</artifactId>
+        <version>${bitwalker.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.liquibase</groupId>
+        <artifactId>liquibase-core</artifactId>
+        <version>${liquibase.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.swagger</groupId>
+        <artifactId>swagger-models</artifactId>
+        <version>${swagger.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>commons-fileupload</groupId>
+        <artifactId>commons-fileupload</artifactId>
+        <version>1.2.2</version>
+      </dependency>
+      <dependency>
+        <groupId>io.springfox</groupId>
+        <artifactId>springfox-swagger2</artifactId>
+        <scope>provided</scope>
+        <version>${springfox.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.springfox</groupId>
+        <artifactId>springfox-swagger-ui</artifactId>
+        <version>${springfox.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <!-- 			<dependency> -->
+      <!-- 			    <groupId>org.springframework.cloud</groupId> -->
+      <!-- 			    <artifactId>spring-cloud-dependencies</artifactId> -->
+      <!-- 			    <version>2021.0.9</version> -->
+      <!-- 			    <type>pom</type> -->
+      <!-- 			    <scope>import</scope> -->
+      <!-- 			</dependency> -->
+    </dependencies>
+  </dependencyManagement>
+  <dependencies>
+    <dependency>
+      <groupId>javax.inject</groupId>
+      <artifactId>javax.inject</artifactId>
+      <version>1</version>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <!-- https://github.com/sandytaogo -->
+  <developers>
+    <developer>
+      <id>sandytao</id>
+      <name>txf</name>
+      <email>sandytaogo@163.com</email>
+      <roles>
+        <role>Developer</role>
+      </roles>
+      <timezone>+8</timezone>
+    </developer>
+    <developer>
+      <id>jasontao</id>
+      <name>jason</name>
+      <email>sandytaogo@163.com</email>
+      <roles>
+        <role>SystemDesign</role>
+      </roles>
+      <timezone>+8</timezone>
+    </developer>
+  </developers>
+  <modules>
+    <module>ecp-cache</module>
+    <module>ecp-jpa</module>
+    <module>ecp-config</module>
+    <module>ecp-framework</module>
+    <module>ecp-rule</module>
+    <module>ecp-media</module>
+    <module>ecp-boot</module>
+    <module>ecp-web</module>
+    <module>ecp-zuul</module>
+    <module>ecp-cloud</module>
+    <module>ecp-gateway</module>
+    <module>ecp-mybatis</module>
+    <module>ecp-recognition</module>
+    <module>ecp-test</module>
+    <module>ecp-gpt</module>
+    <module>ecp-wechat</module>
+      <module>ecp-wechat</module>
+  </modules>
   <distributionManagement>
-	<repository>
-		<id>localRepository</id>
-		<url>file:C:/Users/Sandy/.m2/repository</url>
-	</repository>
-	
-<!-- 	<mirror> -->
-<!-- 	    <id>aliyunmaven</id> -->
-<!-- 	    <mirrorOf>*</mirrorOf> -->
-<!-- 	    <name>阿里云公共仓库</name> -->
-<!-- 	    <url>https://maven.aliyun.com/repository/public</url> -->
-<!-- 	</mirror> -->
+    <repository>
+      <id>localRepository</id>
+      <url>file:C:/Users/Sandy/.m2/repository</url>
+    </repository>
+    <!-- 	<mirror> -->
+    <!-- 	    <id>aliyunmaven</id> -->
+    <!-- 	    <mirrorOf>*</mirrorOf> -->
+    <!-- 	    <name>阿里云公共仓库</name> -->
+    <!-- 	    <url>https://maven.aliyun.com/repository/public</url> -->
+    <!-- 	</mirror> -->
   </distributionManagement>
-  
   <build>
-  
-  	<pluginManagement>
-  		<plugins>
-	  		<plugin>
-	  			<groupId>org.apache.maven.plugins</groupId>
-	            <artifactId>maven-surefire-plugin</artifactId>
-	            <version>${maven-surefire-plugin.version}</version>
-	            <configuration>
-	            	<reportsDirectory>${project.build.directory}/surefire-report</reportsDirectory>
-	            </configuration>
-	        </plugin>
-	        
-	        <plugin>
-	        	<groupId>org.apache.maven.plugins</groupId>
-	            <artifactId>maven-surefire-report-plugin</artifactId>
-	            <version>${maven-surefire-plugin.version}</version>
-	            <configuration>
-	            	<reportsDirectory>${project.build.directory}/surefire-report</reportsDirectory>
-	            </configuration>
-	        </plugin>
-  		</plugins>
-  	</pluginManagement>
-  	
-  	<plugins>
-		<plugin>
-			<groupId>org.apache.maven.plugins</groupId>
-		    <artifactId>maven-source-plugin</artifactId>
-		    <configuration>
-				<source>${java.version}</source>
-				<target>${java.version}</target>
-				<encoding>${project.build.sourceEncoding}</encoding>
-			</configuration>
-			<executions>
-				<execution>
-					<id>attach-sources</id>
-					<goals>
-						<goal>jar-no-fork</goal>
-					</goals>
-				</execution>
-			</executions>
-		</plugin>
-		
-  		<plugin>
-           <groupId>org.apache.maven.plugins</groupId>
-           <artifactId>maven-deploy-plugin</artifactId>
-           <configuration>
-               <skip>${skip_maven_deploy}</skip>
-           </configuration>
-       </plugin>
-       
-  		<plugin>
-  			<groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>${maven-surefire-plugin.version}</version>
+          <configuration>
+            <reportsDirectory>${project.build.directory}/surefire-report</reportsDirectory>
+          </configuration>
         </plugin>
         <plugin>
-        	<groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-report-plugin</artifactId>
-            <configuration>
-            	<title>${project.name}-junit test report</title>
-            </configuration>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-report-plugin</artifactId>
+          <version>${maven-surefire-plugin.version}</version>
+          <configuration>
+            <reportsDirectory>${project.build.directory}/surefire-report</reportsDirectory>
+          </configuration>
         </plugin>
-  		<plugin>
-		    <groupId>org.jacoco</groupId>
-		    <artifactId>jacoco-maven-plugin</artifactId>
-		    <version>${jcoco.version}</version>
-		    <configuration>
-		        <destFile>target/jacoco-unit.exec</destFile>
-		        <dataFile>target/jacoco-unit.exec</dataFile>
-		        <!--<dataFile> ${project.build.directory}/jacoco.exec</dataFile> -->
-		        <outputDirectory>${project.build.directory}/jacoco</outputDirectory>
-		        <!--
+      </plugins>
+    </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <configuration>
+          <source>${java.version}</source>
+          <target>${java.version}</target>
+          <encoding>${project.build.sourceEncoding}</encoding>
+        </configuration>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar-no-fork</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-deploy-plugin</artifactId>
+        <configuration>
+          <skip>${skip_maven_deploy}</skip>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+        <configuration>
+          <title>${project.name}-junit test report</title>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>${jcoco.version}</version>
+        <configuration>
+          <destFile>target/jacoco-unit.exec</destFile>
+          <dataFile>target/jacoco-unit.exec</dataFile>
+          <!--<dataFile> ${project.build.directory}/jacoco.exec</dataFile> -->
+          <outputDirectory>${project.build.directory}/jacoco</outputDirectory>
+          <!--
 		           	 默认情况下，Surefire 插件将自动包含具有以下通配符模式的所有测试类：
 		            "**/Test*.java"- 包括其所有子目录和所有以“Test”开头的 Java 文件名。
 		            "**/*Test.java"- 包括其所有子目录和所有以“Test”结尾的 Java 文件名。
@@ -252,35 +234,35 @@
 		            "**/*TestCase.java"- 包括其所有子目录和所有以“TestCase”结尾的 Java 文件名。
 		           	 如果测试类不遵循默认通配符模式，则才需要额外包含以下文件
 		        -->
-		        <includes>
-		        	<include>com/sandy/ecp/framework/*Test.class</include>
-		        </includes>
-		         <!-- 注意，如果想要输出代码覆盖率报告，则此处应该为false -->
-		        <skipTests>false</skipTests>
-		        <!-- 参数 forkCount 定义 Surefire 为执行测试而同时生成的 JVM 进程的最大数量 -->
-		        <!-- JaCoCo要求不能为0，此处设置的其实是默认值 -->
-		        <forkCount>1</forkCount>
-		        <!-- JaCoCo要求不能是Never，此处设置的其实是默认值 -->
-		        <forkMode>once</forkMode>
-		        <!--HTML报告的标题-->
-			    <title>${project.name}-Java Code Coverage Report</title>
-		    </configuration>
-		    <executions>
-		        <execution>
-		            <id>jacoco-initialize</id>
-		            <goals>
-		                <goal>prepare-agent</goal>
-		            </goals>
-		        </execution>
-		        <execution>
-		            <id>generate-code-coverage-report</id>
-		            <phase>test</phase>
-		            <goals>
-		                <goal>report</goal>
-		            </goals>
-		        </execution>
-		    </executions>
-		</plugin>
-  	</plugins>
+          <includes>
+            <include>com/sandy/ecp/framework/*Test.class</include>
+          </includes>
+          <!-- 注意，如果想要输出代码覆盖率报告，则此处应该为false -->
+          <skipTests>false</skipTests>
+          <!-- 参数 forkCount 定义 Surefire 为执行测试而同时生成的 JVM 进程的最大数量 -->
+          <!-- JaCoCo要求不能为0，此处设置的其实是默认值 -->
+          <forkCount>1</forkCount>
+          <!-- JaCoCo要求不能是Never，此处设置的其实是默认值 -->
+          <forkMode>once</forkMode>
+          <!--HTML报告的标题-->
+          <title>${project.name}-Java Code Coverage Report</title>
+        </configuration>
+        <executions>
+          <execution>
+            <id>jacoco-initialize</id>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>generate-code-coverage-report</id>
+            <phase>test</phase>
+            <goals>
+              <goal>report</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
   </build>
 </project>
