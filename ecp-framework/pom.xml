@@ -4,7 +4,7 @@
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.sandy.framework</groupId>
+		<groupId>com.sandy</groupId>
 		<artifactId>ecp</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
@@ -217,8 +217,8 @@
 			    <artifactId>jacoco-maven-plugin</artifactId>
 			    <version>${jcoco.version}</version>
 			    <configuration>
-					<!--<destFile>target/jacoco-unit.exec</destFile> -->
-			        <dataFile> ${project.build.directory}/jacoco-unit.exec</dataFile>
+					<destFile>${project.build.directory}/jacoco-unit.exec</destFile> 
+			        <dataFile>${project.build.directory}/jacoco-unit.exec</dataFile>
 			        <outputDirectory>${project.build.directory}/jacoco</outputDirectory>
 			        <!--
 			           	 默认情况下，Surefire 插件将自动包含具有以下通配符模式的所有测试类：

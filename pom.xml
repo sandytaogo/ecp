@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  
   <modelVersion>4.0.0</modelVersion>
+  
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>2.0.0.RELEASE</version>
     <relativePath/>
   </parent>
-  <groupId>com.sandy.framework</groupId>
+  
+  <groupId>com.sandy</groupId>
   <artifactId>ecp</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>ecp</name>
   <url>http://maven.apache.org</url>
+  
+  <inceptionYear>2024</inceptionYear>
+  
   <!-- https://search.maven.org/ -->
   <!-- https://mvnrepository.com/ -->
   <!-- http://www.bootstrapmb.com/ -->
@@ -21,6 +27,7 @@
   <!-- https://openresty.org/cn/ -->
   <!-- 210522197305195619 surefire-report:report -->
   <properties>
+  	<java.version>8</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <spring.boot.version>2.0.0.RELEASE</spring.boot.version>
     <spring.cloud.version>2.0.0.RELEASE</spring.cloud.version>
@@ -42,6 +49,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <junit5.version>5.0.0-ALPHA</junit5.version>
   </properties>
+  
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -96,6 +104,7 @@
       <!-- 			</dependency> -->
     </dependencies>
   </dependencyManagement>
+  
   <dependencies>
     <dependency>
       <groupId>javax.inject</groupId>
@@ -108,27 +117,7 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-  <!-- https://github.com/sandytaogo -->
-  <developers>
-    <developer>
-      <id>sandytao</id>
-      <name>txf</name>
-      <email>sandytaogo@163.com</email>
-      <roles>
-        <role>Developer</role>
-      </roles>
-      <timezone>+8</timezone>
-    </developer>
-    <developer>
-      <id>jasontao</id>
-      <name>jason</name>
-      <email>sandytaogo@163.com</email>
-      <roles>
-        <role>SystemDesign</role>
-      </roles>
-      <timezone>+8</timezone>
-    </developer>
-  </developers>
+  
   <modules>
     <module>ecp-cache</module>
     <module>ecp-jpa</module>
@@ -146,8 +135,8 @@
     <module>ecp-test</module>
     <module>ecp-gpt</module>
     <module>ecp-wechat</module>
-      <module>ecp-wechat</module>
   </modules>
+  
   <distributionManagement>
     <repository>
       <id>localRepository</id>
@@ -160,6 +149,55 @@
     <!-- 	    <url>https://maven.aliyun.com/repository/public</url> -->
     <!-- 	</mirror> -->
   </distributionManagement>
+  
+  <organization>
+  	<name>The Ecp Project</name>
+    <url>http://xxx.io</url>
+  </organization>
+  
+  <issueManagement>
+  	<system>Github Issues</system>
+   	<url>https://github.com/sandytaogo/ecp/issues</url>
+  </issueManagement>
+  
+  <scm>
+  	<url>https://github.com/sandytaogo/ecp/tree/master</url>
+   	<connection>scm:git:git://github.com/sandytaogo/ecp.git</connection>
+  	<developerConnection>scm:git:git@github.com:sandytaogo/ecp.git</developerConnection>
+  </scm>
+  
+  <!-- https://github.com/sandytaogo -->
+  <developers>
+    <developer>
+      <id>sandytao</id>
+      <name>txf</name>
+      <email>sandytaogo@163.com</email>
+      <roles>
+        <role>Developer</role>
+      </roles>
+      <timezone>+8</timezone>
+    </developer>
+    <developer>
+      <id>jasontao</id>
+      <name>jason</name>
+      <email>sandytaogo@163.com</email>
+      <roles>
+        <role>System Design</role>
+      </roles>
+      <timezone>+8</timezone>
+    </developer>
+  </developers>
+  
+  <mailingLists>
+    <mailingList>
+        <name>ecp User Mailling List</name>
+        <subscribe>ecp+subscribe@groups</subscribe>
+        <unsubscribe>ecp+unsubscribe@groups</unsubscribe>
+        <post>sandytaogo@163.com</post>
+        <archive></archive>
+    </mailingList>
+  </mailingLists>
+  
   <build>
     <pluginManagement>
       <plugins>
@@ -171,6 +209,7 @@
             <reportsDirectory>${project.build.directory}/surefire-report</reportsDirectory>
           </configuration>
         </plugin>
+        
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-report-plugin</artifactId>
@@ -179,8 +218,10 @@
             <reportsDirectory>${project.build.directory}/surefire-report</reportsDirectory>
           </configuration>
         </plugin>
+        
       </plugins>
     </pluginManagement>
+    
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -199,6 +240,7 @@
           </execution>
         </executions>
       </plugin>
+      
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-deploy-plugin</artifactId>
@@ -206,10 +248,12 @@
           <skip>${skip_maven_deploy}</skip>
         </configuration>
       </plugin>
+      
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
       </plugin>
+      
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-report-plugin</artifactId>
@@ -217,6 +261,7 @@
           <title>${project.name}-junit test report</title>
         </configuration>
       </plugin>
+      
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
@@ -263,6 +308,8 @@
           </execution>
         </executions>
       </plugin>
+      
     </plugins>
   </build>
+  
 </project>

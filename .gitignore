@@ -27,6 +27,7 @@
 hs_err_pid*
 replay_pid*
 
+*.idea
 *.settings
 *target
 *.classpath
