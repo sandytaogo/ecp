@@ -32,8 +32,8 @@ import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 
 import com.google.common.collect.Lists;
-import com.sandy.ecp.recognition.Constant;
 import com.sandy.ecp.recognition.Line;
+import com.sandy.ecp.recognition.config.Constant;
 
 /**
  * 图片处理工具类
@@ -319,7 +319,7 @@ public class ImageUtil {
                 Mat img_crop = new Mat();
 
                 if(isGreen) {
-                    // 如果是新能源牌照，需要向上扩展一定的尺寸--未完成yuxue
+                    //TODO 如果是新能源牌照，需要向上扩展一定的尺寸--未完成 sandy
                     Size s = new Size(rect_size.width, rect_size.height + (rect_size.height/8));
                     Point c = new Point(mr.center.x, mr.center.y - (rect_size.height/16) -8);   // 偏移量修正
                     Imgproc.getRectSubPix(img_rotated, s, c, img_crop);

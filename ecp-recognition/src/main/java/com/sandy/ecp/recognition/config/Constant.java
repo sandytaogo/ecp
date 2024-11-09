@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.sandy.ecp.recognition;
+package com.sandy.ecp.recognition.config;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * 系统常量
- * @author yuxue
- * @date 2018-09-07
+ * @author sandy
+ * @date 2022-09-07 12:12:12
  */
 public class Constant {
 

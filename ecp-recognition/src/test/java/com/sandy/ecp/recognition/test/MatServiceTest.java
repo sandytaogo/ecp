@@ -21,7 +21,7 @@ import java.time.Instant;
 import org.opencv.core.Mat;
 import org.opencv.imgcodecs.Imgcodecs;
 
-import com.sandy.ecp.recognition.Constant;
+import com.sandy.ecp.recognition.config.Constant;
 import com.sandy.ecp.recognition.util.FaceUtil;
 
 public class MatServiceTest {

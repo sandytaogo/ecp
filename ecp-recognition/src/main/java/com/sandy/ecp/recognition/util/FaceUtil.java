@@ -27,20 +27,16 @@ import org.opencv.core.Scalar;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
 
-import com.sandy.ecp.recognition.Constant;
+import com.sandy.ecp.recognition.config.Constant;
 
 /**
  * 人脸检测、识别工具类
  * @author sandy
- * @date 2024-05-28 15:11
+ * @date 2024-05-28 15:11:34
  */
 public class FaceUtil {
-	
-	private static final Logger log = LoggerFactory.getLogger(FaceUtil.class);
 	
     private static final String TEMP_PATH = "D:/FaceDetect/temp/";
 
@@ -87,7 +83,6 @@ public class FaceUtil {
 
         MatOfRect faceDetections = new MatOfRect(); // 识别结果存储对象 // Rect矩形类
         faceDetector.detectMultiScale(gsBlur, faceDetections); // 识别人脸
-        log.info(String.format("识别出 %s 张人脸", faceDetections.toArray().length));
 
         // 在识别到的人脸部位，描框
         for (Rect rect : faceDetections.toArray()) {

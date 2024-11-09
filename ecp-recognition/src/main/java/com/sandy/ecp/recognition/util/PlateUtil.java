@@ -41,7 +41,7 @@ import org.opencv.ml.SVM;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
-import com.sandy.ecp.recognition.Constant;
+import com.sandy.ecp.recognition.config.Constant;
 import com.sandy.ecp.recognition.enums.Direction;
 import com.sandy.ecp.recognition.enums.PlateColor;
 import com.sandy.ecp.recognition.enums.PlateHSV;
@@ -341,7 +341,7 @@ public class PlateUtil {
         Imgproc.cvtColor(inMat, gray, Imgproc.COLOR_BGR2GRAY);
         ImageUtil.gaussianBlur(gray, gray, debug, tempPath);
 
-        // 图像进行二值化 // 图像二值化阈值选取--未完成yuxue
+        //TODO 图像进行二值化 // 图像二值化阈值选取--未完成sandy
         Mat threshold = new Mat();
         switch (color) {
         case BLUE:
