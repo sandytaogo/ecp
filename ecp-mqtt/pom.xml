@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+    <groupId>com.sandy</groupId>
+    <artifactId>ecp</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  
+  <!--https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.pdf-->
+  
+  <artifactId>ecp-mqtt</artifactId>
+  <name>ecp-mqtt</name>
+  <packaging>pom</packaging>
+  <url>http://maven.apache.org</url>
+  
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
+  <modules>
+    <module>ecp-mqtt-client</module>
+    <module>ecp-mqtt-server</module>
+    <module>ecp-mqtt.-test</module>
+  </modules>
+  
+</project>

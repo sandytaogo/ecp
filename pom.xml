@@ -15,7 +15,6 @@
   <packaging>pom</packaging>
   <name>ecp</name>
   <url>http://maven.apache.org</url>
-  
   <inceptionYear>2024</inceptionYear>
   
   <!-- https://search.maven.org/ -->
@@ -26,8 +25,9 @@
   <!-- https://docs.oracle.com/javase/9/docs/api/java/util/concurrent/Flow.html -->
   <!-- https://openresty.org/cn/ -->
   <!-- 210522197305195619 surefire-report:report -->
+  
   <properties>
-  	<java.version>8</java.version>
+    <java.version>8</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <spring.boot.version>2.0.0.RELEASE</spring.boot.version>
     <spring.cloud.version>2.0.0.RELEASE</spring.cloud.version>
@@ -95,6 +95,7 @@
         <version>${springfox.version}</version>
         <scope>provided</scope>
       </dependency>
+      
       <!-- 			<dependency> -->
       <!-- 			    <groupId>org.springframework.cloud</groupId> -->
       <!-- 			    <artifactId>spring-cloud-dependencies</artifactId> -->
@@ -102,20 +103,23 @@
       <!-- 			    <type>pom</type> -->
       <!-- 			    <scope>import</scope> -->
       <!-- 			</dependency> -->
+      
     </dependencies>
   </dependencyManagement>
-  
   <dependencies>
+  
     <dependency>
       <groupId>javax.inject</groupId>
       <artifactId>javax.inject</artifactId>
       <version>1</version>
     </dependency>
+    
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <scope>test</scope>
     </dependency>
+    
   </dependencies>
   
   <modules>
@@ -135,6 +139,7 @@
     <module>ecp-test</module>
     <module>ecp-gpt</module>
     <module>ecp-wechat</module>
+    <module>ecp-mqtt</module>
   </modules>
   
   <distributionManagement>
@@ -151,22 +156,23 @@
   </distributionManagement>
   
   <organization>
-  	<name>The Ecp Project</name>
+    <name>The Ecp Project</name>
     <url>http://xxx.io</url>
   </organization>
   
   <issueManagement>
-  	<system>Github Issues</system>
-   	<url>https://github.com/sandytaogo/ecp/issues</url>
+    <system>Github Issues</system>
+    <url>https://github.com/sandytaogo/ecp/issues</url>
   </issueManagement>
   
   <scm>
-  	<url>https://github.com/sandytaogo/ecp/tree/master</url>
-   	<connection>scm:git:git://github.com/sandytaogo/ecp.git</connection>
-  	<developerConnection>scm:git:git@github.com:sandytaogo/ecp.git</developerConnection>
+    <url>https://github.com/sandytaogo/ecp/tree/master</url>
+    <connection>scm:git:git://github.com/sandytaogo/ecp.git</connection>
+    <developerConnection>scm:git:git@github.com:sandytaogo/ecp.git</developerConnection>
   </scm>
   
   <!-- https://github.com/sandytaogo -->
+  
   <developers>
     <developer>
       <id>sandytao</id>
@@ -190,11 +196,11 @@
   
   <mailingLists>
     <mailingList>
-        <name>ecp User Mailling List</name>
-        <subscribe>ecp+subscribe@groups</subscribe>
-        <unsubscribe>ecp+unsubscribe@groups</unsubscribe>
-        <post>sandytaogo@163.com</post>
-        <archive></archive>
+      <name>ecp User Mailling List</name>
+      <subscribe>ecp+subscribe@groups</subscribe>
+      <unsubscribe>ecp+unsubscribe@groups</unsubscribe>
+      <post>sandytaogo@163.com</post>
+      <archive/>
     </mailingList>
   </mailingLists>
   
@@ -209,7 +215,6 @@
             <reportsDirectory>${project.build.directory}/surefire-report</reportsDirectory>
           </configuration>
         </plugin>
-        
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-report-plugin</artifactId>
@@ -218,7 +223,6 @@
             <reportsDirectory>${project.build.directory}/surefire-report</reportsDirectory>
           </configuration>
         </plugin>
-        
       </plugins>
     </pluginManagement>
     
@@ -308,8 +312,6 @@
           </execution>
         </executions>
       </plugin>
-      
     </plugins>
   </build>
-  
 </project>
