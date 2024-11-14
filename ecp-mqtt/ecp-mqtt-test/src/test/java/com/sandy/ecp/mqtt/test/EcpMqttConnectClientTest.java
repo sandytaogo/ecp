@@ -64,7 +64,6 @@ public class EcpMqttConnectClientTest {
 	}
 	
 	@Test
-//	@Ignore
 	public void testSub() throws MqttException, InterruptedException {
 		String clientId = "client-testSub2";
 		MqttConnectOptions options = new MqttConnectOptions();
