@@ -22,7 +22,7 @@
   <modules>
     <module>ecp-mqtt-client</module>
     <module>ecp-mqtt-server</module>
-    <module>ecp-mqtt.-test</module>
+    <module>ecp-mqtt-test</module>
   </modules>
   
 </project>

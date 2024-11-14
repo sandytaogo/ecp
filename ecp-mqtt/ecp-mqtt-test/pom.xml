@@ -10,8 +10,8 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   
-  <artifactId>ecp-mqtt.-test</artifactId>
-  <name>ecp-mqtt.-test</name>
+  <artifactId>ecp-mqtt-test</artifactId>
+  <name>ecp-mqtt-test</name>
   <url>http://maven.apache.org</url>
   
   <properties>
