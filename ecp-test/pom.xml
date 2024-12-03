@@ -1,15 +1,24 @@
 <?xml version="1.0"?>
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  
   <modelVersion>4.0.0</modelVersion>
+  
   <parent>
     <groupId>com.sandy</groupId>
     <artifactId>ecp</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
+  
   <artifactId>ecp-test</artifactId>
+  
   <name>ecp-test</name>
   <url>http://maven.apache.org</url>
+  
+  <!--https://www.selenium.dev/downloads/-->
+  <!--http://chromedriver.storage.googleapis.com/index.html-->
+  <!--https://www.selenium.dev/documentation/webdriver/troubleshooting/errors/driver_location/#download-the-driver-->
+  
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
@@ -87,6 +96,25 @@
        	<artifactId>junit-platform-launcher</artifactId>
        	<version>${junit-platform.version}</version>
 	    <scope>test</scope>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+	<dependency>
+	    <groupId>org.seleniumhq.selenium</groupId>
+	    <artifactId>selenium-java</artifactId>
+<!--	    <version>4.13.0</version>-->
+	</dependency>
+	
+<!--	<dependency>-->
+<!--	    <groupId>org.seleniumhq.selenium</groupId>-->
+<!--	    <artifactId>htmlunit3-driver</artifactId>-->
+<!--	    <version>4.13.0</version>-->
+<!--	</dependency>-->
+	
+	<dependency>
+		<groupId>com.google.guava</groupId>
+	    <artifactId>guava</artifactId>
+	    <version>31.1-jre</version>
 	</dependency>
   
     <dependency>
@@ -192,6 +220,9 @@
 		        </execution>
 		    </executions>
 		</plugin>
+		
   	</plugins>
+  	
   </build>
+
 </project>

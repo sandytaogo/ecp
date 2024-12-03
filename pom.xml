@@ -40,7 +40,8 @@
     <quasar.version>0.7.9</quasar.version>
     <swagger.version>1.6.3</swagger.version>
     <springfox.version>2.9.2</springfox.version>
-    <guava.version>20.0</guava.version>
+    <!--<guava.version>20.0</guava.version>-->
+    <guava.version>27.0.1-jre</guava.version>
     <jcoco.version>0.8.12</jcoco.version>
     <junit-jupiter.version>5.4.0</junit-jupiter.version>
     <junit-platform.version>1.4.0</junit-platform.version>
@@ -48,6 +49,7 @@
     <maven-surefire-plugin.version>3.0.0</maven-surefire-plugin.version>
     <version>0.0.1-SNAPSHOT</version>
     <junit5.version>5.0.0-ALPHA</junit5.version>
+    <selenium.version>4.8.1</selenium.version>
   </properties>
   
   <dependencyManagement>
@@ -104,7 +106,81 @@
       <!-- 			    <scope>import</scope> -->
       <!-- 			</dependency> -->
       
-    </dependencies>
+    	<dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium.version}</version>
+        </dependency>
+        
+    	<dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>htmlunit-driver</artifactId>
+            <version>${selenium-htmlunit.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-api</artifactId>
+            <version>${selenium.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-chrome-driver</artifactId>
+            <version>${selenium.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-edge-driver</artifactId>
+            <version>${selenium.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-firefox-driver</artifactId>
+            <version>${selenium.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-ie-driver</artifactId>
+            <version>${selenium.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-opera-driver</artifactId>
+            <version>${selenium.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-remote-driver</artifactId>
+            <version>${selenium.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-safari-driver</artifactId>
+            <version>${selenium.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-support</artifactId>
+            <version>${selenium.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+	</dependencies>
   </dependencyManagement>
   <dependencies>
   
@@ -230,11 +306,6 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
-        <configuration>
-          <source>${java.version}</source>
-          <target>${java.version}</target>
-          <encoding>${project.build.sourceEncoding}</encoding>
-        </configuration>
         <executions>
           <execution>
             <id>attach-sources</id>
@@ -287,12 +358,12 @@
             <include>com/sandy/ecp/framework/*Test.class</include>
           </includes>
           <!-- 注意，如果想要输出代码覆盖率报告，则此处应该为false -->
-          <skipTests>false</skipTests>
+          <!--<skipTests>false</skipTests>-->
           <!-- 参数 forkCount 定义 Surefire 为执行测试而同时生成的 JVM 进程的最大数量 -->
           <!-- JaCoCo要求不能为0，此处设置的其实是默认值 -->
-          <forkCount>1</forkCount>
+          <!--<forkCount>1</forkCount>-->
           <!-- JaCoCo要求不能是Never，此处设置的其实是默认值 -->
-          <forkMode>once</forkMode>
+          <!--<forkMode>once</forkMode>-->
           <!--HTML报告的标题-->
           <title>${project.name}-Java Code Coverage Report</title>
         </configuration>
