@@ -65,6 +65,12 @@
 	    </exclusions>
 	</dependency>
   	
+  	<dependency>
+	 <groupId>com.alphacephei</groupId>
+	 <artifactId>vosk</artifactId>
+	 <version>0.3.32</version>
+	</dependency>
+  	
 	<dependency>
          <groupId>org.opencv</groupId>
          <artifactId>opencv</artifactId>

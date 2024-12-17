@@ -26,13 +26,34 @@
 </p>
 
 
-Abstract:
+#### Abstract:
 
 MQTT is a Client Server publish/subscribe messaging transport protocol. It is light weight, open,
 simple, and designed so as to be easy to implement. These characteristics make it ideal for use
 in many situations, including constrained environments such as for communication in Machine to
 Machine (M2M) and Internet of Things (IoT) contexts where a small code footprint is required
 and/or network bandwidth is at a premium.
+
+#### Vosk 
+
+https://alphacephei.com/vosk/
+
+Vosk is a speech recognition toolkit. The best things in Vosk are:
+
+Supports 20+ languages and dialects - English, Indian English, German, French, Spanish, Portuguese, Chinese, Russian, Turkish, Vietnamese, Italian, Dutch, Catalan, Arabic, Greek, Farsi, Filipino, Ukrainian, Kazakh, Swedish, Japanese, Esperanto, Hindi, Czech, Polish, Uzbek, Korean, Breton, Gujarati, Tajik. More to come.
+Works offline, even on lightweight devices - Raspberry Pi, Android, iOS
+Installs with simple pip3 install vosk
+Portable per-language models are only 50Mb each, but there are much bigger server models available.
+Provides streaming API for the best user experience (unlike popular speech-recognition python packages)
+There are bindings for different programming languages, too - java/csharp/javascript etc.
+Allows quick reconfiguration of vocabulary for best accuracy.
+Supports speaker identification beside simple speech recognition.
+
+#### Models
+
+We have two types of models - big and small, small models are ideal for some limited task on mobile applications. They can run on smartphones, Raspberry Pi’s. They are also recommended for desktop applications. Small model typically is around 50Mb in size and requires about 300Mb of memory in runtime. Big models are for the high-accuracy transcription on the server. Big models require up to 16Gb in memory since they apply advanced AI algorithms. Ideally you run them on some high-end servers like i7 or latest AMD Ryzen. On AWS you can take a look on c5a machines and similar machines in other clouds.
+
+Most small model allow dynamic vocabulary reconfiguration. Big models are static the vocabulary can not be modified in runtime.
 
 #### 安装教程
 
