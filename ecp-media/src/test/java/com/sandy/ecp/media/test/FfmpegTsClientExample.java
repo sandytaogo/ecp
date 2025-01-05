@@ -13,19 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.sandy.ecp.framework.datasource;
+package com.sandy.ecp.media.test;
 
-import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.Socket;
 
-/***
- * 动态数据源
- * @author Sandy
- * @since 22th 05 2022
- */
-public class DynamicDatasource extends AbstractRoutingDataSource {
+public class FfmpegTsClientExample {
 
-	@Override
-	protected Object determineCurrentLookupKey() {
-		return null;
+	public static void main(String[] args) throws IOException {
+		int counter = 0;
+		do {
+			counter ++;
+			Socket socket = new Socket("127.0.0.1", 3000);
+			InputStream is = socket.getInputStream();
+			is.read();
+			System.out.println("over");
+			socket.close();
+		} while (counter < 3);
+		
 	}
 }

@@ -13,19 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.sandy.ecp.framework.datasource;
+package com.sandy.ecp.media.enums;
 
-import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
-
-/***
- * 动态数据源
+/**
+ * 多媒体互联网格式枚举声明.
  * @author Sandy
- * @since 22th 05 2022
+ * @since 2024-12-12 09:09:09
  */
-public class DynamicDatasource extends AbstractRoutingDataSource {
+public enum EcpMediaEnum {
 
-	@Override
-	protected Object determineCurrentLookupKey() {
-		return null;
-	}
+	/**
+	 * generating of M3U8 playlists used in HTTP Live Streaming (Apple HLS) for internet video translations.
+	 */
+	M3U8;
 }

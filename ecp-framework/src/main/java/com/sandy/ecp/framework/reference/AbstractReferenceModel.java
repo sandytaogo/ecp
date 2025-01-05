@@ -13,19 +13,37 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.sandy.ecp.framework.datasource;
+package com.sandy.ecp.framework.reference;
 
-import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
+import com.sandy.ecp.framework.domain.AbstractDateEntity;
 
-/***
- * 动态数据源
+/**
+ * 企业云平台 参考模型
  * @author Sandy
- * @since 22th 05 2022
+ * @date 2024-12-12 12:12:12
  */
-public class DynamicDatasource extends AbstractRoutingDataSource {
+public abstract class AbstractReferenceModel extends AbstractDateEntity<Long> {
 
-	@Override
-	protected Object determineCurrentLookupKey() {
-		return null;
+	private static final long serialVersionUID = -1106566217880462880L;
+
+	private String name;
+	
+	private String versoin;
+
+	public String getName() {
+		return name;
 	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getVersoin() {
+		return versoin;
+	}
+
+	public void setVersoin(String versoin) {
+		this.versoin = versoin;
+	}
+	
 }

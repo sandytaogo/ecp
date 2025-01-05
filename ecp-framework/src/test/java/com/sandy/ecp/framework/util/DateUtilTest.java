@@ -1,5 +1,5 @@
 /*
- * Copyright 2024-2030 the original author or authors.
+ * Copyright 2018 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,19 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.sandy.ecp.framework.datasource;
+package com.sandy.ecp.framework.util;
 
-import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
+import java.util.Calendar;
+import java.util.Date;
 
-/***
- * 动态数据源
- * @author Sandy
- * @since 22th 05 2022
- */
-public class DynamicDatasource extends AbstractRoutingDataSource {
+import org.junit.Test;
 
-	@Override
-	protected Object determineCurrentLookupKey() {
-		return null;
+public class DateUtilTest {
+
+	@Test
+	public void dateEqualsTest() {
+		Calendar calendar = Calendar.getInstance();
+		calendar.equals(calendar);
+		calendar.set(Calendar.DATE, 1);
+		System.out.println(calendar.getTime().before(new Date()));
 	}
 }

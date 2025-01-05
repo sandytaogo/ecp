@@ -51,14 +51,14 @@ public class SeleniumAutoBrowserChromeTest {
         dely(3000);
         element = driver.findElement(By.id("su"));
         element.click();
-        dely(8000);
+        dely(3000);
         // 关闭浏览器
         driver.quit();
     }
     
     public static void dely(long millis) {
     	 try {
- 			Thread.sleep(5000);
+ 			Thread.sleep(millis);
  		} catch (InterruptedException e) {
  			// TODO Auto-generated catch block
  			e.printStackTrace();

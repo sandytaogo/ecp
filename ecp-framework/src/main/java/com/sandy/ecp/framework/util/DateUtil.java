@@ -17,8 +17,10 @@ package com.sandy.ecp.framework.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.YearMonth;
+import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.util.Calendar;
 import java.util.Date;
@@ -45,6 +47,12 @@ public class DateUtil {
 		calendar.set(Calendar.SECOND, 0);
 		calendar.set(Calendar.MILLISECOND, 0);
 		return calendar.getTime();
+	}
+	public static Date date(Calendar calendar) {
+		ZoneId zoneId = ZoneId.systemDefault();
+		LocalDate localDate = LocalDate.of(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE));
+		Instant instant = localDate.atStartOfDay(zoneId).toInstant();
+		return Date.from(instant);
 	}
 	
 	public static String format(Date date, String pattern) {
@@ -86,7 +94,7 @@ public class DateUtil {
 			SimpleDateFormat sdf = new SimpleDateFormat(pattern);
 			return sdf.parse(date);
 		} catch (ParseException | NumberFormatException e) {
-			System.err.println(String.format("日期:%s", date));
+			System.err.println(String.format("日期=%s,pattern=%s", date, pattern));
 			e.printStackTrace();
 		}
 		return null;

@@ -40,6 +40,7 @@ public class EcpMqttCallback implements MqttCallback {
         log.error(throwable.getMessage(), throwable);
 	}
 
+
 	/**
 	 * publish发布成功后会执行到这里
 	 */

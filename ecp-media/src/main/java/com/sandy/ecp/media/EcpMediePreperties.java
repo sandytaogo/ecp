@@ -13,19 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.sandy.ecp.framework.datasource;
+package com.sandy.ecp.media;
 
-import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
+public class EcpMediePreperties {
 
-/***
- * 动态数据源
- * @author Sandy
- * @since 22th 05 2022
- */
-public class DynamicDatasource extends AbstractRoutingDataSource {
-
-	@Override
-	protected Object determineCurrentLookupKey() {
-		return null;
-	}
+	
+	
+	
+	
+	
 }

@@ -13,13 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.sandy.ecp.framework.media.event;
+package com.sandy.ecp.framework.web;
+
+import io.jsonwebtoken.JwsHeader;
+import io.jsonwebtoken.Jwts;
+
 
 /**
- * 多媒体转换事件触发执行接口. 
+ * 
  * @author Sandy
- * @since 1.0.0 2024-07-06 12:12:12
+ * @since 2024-12-24 09：09：09
  */
-public interface MediaEvent {
+public class JwtUtil {
 
+	
+	public static void map() {
+		
+		JwsHeader<?> jws = Jwts.jwsHeader();
+	}
+	
 }

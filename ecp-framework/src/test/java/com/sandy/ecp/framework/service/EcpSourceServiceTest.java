@@ -5,6 +5,8 @@ import java.util.Locale;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.sandy.ecp.framework.i18n.BundleMessageSource;
+
 //@RunWith(SpringJUnit4ClassRunner.class)
 public class EcpSourceServiceTest {
 

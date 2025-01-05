@@ -34,6 +34,7 @@ import com.sandy.ecp.mybatis.mapper.AbstractMapper;
  * @param <T> object.
  * @param <PK> id.
  */
+@SuppressWarnings("unchecked")
 public abstract class AbstractMapperService<VO extends AbstractVO<PK>, PO extends AbstractIdEntity<PK>,Transfer extends AbstractObjectTransfer<VO, PO, PK>, Mapper extends AbstractMapper<PO, PK>, PK> {
 
 	private Mapper mapper;

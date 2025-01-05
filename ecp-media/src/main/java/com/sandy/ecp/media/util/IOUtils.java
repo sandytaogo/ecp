@@ -13,19 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.sandy.ecp.framework.datasource;
+package com.sandy.ecp.media.util;
 
-import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
+import java.io.Closeable;
+import java.io.IOException;
 
-/***
- * 动态数据源
+/**
+ * 
  * @author Sandy
- * @since 22th 05 2022
+ * @since 2024-04-29 12:12:12
  */
-public class DynamicDatasource extends AbstractRoutingDataSource {
+public class IOUtils {
 
-	@Override
-	protected Object determineCurrentLookupKey() {
-		return null;
+	public static void close(Closeable closeable) {
+		try {
+			closeable.close();
+		} catch (IOException e) {
+			// ignore 
+		}
 	}
 }

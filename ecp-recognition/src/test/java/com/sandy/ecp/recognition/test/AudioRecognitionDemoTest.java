@@ -31,17 +31,22 @@ import org.vosk.Model;
 public class AudioRecognitionDemoTest {
 	
 	public static void main(String[] argv) throws IOException, UnsupportedAudioFileException {
+		int counter = 0;
 		LibVosk.setLogLevel(LogLevel.DEBUG);
-		try (Model model = new Model("G:\\vosk-model-cn-0.22");
+		Model model = new Model("G:\\model\\vosk-model-cn-0.22");
+		do {
+			counter++;
+			long start  = System.currentTimeMillis();
 			InputStream ais = AudioSystem.getAudioInputStream(new BufferedInputStream(new FileInputStream("F:\\AudioFile\\1732988773646.wav")));
-			Recognizer recognizer = new Recognizer(model, 8000)) {
+			Recognizer recognizer = new Recognizer(model, 8000);
 			int bytes;
 			byte[] b = new byte[4096];
 			while ((bytes = ais.read(b)) >= 0) {
 				recognizer.acceptWaveForm(b, bytes);
 			}
 			System.out.println(recognizer.getFinalResult() + System.lineSeparator());
-		}
+			System.out.println(String.format("TimeMillis=%s毫秒", System.currentTimeMillis() - start));
+		} while (counter < 4);
 	}
 
 }

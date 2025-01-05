@@ -13,19 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.sandy.ecp.framework.datasource;
+package com.sandy.ecp.media.enums;
 
-import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
-
-/***
- * 动态数据源
+/**
+ * 多媒体转换事件类型枚举. 
  * @author Sandy
- * @since 22th 05 2022
+ * @since 1.0.0 2024-07-06 12:12:12
  */
-public class DynamicDatasource extends AbstractRoutingDataSource {
-
-	@Override
-	protected Object determineCurrentLookupKey() {
-		return null;
-	}
+public enum MediaEventType {
+	/**
+     * New entity is created.
+     */
+    CREATED,
+    /**
+     * 媒体数据切分，分段
+     */
+    SEGMENT,
+    /**
+     * COMPLETED
+     */
+    DONE;
 }

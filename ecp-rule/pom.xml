@@ -95,7 +95,6 @@
 	            <configuration>
 	                <skipTests>false</skipTests>
 	                <testFailureIgnore>true</testFailureIgnore>
-	                <forkMode>once</forkMode>
 	            </configuration>
 	        </plugin>
 			
@@ -119,12 +118,12 @@
 			        	<include>com/sandy/ecp/rule/**</include>
 			        </includes>
 			         <!-- 注意，如果想要输出代码覆盖率报告，则此处应该为false -->
-			        <skipTests>false</skipTests>
+			        <!--<skipTests>false</skipTests>-->
 			        <!-- 参数 forkCount 定义 Surefire 为执行测试而同时生成的 JVM 进程的最大数量 -->
 			        <!-- JaCoCo要求不能为0，此处设置的其实是默认值 -->
-			        <forkCount>1</forkCount>
+			        <!--<forkCount>1</forkCount>-->
 			        <!-- JaCoCo要求不能是Never，此处设置的其实是默认值 -->
-			        <forkMode>once</forkMode>
+			        <!--<forkMode>once</forkMode>-->
 			        <sourceEncoding>UTF-8</sourceEncoding>
 			        <!--HTML报告的标题-->
 			        <title>${project.name}-单元测试报告</title>

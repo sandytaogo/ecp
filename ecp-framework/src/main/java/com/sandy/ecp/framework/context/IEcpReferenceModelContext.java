@@ -13,20 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.sandy.ecp.framework.media.event;
+package com.sandy.ecp.framework.context;
+
+import com.sandy.ecp.framework.reference.EcpReferenceModel;
 
 /**
- * 多媒体转换事件类型枚举. 
+ * 企业云平台 基础设施参考模型
  * @author Sandy
- * @since 1.0.0 2024-07-06 12:12:12
+ * @since 1.0.0 
+ * @date 2024-12-12 12:12:12
  */
-public enum MediaEventType {
+public interface IEcpReferenceModelContext {
+	
 	/**
-     * New entity is created.
-     */
-    CREATED,
-    
-    SEGMENT,
-    
-    COMPLETED;
+	 * 获取参考模型.
+	 * @param name 模型名称.
+	 * @param version 版本号.
+	 * @return EcpReferenceModel
+	 */
+	public EcpReferenceModel getModel(String name, String version);
+	
 }
