@@ -17,25 +17,58 @@ package com.sandy.ecp.framework.util;
 
 import java.util.Locale;
 
+import org.springframework.context.MessageSource;
+
+import com.sandy.ecp.framework.context.SpringContextHolder;
+import com.sandy.ecp.framework.i18n.EcpResourceBundleMessageSource;
 import com.sandy.ecp.framework.i18n.I18nResourceServiceImpl;
 
+/**
+ * 企业云平台国际化工具栏.
+ * 
+ * @author Sandy
+ * @since 1.0.0 12th 12 2024
+ */
 public class EcpI18nUtil {
-	
+
 	private static Locale defaultGlobalLocale = Locale.getDefault();
-	
+
+	private static MessageSource messageSource;
+
 	public static Locale getLoginLocale() {
 		return defaultGlobalLocale;
 	}
 
-	private static String getMessage(final String key, final String content) {
-        if (StringUtil.isEmpty(key)) {
-            return content;
-        }
-        final String res = new I18nResourceServiceImpl(null, null).getExceptionResourceMessage(key);
-        if (StringUtil.isEmpty(res)) {
-            return content;
-        }
-        return res;
-    }
-	
+	public static String getMessage(final String key, final String defaultMessage) {
+		if (StringUtil.isEmpty(key)) {
+			return defaultMessage;
+		}
+		if (messageSource == null) {
+			messageSource = SpringContextHolder.getBean(EcpResourceBundleMessageSource.class);
+		}
+		String message = messageSource.getMessage(key, null, defaultMessage, defaultGlobalLocale);
+		if (StringUtil.isNotEmptyString(message)) {
+			return message;
+		}
+		message = new I18nResourceServiceImpl(null, null).getExceptionResourceMessage(key);
+		if (StringUtil.isEmpty(message)) {
+			return defaultMessage;
+		}
+		return message;
+	}
+
+	public static String getMessage(String key, String defaultMessage, Object... objects) {
+		if (StringUtil.isEmpty(key)) {
+			return defaultMessage;
+		}
+		if (messageSource == null) {
+			messageSource = SpringContextHolder.getBean(EcpResourceBundleMessageSource.class);
+		}
+		String message = messageSource.getMessage(key, objects, defaultMessage, defaultGlobalLocale);
+		if (StringUtil.isEmpty(message)) {
+			return defaultMessage;
+		}
+		return message;
+	}
+
 }

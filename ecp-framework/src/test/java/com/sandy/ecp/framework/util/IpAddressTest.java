@@ -28,7 +28,7 @@ import org.springframework.core.env.MutablePropertySources;
 import org.springframework.core.env.PropertySource;
 import org.springframework.core.env.StandardEnvironment;
 
-import com.sandy.ecp.framework.context.SpringContextUtil;
+import com.sandy.ecp.framework.context.SpringContextHolder;
 import com.sandy.ecp.framework.ip.IPSeeker;
 
 /**  
@@ -41,10 +41,10 @@ public class IpAddressTest {
 	
 	@Before
 	public void testBefore() {
-		AnnotationConfigApplicationContext axt = new AnnotationConfigApplicationContext(SpringContextUtil.class);
+		AnnotationConfigApplicationContext axt = new AnnotationConfigApplicationContext(SpringContextHolder.class);
 		BeanDefinitionRegistry registry = (BeanDefinitionRegistry) axt.getAutowireCapableBeanFactory();
 		 // 创建 bean 信息
-        BeanDefinitionBuilder beanDefinitionBuilder = BeanDefinitionBuilder.genericBeanDefinition(SpringContextUtil.class);
+        BeanDefinitionBuilder beanDefinitionBuilder = BeanDefinitionBuilder.genericBeanDefinition(SpringContextHolder.class);
         // 动态注册 bean
         registry.registerBeanDefinition("springContextUtil", beanDefinitionBuilder.getBeanDefinition());
         StandardEnvironment env = axt.getBean(StandardEnvironment.class);

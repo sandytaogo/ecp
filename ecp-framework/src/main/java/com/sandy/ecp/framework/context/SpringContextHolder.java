@@ -28,19 +28,19 @@ import org.springframework.context.annotation.ImportBeanDefinitionRegistrar;
 import org.springframework.core.type.AnnotationMetadata;
 import org.springframework.stereotype.Component;
 /**
- * Enterprise Cloud Platform spring 上下文工具类
+ * Enterprise Cloud Platform spring Holder 上下文工具类
  * @author Sandy
  * 060219-062193
  * @since 1.0.0 31th 08 2022
  */
 @Component
-public class SpringContextUtil implements BeanFactoryAware, ApplicationContextAware, ImportBeanDefinitionRegistrar, DisposableBean {
+public class SpringContextHolder implements BeanFactoryAware, ApplicationContextAware, ImportBeanDefinitionRegistrar, DisposableBean {
 
 	private static ApplicationContext applicationContext;
 	
 	private static BeanFactory beanFactory;
 	
-	public SpringContextUtil() {
+	public SpringContextHolder() {
 		super();
 	}
 	
@@ -50,12 +50,12 @@ public class SpringContextUtil implements BeanFactoryAware, ApplicationContextAw
 	
 	@Override
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-		SpringContextUtil.applicationContext = applicationContext;
+		SpringContextHolder.applicationContext = applicationContext;
 	}
 
 	@Override
 	public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
-		SpringContextUtil.beanFactory = beanFactory;
+		SpringContextHolder.beanFactory = beanFactory;
 	}
 	
 	@SuppressWarnings("unchecked")

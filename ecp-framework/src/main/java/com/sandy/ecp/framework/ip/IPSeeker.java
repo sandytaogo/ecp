@@ -27,7 +27,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.env.Environment;
-import com.sandy.ecp.framework.context.SpringContextUtil;
+import com.sandy.ecp.framework.context.SpringContextHolder;
 
 /**
  * QQwry.dat 文件头，共8字节 1. 第一个起始IP的绝对偏移， 4字节 最后一个起始IP的绝对偏移， 4字节 二. "结束地址/国家/区域"记录区
@@ -78,7 +78,7 @@ public class IPSeeker {
 		try {
 			// ResourceBundle rb = ResourceBundle.getBundle("config");
 			// rb.getString (
-			Environment env = SpringContextUtil.getBean(Environment.class);
+			Environment env = SpringContextHolder.getBean(Environment.class);
 			ipFile = new RandomAccessFile(env.getProperty("ip.address.path"), "r");
 		} catch (FileNotFoundException e) {
 			log.error(e.getMessage(), e);

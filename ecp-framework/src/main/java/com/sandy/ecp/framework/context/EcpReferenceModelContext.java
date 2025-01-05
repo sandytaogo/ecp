@@ -39,7 +39,7 @@ import com.sandy.ecp.framework.reference.EcpReferenceModel;
  * @date 2024-12:23 12:12:12
  */
 @Component
-public class EcpReferenceModelContext implements InitializingBean, IEcpReferenceModelContext {
+public class EcpReferenceModelContext extends AbstractReferenceModel implements InitializingBean, IEcpReferenceModelContext {
 
 	private static final Logger logger = LoggerFactory.getLogger(EcpReferenceModelContext.class);
 

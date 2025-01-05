@@ -26,7 +26,7 @@ import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.client.RestTemplate;
 
-import com.sandy.ecp.framework.context.SpringContextUtil;
+import com.sandy.ecp.framework.context.SpringContextHolder;
 
 /**
  * 框架遠程跨服務調用.
@@ -46,7 +46,7 @@ public class DefaultMappService implements MappService {
 		if (discoveryClient == null) {
 			synchronized(this) {
 				if (discoveryClient == null) {
-					this.discoveryClient = SpringContextUtil.getBean(DiscoveryClient.class);
+					this.discoveryClient = SpringContextHolder.getBean(DiscoveryClient.class);
 				}
 			}
 		}
@@ -57,7 +57,7 @@ public class DefaultMappService implements MappService {
 		if (restTemplate == null) {
 			synchronized(this) {
 				try {
-					ApplicationContext context = SpringContextUtil.getApplicationContext();
+					ApplicationContext context = SpringContextHolder.getApplicationContext();
 					this.restTemplate = (RestTemplate) context.getBean("mappClient");
 				} catch (Throwable localThrowable) {
 					//ignore
