@@ -2,4 +2,5 @@
 # sandy  auto-configurations
 
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-    com.sandy.ecp.framework.web.context.EcpWebApplicationContext
+    com.sandy.ecp.framework.web.context.EcpWebApplicationContext,\
+    com.sandy.ecp.framework.web.listener.EcpExtensionRegisterListener

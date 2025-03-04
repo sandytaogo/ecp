@@ -26,7 +26,7 @@ import com.sandy.ecp.mybatis.mapper.AbstractMapper;
  * @param <T> object.
  * @param <PK> id.
  */
-public abstract class AbstractService<Mapper extends AbstractMapper<T, PK>, T extends AbstractIdEntity<?>, PK> {
+public abstract class AbstractService<Mapper extends AbstractMapper<T, PK>, T extends AbstractIdEntity<PK>, PK> {
 
 	private Mapper mapper;
 	
@@ -46,10 +46,10 @@ public abstract class AbstractService<Mapper extends AbstractMapper<T, PK>, T ex
 	}
 	
 	public T save(T entity) {
-		mapper.save(entity);
+		PK pk = mapper.save(entity);
+		entity.setId(pk);
 		return entity;
 	}
-	
 	
 	public List<T> save(List<T> entitys) {
 		
@@ -67,7 +67,6 @@ public abstract class AbstractService<Mapper extends AbstractMapper<T, PK>, T ex
 		return null;
 	}
 	
-	@SuppressWarnings("unchecked")
 	public boolean delete(T entity) {
 		if(null == entity) {
 			return false;

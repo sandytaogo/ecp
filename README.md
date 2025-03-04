@@ -12,7 +12,7 @@
 >
 > Intellij IDEA : Ultimate 2020.3.4
 >
-> Java : 1.8.0_171
+> Java : 1.8.0_421
 >
 > MySQL : 8.0.30
 
@@ -25,6 +25,7 @@
 	<img src="architecture.png" />
 </p>
 
+### 采用开源技术介绍
 
 #### 基础设施参考模型 Reference model
 参考模型是指被用于作为基准和对比的模型，在结构化信息标准促进组织的定义中，它被用于理解某些环境中实体之间的重要关系，以及用于开发支持该环境的一般标准或规范框架。
@@ -44,7 +45,7 @@
 创建明确的角色和职责，可以提升团队的整体效率；
 用于比较不同的东西，在问题分解为基本概念后，可利用参考模型检查不同解决方案。
 
-#### Abstract:
+#### MQTT Abstract:
 
 MQTT is a Client Server publish/subscribe messaging transport protocol. It is light weight, open,
 simple, and designed so as to be easy to implement. These characteristics make it ideal for use
@@ -85,9 +86,32 @@ There are five model sizes, four with English-only versions, offering speed and 
 | large  |   1550 M   |        N/A         |      `large`       |    ~10 GB     |       1x       |
 
 
+
+#### About FFmpeg
+
+FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations.
+
+
+#### JBoss Rules Engine Drools规则引擎 
+
+Rete算法是利用规则之间各个域的公用部分达到减少规则存储的目的，同时保存匹配过程的临时结果以加快匹配速度。为了达到这种目标，算法将规则进行拆分，将规则中的每个匹配条件，作为基本单位（节点）连接成一个数据辨别网络，然后将事实经过网络筛选并进行传播，最终所有条件都有事实匹配的规则被激活。 
+
+网络节点共有五类节点：Root节点、Type节点、Alpha节点（也称单输入节点）、Beta节点（也称双输入节点）、LeftInputAdapterNode节点、Terminal节点等。 可满足规则，如果一个规则的每一模式均能在当前工作空间中找到可匹配的事实，且模式之间的同一变量能取得统一的约束值，则我们说这个规则是可满足的。所有的可满足规则实例构成的集合称为冲突集，也称为上程表。 产生式规则系统，是常用的知识表示方式之一，它依据人类大脑记忆模式中各种知识之间存在的大量的因果关系，并以“IF-THEN”的形式表示出来的。这种形式的规则捕获了人类求解问题的行为特征，并通过认识->行动的循环过程来求解问题。
+
+Rete算法可以被分为两部分，规则编译和运行执行： 规则编译：指根据规则集合生成推理网络的过程，规则编译的过程描述了如何将规则生成一个高效的鉴别网络(Discrimination Network)，鉴别网络可以理解为用于匹配在其中传递的数据的网络； 运行执行：指将数据送入推理网络进行筛选的过程。
+
+匹配思想：  根据业务人员编写的规则库和工作存空间当前的状态，通过规则模式匹配引擎，把可满足规则放入议程表，将不可满足的规则从议程表中删除。
+①. Root节点：根节点，是所有对象进入网络的入口，它可以让所有的事实通过，然后传播给Type节点；
+②. Type节点：又叫ObjectType节点，就是我们的Fact，也就是我们规则所用到的POJO，用于选择事实的类型，即针对事实进行类型检查，引擎只让匹配该类型的对象到达后续节点，将符合本节点类型的事实向后继的Alpha节点进行传播，一个Fact对应一个Type节点； 
+③. Alpha节点：用于进行同一个对象类型内属性的约束或常量测试，即一个字面条件对应一个Alpha节点，如：age > 10，当有多个字面条件的时候，这些条件链接到一起，即多个Alpha节点连在一起，Alpha节点可以共享； 
+④. Beta节点：主要在同一个规则中根据不同对象(pet、cat)之间的约束，进行连接操作，如(“pet.name==cat.name”，“pet.age>cat.age”）。Beta节点又分为Join节点、Not节点等，Join节点包括两种输入，左部输入事实列表，称为元组（Tuple），右部输入一个事实对象，对象与元组在Join节点按照类型间约束进行Join操作，将符合的事实加入到元组中，并继续传入下一个beta节点。Beta节点具有记忆功能，左边的输入被称为Beta Memory，会记住所有到达过的语义，右边的输入成为Alpha Memory，会记住所有到达过的对象，Beta节点不是共享的； 
+⑤. LeftInputAdapterNode节点：这个节点的作用是将一个事实对象转化为一个元组，为beta节点提供作用； 
+⑥. Terminal节点：这是这条规则的末尾节点，它代表一个规则匹配结束，当事实或元组传递到Terminal节点时，表示该Terminal节点对应的规则已被激活。
+
+
 #### 安装教程
 
-1.  基于  apache maven deploy 进行自行发布
+1.  基于  apache maven deploy 进行自行发布  mvn dependency:tree
 2.  xxxx
 3.  xxxx
 

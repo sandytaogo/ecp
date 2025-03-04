@@ -28,10 +28,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import com.sandy.ecp.framework.dao.PageRequest;
-import com.sandy.ecp.framework.dao.Paging;
-import com.sandy.ecp.framework.dao.Sort;
-import com.sandy.ecp.framework.dao.Sort.Direction;
+import com.sandy.ecp.framework.domain.PageRequest;
+import com.sandy.ecp.framework.domain.Paging;
+import com.sandy.ecp.framework.domain.Sort;
+import com.sandy.ecp.framework.domain.Sort.Direction;
 import com.sandy.ecp.framework.net.URLDecoder;
 import com.sandy.ecp.framework.session.SessionVO;
 import com.sandy.ecp.framework.util.ConvertUtil;

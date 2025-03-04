@@ -5,17 +5,17 @@ import java.util.Locale;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.sandy.ecp.framework.i18n.BundleMessageSource;
+import com.sandy.ecp.framework.i18n.EcpBundleMessageSource;
 
 //@RunWith(SpringJUnit4ClassRunner.class)
 public class EcpSourceServiceTest {
 
 //	@Autowired
-	private BundleMessageSource bundleMessageSource = new BundleMessageSource();
+	private EcpBundleMessageSource bundleMessageSource = new EcpBundleMessageSource();
 	
 	@Before
 	public void before() throws Exception {
-		bundleMessageSource.setLocationPattern("classpath*:/META-INF/ecp-i18n/*.properties");
+		bundleMessageSource.setLocationPattern("classpath*:/ecp-i18n/*.properties");
 		bundleMessageSource.init();
 	}
 	

@@ -34,7 +34,7 @@ public class SeleniumAutoBrowserChromeTest {
 //        System.setProperty("webdriver.gecko.driver", "H:\\program\\java\\jdk1.8.0_421\\bin\\chromedriver.exe");
     	ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");     // 允许所有的请求
-        options.addArguments("--allowed-ips=172.18.64.1");
+//        options.addArguments("--allowed-ips=172.18.64.1");
 //        options.setExperimentalOption("debuggerAddress", "172.18.64.1");
         // 初始化一个新的Firefox浏览器实例
         WebDriver driver = new ChromeDriver(options);

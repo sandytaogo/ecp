@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.sandy.ecp.framework.dao;
+package com.sandy.ecp.framework.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
-import com.sandy.ecp.framework.dao.Sort.Order;
+import com.sandy.ecp.framework.domain.Sort.Order;
 import com.sandy.ecp.framework.util.StringUtil;
 /**
  * 排序显示对象

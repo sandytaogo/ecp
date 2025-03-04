@@ -16,13 +16,10 @@
 package com.sandy.ecp.media.test;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.Socket;
 
 import javax.swing.JFrame;
 
 import org.bytedeco.javacv.CanvasFrame;
-import org.bytedeco.javacv.FFmpegFrameGrabber;
 import org.bytedeco.javacv.OpenCVFrameGrabber;
 
 /**
@@ -33,24 +30,27 @@ public class FFmpegGuiMainTest {
 	
 
     public static void main(String[] args) throws IOException, InterruptedException {
+    	
     	OpenCVFrameGrabber grabber = new OpenCVFrameGrabber(0);//新建opencv抓取器，一般的电脑和移动端设备中摄像头默认序号是0，不排除其他情况
-        Socket socket=new Socket("127.0.0.1", 3000);
-        InputStream is=socket.getInputStream();
+//        Socket socket = new Socket("127.0.0.1", 3000);
+//        InputStream is=socket.getInputStream();
 //        FFmpegFrameGrabber grabber=new FFmpegFrameGrabber(is);
-        try {
-        	grabber.start();//开始获取摄像头数据
-        } catch (Exception e) {
-        	System.out.println("获取摄像头失败");
-			// TODO: handle exception
-		}
-        CanvasFrame canvas = new CanvasFrame("摄像头预览");//新建一个预览窗口
+    	CanvasFrame canvas = new CanvasFrame("摄像头预览");//新建一个预览窗口
         canvas.setCanvasSize(600,600);
         canvas.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        //窗口是否关闭
-        while(canvas.isDisplayable()){
-            /*获取摄像头图像并在窗口中显示,这里Frame frame=grabber.grab()得到是解码后的视频图像*/
-            canvas.showImage(grabber.grab());
-        }
-        grabber.close();//停止抓取
+        try {
+        	grabber.start();//开始获取摄像头数据
+            //窗口是否关闭
+            while(canvas.isDisplayable()){
+                /*获取摄像头图像并在窗口中显示,这里Frame frame=grabber.grab()得到是解码后的视频图像*/
+                canvas.showImage(grabber.grab());
+            }
+        } catch (Exception e) {
+        	e.printStackTrace();
+        	System.out.println("获取摄像头失败");
+			// TODO: handle exception
+		} finally {
+			grabber.close();//停止抓取
+		}
     }
 }

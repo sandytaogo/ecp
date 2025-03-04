@@ -33,19 +33,19 @@ public abstract interface AbstractMapper<T extends AbstractIdEntity<?>, PK> {
 	 * @param id Primary key number identity. 
 	 * @return 
 	 */
-	public T selectById(PK id);
+	T selectById(PK id);
 	
 	/**
 	 * 保存数据.
 	 * @param entity
 	 */
-	public void save(T entity);
+	PK save(T entity);
 	
 	/**
 	 * 批量保存.
 	 * @param entitys
 	 */
-	public void batchSave(List<T> entitys);
+	void batchSave(List<T> entitys);
 	
 	/**
 	 * update
@@ -53,24 +53,24 @@ public abstract interface AbstractMapper<T extends AbstractIdEntity<?>, PK> {
 	 * @param entity
 	 * @return update count
 	 */
-	public int update(T entity);
+	int update(T entity);
 	
 	/**
 	 * 批量删除.
 	 * @param entitys
 	 */
-	public int batchUpdate(List<T> entitys);
+	int batchUpdate(List<T> entitys);
 	
 	/**
 	 * 
 	 * @param id
 	 * @return delete success
 	 */
-	public int deleteById(PK id);
+	int deleteById(PK id);
 	
 	/**
 	 * 批量删除.
 	 * @param entitys
 	 */
-	public int batchDelete(List<T> entitys);
+	int batchDelete(List<T> entitys);
 }

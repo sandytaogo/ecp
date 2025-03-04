@@ -18,6 +18,7 @@ package com.sandy.ecp.framework.util;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
@@ -39,9 +40,11 @@ import com.sandy.ecp.framework.ip.IPSeeker;
  */
 public class IpAddressTest {
 	
+	AnnotationConfigApplicationContext axt = null;
+	
 	@Before
 	public void testBefore() {
-		AnnotationConfigApplicationContext axt = new AnnotationConfigApplicationContext(SpringContextHolder.class);
+		axt = new AnnotationConfigApplicationContext(SpringContextHolder.class);
 		BeanDefinitionRegistry registry = (BeanDefinitionRegistry) axt.getAutowireCapableBeanFactory();
 		 // 创建 bean 信息
         BeanDefinitionBuilder beanDefinitionBuilder = BeanDefinitionBuilder.genericBeanDefinition(SpringContextHolder.class);
@@ -63,5 +66,10 @@ public class IpAddressTest {
 	public void ipAddressTest() {
 		
 		System.out.println(IPSeeker.getInstance().getAddress("120.79.95.13"));
+	}
+	
+	@After
+	public void after() {
+		axt.close();
 	}
 }

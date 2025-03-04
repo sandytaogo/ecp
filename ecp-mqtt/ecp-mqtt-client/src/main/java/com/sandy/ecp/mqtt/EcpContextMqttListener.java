@@ -37,7 +37,7 @@ public class EcpContextMqttListener implements ApplicationListener<ContextRefres
 	
 	private final static Log log = LogFactory.getLog(EcpMqttCallback.class);
 	
-	private EcpConfiguration configuration;
+	protected EcpConfiguration configuration;
 
     private final EcpMqttConnect server;
 

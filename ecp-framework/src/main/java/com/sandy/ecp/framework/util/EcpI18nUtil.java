@@ -46,7 +46,9 @@ public class EcpI18nUtil {
 		if (messageSource == null) {
 			messageSource = SpringContextHolder.getBean(EcpResourceBundleMessageSource.class);
 		}
-		String message = messageSource.getMessage(key, null, defaultMessage, defaultGlobalLocale);
+//		EcpResourceBundleMessageSource messageSourcesds = SpringContextHolder.getBean(EcpResourceBundleMessageSource.class);
+//		messageSourcesds.setBasenames("ecp-i18n/messages");
+		String message = messageSource.getMessage(key, null, null, defaultGlobalLocale);
 		if (StringUtil.isNotEmptyString(message)) {
 			return message;
 		}

@@ -19,9 +19,9 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.sandy.ecp.framework.dao.Paging;
-import com.sandy.ecp.framework.dao.SearchFilter;
 import com.sandy.ecp.framework.domain.AbstractIdEntity;
+import com.sandy.ecp.framework.domain.Paging;
+import com.sandy.ecp.framework.domain.SearchFilter;
 
 /**
  * 基礎mybatis 數據庫服務層.
@@ -58,7 +58,7 @@ public abstract interface AbstractMapper<T extends AbstractIdEntity<?>, PK> {
 	 * 保存数据.
 	 * @param entity
 	 */
-	int save(T entity);
+	PK save(T entity);
 	
 	/**
 	 * 批量保存.

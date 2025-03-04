@@ -16,6 +16,7 @@
   <url>http://maven.apache.org</url>
   
   <properties>
+    <java.version>8</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   
@@ -24,5 +25,5 @@
     <module>ecp-mqtt-server</module>
     <module>ecp-mqtt-test</module>
   </modules>
-  
+
 </project>

@@ -22,10 +22,15 @@ import java.util.Map;
 import org.springframework.context.ApplicationContext;
 
 import com.sandy.ecp.framework.util.EcpI18nUtil;
-
+/**
+ * 企业云平台 国际化语言支持
+ * @author Sandy
+ * @since 1.0.0
+ * @date 2024-12:23 12:12:12
+ */
 public class I18nResourceServiceImpl {
 	
-	private static Map<String, Object> resourceCache;
+	protected static Map<String, Object> resourceCache;
 	
 	static {
 		resourceCache = new HashMap<>();
@@ -37,7 +42,8 @@ public class I18nResourceServiceImpl {
 
 	public String getExceptionResourceMessage(final String key) {
 		final Locale locale = EcpI18nUtil.getLoginLocale();
-//		return ResourceAccessService.getResource(locale, key);
+		locale.getCountry();
+		//return ResourceAccessService.getResource(locale, key);
 		return null;
 	}
 }

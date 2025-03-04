@@ -22,6 +22,7 @@ import java.io.InputStreamReader;
 
 import ws.schild.jave.process.ProcessWrapper;
 import ws.schild.jave.process.ffmpeg.DefaultFFMPEGLocator;
+
 /**  
  * Description:  
  * @author Sandy
@@ -37,7 +38,7 @@ public class FfmpegTransformM3u8 {
     private static String isVideoFileRegex = ".*\\.(mp4|avi|mkv)$";
     // 选择切片时间
     private static Integer HlsTime = 1;
-
+    
     /**
      * 定义目录所在位置
      * 循环遍历这个目录文件，找到子目录的视频文件

@@ -15,6 +15,7 @@
  */
 package com.sandy.ecp.framework.i18n;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,6 +27,7 @@ import javax.annotation.PostConstruct;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.stereotype.Component;
 /**
  * 属性配置资源服务.
@@ -35,13 +37,16 @@ import org.springframework.stereotype.Component;
  * @since 1.0.0 04th 12 2022
  */
 @Component
-public class BundleMessageSource extends ReloadableResourceBundleMessageSource {
+public class EcpBundleMessageSource extends ReloadableResourceBundleMessageSource {
 	
 	private String locationPattern;
 	private String location;
 
-	public BundleMessageSource() {
-		this.locationPattern = "classpath*:/META-INF/ecp-i18n/*.properties";
+	public EcpBundleMessageSource() {
+		this.locationPattern = "classpath*:/ecp-i18n/*.properties";
+		this.location = locationPattern.replaceAll("\\*", "");
+		this.location = this.location.substring(0, this.location.lastIndexOf("/") + 1);
+		super.setFallbackToSystemLocale(true);
 	}
 
 	public String getLocationPattern() {
@@ -56,14 +61,14 @@ public class BundleMessageSource extends ReloadableResourceBundleMessageSource {
 
 	@PostConstruct
 	public void init() throws Exception {
-		final PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+		final ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
 		final Resource[] resources = resolver.getResources(this.locationPattern);
 		final Map<String, String> fileNames = new HashMap<String, String>();
 		for (final Resource resource : resources) {
 			final String url = resource.toString();
-			final String fileName = url.substring(url.lastIndexOf("/") + 1);
-			if (logger.isErrorEnabled() && fileNames.containsKey(fileName)) {
-				this.logger.error((Object) ("Resource file [" + url + "] dup with [" + fileNames.get(fileName)));
+			final String fileName = url.substring(url.lastIndexOf(File.separator) + 1);
+			if (logger.isInfoEnabled() && fileNames.containsKey(fileName)) {
+				this.logger.info((Object) ("Resource file [" + url + "] dup with [" + fileNames.get(fileName)));
 			}
 			fileNames.put(fileName, url);
 		}
@@ -80,9 +85,9 @@ public class BundleMessageSource extends ReloadableResourceBundleMessageSource {
 			}
 		}
 		if (this.logger.isInfoEnabled()) {
-			this.logger.info((Object) ("All base names parsed from " + this.locationPattern + " is "
-					+ baseNames.toString() + "."));
+			this.logger.info((Object) ("All base names parsed from " + this.locationPattern + " is " + baseNames.toString() + "."));
 		}
 		super.setBasenames((String[]) baseNames.toArray(new String[0]));
+		//super.setBasenames("messages", "classpath*:ecp-i18n/messages");// 加载当前模块和所有子模块的messages文件
 	}
 }

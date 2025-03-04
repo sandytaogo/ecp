@@ -69,7 +69,6 @@ public class SessionVO extends AbstractVO<String> {
 	}
 	@Override
 	public String toString() {
-		return "SessionVO [userId=" + userId + ", account=" + account + ", mobile=" + mobile + ", nickName=" + nickName
-				+ "]";
+		return "SessionVO [userId=" + userId + ", account=" + account + ", mobile=" + mobile + ", nickName=" + nickName + "]";
 	}
 }

@@ -67,7 +67,7 @@ public class EcpMqttConnectClientTest {
 		mqttClient.setCallback(new EcpMqttCallback() {
 			@Override
 			public void connectionLost(Throwable cause) {
-	 
+				System.out.println("connectionLost:" + cause.getMessage());
 			}
 			@Override
 			public void messageArrived(String topic, MqttMessage message) throws Exception {
@@ -79,6 +79,7 @@ public class EcpMqttConnectClientTest {
 			}
 			@Override
 			public void deliveryComplete(IMqttDeliveryToken token) {
+				System.out.println("Delivery complete:" + token);
 			}
 		});
 	 

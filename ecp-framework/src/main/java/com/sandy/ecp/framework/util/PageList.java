@@ -24,7 +24,7 @@ import java.util.List;
  * @since 1.0.0 23th 06 2017
  */
 //<img class="figure_pic" onerror="picerr(this,'h');" _stat="videolist:click" src="//puui.qpic.cn/vpic/0/q0027jnj72b_160_90_3.jpg/0" alt="复仇者联盟3：无限战争(普通话版)">
-public interface PagingList<E> extends Iterable<E> {
+public interface PageList<E> extends Iterable<E> {
 	/**
 	 * all data
 	 * 

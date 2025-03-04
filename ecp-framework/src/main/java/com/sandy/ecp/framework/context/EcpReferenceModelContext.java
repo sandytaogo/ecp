@@ -27,9 +27,12 @@ import java.util.jar.JarFile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.stereotype.Component;
 
 import com.sandy.ecp.framework.reference.EcpReferenceModel;
+
 
 /**
  * 企业云平台 参考模型上下对象
@@ -42,6 +45,8 @@ import com.sandy.ecp.framework.reference.EcpReferenceModel;
 public class EcpReferenceModelContext extends AbstractReferenceModel implements InitializingBean, IEcpReferenceModelContext {
 
 	private static final Logger logger = LoggerFactory.getLogger(EcpReferenceModelContext.class);
+	
+	private String locationPattern = "classpath*:/META-INF/metaModel/*.mdmx";
 
 	public EcpReferenceModelContext() {
 		super();
@@ -52,22 +57,29 @@ public class EcpReferenceModelContext extends AbstractReferenceModel implements 
 		if (logger.isInfoEnabled()) {
 			logger.info("begin init ecp load reference model ...");
 		}
-		ClassLoader classLoader = ClassLoader.getSystemClassLoader();
-		URL[] urls = ((URLClassLoader) classLoader).getURLs();
-		String ignorePath = "target/classes/";
-		for (URL url : urls) {
-			if (url.getFile().endsWith(ignorePath)) {
-				continue;
-			}
+//		ClassLoader classLoader = ClassLoader.getSystemClassLoader();
+//		URL[] urls = ((URLClassLoader) classLoader).getURLs();
+//		String ignorePath = "target/classes/";
+//		for (URL url : urls) {
+//			if (url.getFile().endsWith(ignorePath)) {
+//				continue;
+//			}
+//			if (logger.isInfoEnabled()) {
+//				logger.info(url.getFile().substring(url.getFile().lastIndexOf("/"), url.getFile().length()));
+//			}
+//			try (URLClassLoader urlClassLoader = new URLClassLoader(urls, null)) {
+//				loadConfigClasses(urlClassLoader, url.getFile());
+//			} catch (Exception e) {
+//				if (logger.isErrorEnabled()) {
+//					logger.error(e.getMessage(), e);
+//				}
+//			}
+//		}
+		final PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+		final Resource[] resources = resolver.getResources(this.locationPattern);
+		for (Resource resource : resources) {
 			if (logger.isInfoEnabled()) {
-				logger.info(url.getFile().substring(url.getFile().lastIndexOf("/"), url.getFile().length()));
-			}
-			try (URLClassLoader urlClassLoader = new URLClassLoader(urls, null)) {
-				loadConfigClasses(urlClassLoader, url.getFile());
-			} catch (Exception e) {
-				if (logger.isErrorEnabled()) {
-					logger.error(e.getMessage(), e);
-				}
+				logger.info("reference model path={}", resource.getURL());
 			}
 		}
 		if (logger.isInfoEnabled()) {
@@ -91,7 +103,7 @@ public class EcpReferenceModelContext extends AbstractReferenceModel implements 
 		return jarUrls;
 	}
 
-	private void loadConfigClasses(URLClassLoader classLoader, String jarPath) throws Exception {
+	protected void loadConfigClasses(URLClassLoader classLoader, String jarPath) throws Exception {
 		// 假设配置类都在包名config下
 		String packageName = "config";
 		JarFile jarFile = new JarFile(jarPath.replaceAll("%20", " "));
@@ -104,6 +116,9 @@ public class EcpReferenceModelContext extends AbstractReferenceModel implements 
 				Class<?> clazz = classLoader.loadClass(className);
 				// 这里可以根据需要检查clazz是否是配置类的实例
 				// 如果是，则进行相应的处理
+				if (logger.isInfoEnabled()) {
+					logger.info("loadConfigClasses jarFile={}, clazz={}", jarFile, clazz);
+				}
 			} else if (name.startsWith(packageName.replace('.', '/'))) {
 				logger.info(name);
 			}

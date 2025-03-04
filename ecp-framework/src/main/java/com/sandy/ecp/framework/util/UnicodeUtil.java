@@ -70,7 +70,7 @@ public class UnicodeUtil {
         StringBuilder unicodeBuilder = new StringBuilder();
         for (int i = 0; i < string.length(); i++) {
             char nextChar = string.charAt(i);
-            unicodeBuilder.append("\\u");
+            unicodeBuilder.append(UNICODE_START);
             unicodeBuilder.append(Integer.toHexString(nextChar));
         }
         return unicodeBuilder.toString();

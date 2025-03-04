@@ -18,12 +18,12 @@ package com.sandy.ecp.mybatis.service;
 import java.util.Date;
 import java.util.List;
 
-import com.sandy.ecp.framework.dao.Paging;
-import com.sandy.ecp.framework.dao.SearchFilter;
 import com.sandy.ecp.framework.domain.AbstractIdEntity;
+import com.sandy.ecp.framework.domain.Paging;
+import com.sandy.ecp.framework.domain.SearchFilter;
 import com.sandy.ecp.framework.model.AbstractObjectTransfer;
-import com.sandy.ecp.framework.util.PagingArrayList;
-import com.sandy.ecp.framework.util.PagingList;
+import com.sandy.ecp.framework.util.PageArrayList;
+import com.sandy.ecp.framework.util.PageList;
 import com.sandy.ecp.framework.vo.AbstractDateVO;
 import com.sandy.ecp.framework.vo.AbstractVO;
 import com.sandy.ecp.mybatis.mapper.AbstractMapper;
@@ -74,13 +74,13 @@ public abstract class AbstractMapperService<VO extends AbstractVO<PK>, PO extend
 		return getEntityTransfer().toVO(mapper.selectById(id));
 	}
 	
-	public PagingList<VO> queryPageListByCondition(List<SearchFilter> filterList, Paging paging) {
+	public PageList<VO> queryPageListByCondition(List<SearchFilter> filterList, Paging paging) {
 		List<PO> data = mapper.selectPageListByFilter(filterList, paging);
 		int total = 0;
 		if (data != null && data.size() > 0) {
 			total = mapper.selectPageCountByFilter(filterList);
 		}
-		return new PagingArrayList<VO>(getEntityTransfer().toVO(data), paging, total);
+		return new PageArrayList<VO>(getEntityTransfer().toVO(data), paging, total);
 	}
 	
 	public VO save(VO model) {

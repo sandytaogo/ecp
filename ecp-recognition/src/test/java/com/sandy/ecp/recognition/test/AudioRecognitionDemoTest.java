@@ -46,6 +46,7 @@ public class AudioRecognitionDemoTest {
 			}
 			System.out.println(recognizer.getFinalResult() + System.lineSeparator());
 			System.out.println(String.format("TimeMillis=%s毫秒", System.currentTimeMillis() - start));
+			recognizer.close();
 		} while (counter < 4);
 	}
 

@@ -11,9 +11,11 @@
     <artifactId>ecp</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
+  
   <artifactId>ecp-recognition</artifactId>
   <name>ecp-recognition</name>
   <url>http://maven.apache.org</url>
+  
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
@@ -68,23 +70,25 @@
 	</dependency>
   	
   	<dependency>
-	 <groupId>com.alphacephei</groupId>
-	 <artifactId>vosk</artifactId>
-	 <version>0.3.32</version>
+  		<groupId>com.alphacephei</groupId>
+		<artifactId>vosk</artifactId>
+	 	<version>0.3.32</version>
 	</dependency>
   	
 	<dependency>
-         <groupId>org.opencv</groupId>
-         <artifactId>opencv</artifactId>
-         <version>460</version>
+		<groupId>org.opencv</groupId>
+		<artifactId>opencv</artifactId>
+		<version>460</version>
 <!--          <scope>system</scope> -->
 <!--          <systemPath>${basedir}/opencv-460.jar</systemPath> -->
-     </dependency>
+    </dependency>
   	
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>test</scope>
+		<groupId>junit</groupId>
+      	<artifactId>junit</artifactId>
+     	<scope>test</scope>
     </dependency>
+    
   </dependencies>
+  
 </project>

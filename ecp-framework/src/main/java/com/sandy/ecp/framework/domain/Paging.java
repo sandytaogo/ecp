@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.sandy.ecp.framework.dao;
+package com.sandy.ecp.framework.domain;
 
 /**
  * 分页信息服务接口

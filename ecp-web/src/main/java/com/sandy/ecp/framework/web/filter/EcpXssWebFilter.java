@@ -32,7 +32,7 @@ import com.sandy.ecp.framework.servlet.XssHttpServletRequestWrapper;
  * @author Sandy
  * @date 2023-05-05 12:12:12
  */
-public class XssWebFilter extends GenericFilterBean {
+public class EcpXssWebFilter extends GenericFilterBean {
 	
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
@@ -44,5 +44,6 @@ public class XssWebFilter extends GenericFilterBean {
 	
 	@Override
 	public void destroy() {
+		
 	}
 }

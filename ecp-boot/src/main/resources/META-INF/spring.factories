@@ -2,5 +2,10 @@
 # sandy  auto-configurations
 
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+   com.sandy.ecp.framework.context.SpringContextHolder,\
+   com.sandy.ecp.framework.context.EcpReferenceModelContext,\
+   com.sandy.ecp.framework.i18n.EcpBundleMessageSource,\
+   com.sandy.ecp.framework.i18n.EcpResourceBundleMessageSource,\
    com.sandy.ecp.framework.boot.actuator.autoconfigure.EndpointAutoConfiguration,\
    com.sandy.ecp.framework.boot.actuator.autoconfigure.TaskExecutionAutoConfiguration
+  

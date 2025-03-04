@@ -15,21 +15,21 @@
  */
 package com.sandy.ecp.framework.web;
 
+import java.util.Map;
+
 import io.jsonwebtoken.JwsHeader;
 import io.jsonwebtoken.Jwts;
 
-
 /**
- * 
+ * JWT 签名工具类.
  * @author Sandy
  * @since 2024-12-24 09：09：09
  */
 public class JwtUtil {
 
-	
-	public static void map() {
-		
+	public static Map<String,Object> map() {
 		JwsHeader<?> jws = Jwts.jwsHeader();
+		return jws;
 	}
 	
 }

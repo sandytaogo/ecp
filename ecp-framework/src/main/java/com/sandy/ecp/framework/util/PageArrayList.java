@@ -21,7 +21,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-import com.sandy.ecp.framework.dao.Paging;
+import com.sandy.ecp.framework.domain.Paging;
 
 /**
  * paging array list
@@ -29,10 +29,11 @@ import com.sandy.ecp.framework.dao.Paging;
  * @Since 1.0.0 23th 06 2017
  * @param <E>
  */
-public class PagingArrayList<E> implements PagingList<E>, Serializable {
+public class PageArrayList<E> implements PageList<E>, Serializable {
 
 	private static final long serialVersionUID = -1470272076414702572L;
 	
+	public static final int DEFAULT_PAGE_NO = 1;
 	public static final int DEFAULT_PAGE_SIZE = 10;
 	public static final int MAX_PAGE_SIZE = 100;
 	
@@ -42,19 +43,19 @@ public class PagingArrayList<E> implements PagingList<E>, Serializable {
 	private int total;
 	private Paging paging;
 	
-	public PagingArrayList() {
+	public PageArrayList() {
 		super();
 		this.data = new ArrayList<E>();
         this.total = 0;
 	}
 	
-	public PagingArrayList(List<E> data, int total) {
+	public PageArrayList(List<E> data, int total) {
 		super();
 		this.data = data;
         this.total = total;
 	}
 	
-	public PagingArrayList(List<E> data, Paging paging, int total) {
+	public PageArrayList(List<E> data, Paging paging, int total) {
         this.data = data;
         this.paging = paging;
         if (this.paging != null) {

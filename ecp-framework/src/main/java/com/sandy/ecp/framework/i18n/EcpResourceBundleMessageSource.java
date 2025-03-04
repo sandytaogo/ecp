@@ -16,6 +16,8 @@
 package com.sandy.ecp.framework.i18n;
 
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 
 /**
  * 企业云平台 国际化语言支持
@@ -24,10 +26,14 @@ import org.springframework.context.support.ResourceBundleMessageSource;
  * @date 2024-12:23 12:12:12
  */
 public class EcpResourceBundleMessageSource extends ResourceBundleMessageSource {
+	
+	private String locationPattern = "classpath*:/META-INF/ecp-i18n/*.properties";
+	private String location;
 
 	public EcpResourceBundleMessageSource() {
 		super();
-		super.setBasename("ecp-i18n/messages");
+		this.locationPattern = "classpath*:/ecp-i18n/*.properties";
+		super.setBasenames("ecp-i18n/messages");//"classpath*:ecp-i18n/messages"
 	}
 	
 	@Override
@@ -35,4 +41,15 @@ public class EcpResourceBundleMessageSource extends ResourceBundleMessageSource 
 		super.setBasename(basename);
 	}
 	
+	/**
+	 * 确保路径正确指向jar内的资源文件
+	 */
+	protected Resource getResourceBySuffix(String basename) {
+        return new ClassPathResource("/" + basename + ".properties");
+    }
+
+	@Override
+	public String toString() {
+		return "EcpResourceBundleMessageSource [locationPattern=" + locationPattern + ", location=" + location + "]";
+	}
 }
