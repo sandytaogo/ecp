@@ -199,7 +199,7 @@ public class CodeUtil {
     public void write(OutputStream sos) throws IOException {  
     	ImageIO.write(buffImg, "png", sos);
     	sos.close();  
-    }  
+    }
     public BufferedImage getBuffImg() {  
         return buffImg;  
     }  

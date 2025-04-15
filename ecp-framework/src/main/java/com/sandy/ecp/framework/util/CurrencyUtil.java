@@ -21,7 +21,7 @@ import java.text.NumberFormat;
 import java.util.Currency;
 
 /**
- * 国际货币工具类.
+ * 国际货币工具类.bbbbbbbbbbbbbbbbbbbb
  * @author Sandy
  * @since 1.0.0 2022-03-04 10:10:10 
  */

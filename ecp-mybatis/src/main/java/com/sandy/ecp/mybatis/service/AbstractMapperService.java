@@ -22,6 +22,7 @@ import com.sandy.ecp.framework.domain.AbstractIdEntity;
 import com.sandy.ecp.framework.domain.Paging;
 import com.sandy.ecp.framework.domain.SearchFilter;
 import com.sandy.ecp.framework.model.AbstractObjectTransfer;
+import com.sandy.ecp.framework.model.ModelState;
 import com.sandy.ecp.framework.util.PageArrayList;
 import com.sandy.ecp.framework.util.PageList;
 import com.sandy.ecp.framework.vo.AbstractDateVO;
@@ -91,6 +92,7 @@ public abstract class AbstractMapperService<VO extends AbstractVO<PK>, PO extend
 			}
 		}
 		mapper.save(getEntityTransfer().toPO(model));
+		model.setModelState(ModelState.NEW);
 		return model;
 	}
 	
@@ -111,6 +113,7 @@ public abstract class AbstractMapperService<VO extends AbstractVO<PK>, PO extend
 		}
 		int result = mapper.update(getEntityTransfer().toPO(model));
 		if(0 < result) {
+			model.setModelState(ModelState.MODIFY);
 			return model;
 		}
 		return null;

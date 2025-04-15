@@ -27,6 +27,11 @@ public final class WechatConstants {
 	}
 	
 	/**
+	 * 小程序登录api
+	 */
+   public static final String MINI_PROGRAM_LOGIN_URL = "https://api.weixin.qq.com/sns/jscode2session";
+   
+	/**
 	 * 获取access_token url
 	 */
     public static final String URL_GET_ACCESS_TOKEN = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
@@ -47,11 +52,6 @@ public final class WechatConstants {
      * 发送模板消息
      */
     public static final String MESSAGE_TEMPLATE_SEND = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=ACCESS_TOKEN";
-	
-	 /**
-	  * 小程序登录api
-	  */
-    public static final String MINI_PROGRAM_LOGIN_URL = "https://api.weixin.qq.com/sns/jscode2session";
 
     /**
      * 小程序获取手机号

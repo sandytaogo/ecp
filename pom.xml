@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  
   <modelVersion>4.0.0</modelVersion>
-  
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>2.0.0.RELEASE</version>
     <relativePath/>
   </parent>
-  
   <groupId>com.sandy</groupId>
   <artifactId>ecp</artifactId>
   <version>0.0.1-SNAPSHOT</version>
@@ -16,7 +13,6 @@
   <name>ecp</name>
   <url>http://maven.apache.org</url>
   <inceptionYear>2024</inceptionYear>
-  
   <!-- https://search.maven.org/ -->
   <!-- https://mvnrepository.com/ -->
   <!-- http://www.bootstrapmb.com/ -->
@@ -25,7 +21,6 @@
   <!-- https://docs.oracle.com/javase/9/docs/api/java/util/concurrent/Flow.html -->
   <!-- https://openresty.org/cn/ -->
   <!-- 210522197305195619 surefire-report:report -->
-  
   <properties>
     <java.version>8</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -51,7 +46,6 @@
     <junit5.version>5.0.0-ALPHA</junit5.version>
     <selenium.version>4.8.1</selenium.version>
   </properties>
-  
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -97,7 +91,6 @@
         <version>${springfox.version}</version>
         <scope>provided</scope>
       </dependency>
-      
       <!-- 			<dependency> -->
       <!-- 			    <groupId>org.springframework.cloud</groupId> -->
       <!-- 			    <artifactId>spring-cloud-dependencies</artifactId> -->
@@ -105,99 +98,92 @@
       <!-- 			    <type>pom</type> -->
       <!-- 			    <scope>import</scope> -->
       <!-- 			</dependency> -->
-      
-    	<dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>${selenium.version}</version>
-        </dependency>
-        
-    	<dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>htmlunit-driver</artifactId>
-            <version>${selenium-htmlunit.version}</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-api</artifactId>
-            <version>${selenium.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-chrome-driver</artifactId>
-            <version>${selenium.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-edge-driver</artifactId>
-            <version>${selenium.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-firefox-driver</artifactId>
-            <version>${selenium.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-ie-driver</artifactId>
-            <version>${selenium.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>${selenium.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-opera-driver</artifactId>
-            <version>${selenium.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-remote-driver</artifactId>
-            <version>${selenium.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-safari-driver</artifactId>
-            <version>${selenium.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-support</artifactId>
-            <version>${selenium.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-	</dependencies>
+      <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-java</artifactId>
+        <version>${selenium.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>htmlunit-driver</artifactId>
+        <version>${selenium-htmlunit.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-api</artifactId>
+        <version>${selenium.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-chrome-driver</artifactId>
+        <version>${selenium.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-edge-driver</artifactId>
+        <version>${selenium.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-firefox-driver</artifactId>
+        <version>${selenium.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-ie-driver</artifactId>
+        <version>${selenium.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-java</artifactId>
+        <version>${selenium.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-opera-driver</artifactId>
+        <version>${selenium.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-remote-driver</artifactId>
+        <version>${selenium.version}</version>
+        <exclusions>
+          <exclusion>
+            <artifactId>commons-logging</artifactId>
+            <groupId>commons-logging</groupId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+      <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-safari-driver</artifactId>
+        <version>${selenium.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-support</artifactId>
+        <version>${selenium.version}</version>
+        <exclusions>
+          <exclusion>
+            <artifactId>commons-logging</artifactId>
+            <groupId>commons-logging</groupId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+    </dependencies>
   </dependencyManagement>
   <dependencies>
-  
     <dependency>
       <groupId>javax.inject</groupId>
       <artifactId>javax.inject</artifactId>
       <version>1</version>
     </dependency>
-    
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <scope>test</scope>
     </dependency>
-    
   </dependencies>
-  
   <modules>
     <module>ecp-cache</module>
     <module>ecp-jpa</module>
@@ -216,8 +202,8 @@
     <module>ecp-gpt</module>
     <module>ecp-wechat</module>
     <module>ecp-mqtt</module>
+    <module>ecp-feign</module>
   </modules>
-  
   <distributionManagement>
     <repository>
       <id>localRepository</id>
@@ -230,25 +216,20 @@
     <!-- 	    <url>https://maven.aliyun.com/repository/public</url> -->
     <!-- 	</mirror> -->
   </distributionManagement>
-  
   <organization>
     <name>The Ecp Project</name>
     <url>http://xxx.io</url>
   </organization>
-  
   <issueManagement>
     <system>Github Issues</system>
     <url>https://github.com/sandytaogo/ecp/issues</url>
   </issueManagement>
-  
   <scm>
     <url>https://github.com/sandytaogo/ecp/tree/master</url>
     <connection>scm:git:git://github.com/sandytaogo/ecp.git</connection>
     <developerConnection>scm:git:git@github.com:sandytaogo/ecp.git</developerConnection>
   </scm>
-  
   <!-- https://github.com/sandytaogo -->
-  
   <developers>
     <developer>
       <id>sandytao</id>
@@ -269,7 +250,6 @@
       <timezone>+8</timezone>
     </developer>
   </developers>
-  
   <mailingLists>
     <mailingList>
       <name>ecp User Mailling List</name>
@@ -279,7 +259,6 @@
       <archive/>
     </mailingList>
   </mailingLists>
-  
   <build>
     <pluginManagement>
       <plugins>
@@ -301,7 +280,6 @@
         </plugin>
       </plugins>
     </pluginManagement>
-    
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -315,7 +293,6 @@
           </execution>
         </executions>
       </plugin>
-      
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-deploy-plugin</artifactId>
@@ -323,12 +300,10 @@
           <skip>${skip_maven_deploy}</skip>
         </configuration>
       </plugin>
-      
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
       </plugin>
-      
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-report-plugin</artifactId>
@@ -336,7 +311,6 @@
           <title>${project.name}-junit test report</title>
         </configuration>
       </plugin>
-      
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>

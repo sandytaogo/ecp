@@ -28,7 +28,10 @@ import org.springframework.web.filter.GenericFilterBean;
 import com.sandy.ecp.framework.servlet.XssHttpServletRequestWrapper;
 
 /**
- * Xss 内容替换过滤器.
+ * 企业云平台 Xss 内容替换过滤器.
+ * （1）持久型跨站：最直接的危害类型，跨站代码存储在服务器（数据库）。
+ * （2）非持久型跨站：反射型跨站脚本漏洞，最普遍的类型。用户访问服务器-跨站链接-返回跨站代码。
+ * （3）DOM跨站（DOM XSS）：DOM（document object model文档对象模型），客户端脚本处理逻辑导致的安全问题。
  * @author Sandy
  * @date 2023-05-05 12:12:12
  */

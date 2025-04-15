@@ -18,7 +18,7 @@ package com.sandy.ecp.wechat.vo;
 import java.io.Serializable;
 
 /**
- * 腾讯微信value object model.
+ * 腾讯微信 weixin mini program value object model.
  * @author Sandy
  * @since 1.0.0 04th 12 2024
  */
@@ -35,6 +35,11 @@ public abstract class AbstractWechatVO implements Serializable {
 	 * 错误信息
 	 */
 	private String errmsg;
+	
+	/**
+	 * 调用接口报错返回的rid
+	 */
+	private String rid;
 
 	public Integer getErrcode() {
 		return errcode;
@@ -48,5 +53,11 @@ public abstract class AbstractWechatVO implements Serializable {
 	}
 	public void setErrmsg(String errmsg) {
 		this.errmsg = errmsg;
+	}
+	public String getRid() {
+		return rid;
+	}
+	public void setRid(String rid) {
+		this.rid = rid;
 	}
 }

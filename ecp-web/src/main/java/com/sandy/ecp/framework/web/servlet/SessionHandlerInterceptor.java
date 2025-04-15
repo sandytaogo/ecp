@@ -77,8 +77,8 @@ public class SessionHandlerInterceptor implements HandlerInterceptor {
 			String authCenter = environment.getProperty("auth.center.domain");
 			String appDomain = environment.getProperty("application.domain");
 			if (isHttps) {
-				authCenter.replace("http", "https");
-				appDomain.replace("http", "https");
+//				authCenter.replace("http", "https");
+//				appDomain.replace("http", "https");
 			}
 			StringBuilder url = new StringBuilder(128);
 			url.append(appDomain);

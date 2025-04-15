@@ -18,11 +18,15 @@ package com.sandy.ecp.wechat.vo;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * 腾讯微信value object model.
+ * 腾讯微信小程序登录value object model.<br>
+ * 40029	code 无效	js_code无效 <br>
+ * 45011	api minute-quota reach limit  mustslower  retry next minute	API 调用太频繁，请稍候再试<br>
+ * 40226	code blocked	高风险等级用户，小程序登录拦截 。风险等级详见用户安全解方案<br>
+ * -1	    system error	系统繁忙，此时请开发者稍候再试<br>
  * @author Sandy
  * @since 1.0.0 04th 12 2024
  */
-public class EcpSscode2SessionVO extends AbstractWechatVO {
+public class WeChatJscode2SessionVO extends AbstractWechatVO {
 
 	private static final long serialVersionUID = -6050136358471353393L;
 
@@ -68,5 +72,10 @@ public class EcpSscode2SessionVO extends AbstractWechatVO {
 	}
 	public void setOpenid(String openid) {
 		this.openid = openid;
+	}
+	
+	@Override
+	public String toString() {
+		return "WeChatJscode2SessionVO [sessionKey=" + sessionKey + ", unionid=" + unionid + ", openid=" + openid + "]";
 	}
 }

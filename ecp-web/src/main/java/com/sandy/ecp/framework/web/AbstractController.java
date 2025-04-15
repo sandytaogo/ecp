@@ -55,6 +55,23 @@ public abstract class AbstractController {
         return request;
     }
 	
+	/**
+	 * 获取临时会话信息.
+	 * @param request
+	 * @return
+	 */
+	public SessionVO getTemporarySession(HttpServletRequest request) {
+		HttpSession session = request.getSession(false);
+		if (session == null) {
+			return null;
+		}
+		SessionVO sessionVO = (SessionVO) session.getAttribute(SessionVO.TEMPORARY_KEY);
+		if (sessionVO == null) {
+			sessionVO = (SessionVO) session.getAttribute(SessionVO.KEY);
+		}
+		return sessionVO;
+	}
+	
 	public SessionVO getSessionVO() {
 		return EcpWebSecurityContextHolder.getSessionVO();
 	}
@@ -89,7 +106,7 @@ public abstract class AbstractController {
 	public Paging getPaging(HttpServletRequest request, Sort sort) {
 		String pageNum = request.getParameter("pageNum");
 		String pageSize = request.getParameter("pageSize");
-		Integer pageNo = 1, pageSizeNo = 10;
+		Integer pageNo = 1, pageSizeNo = 20;
 		if (StringUtil.isNumber(pageNum)) {
 			pageNo = ConvertUtil.toInteger(pageNum);
 		}

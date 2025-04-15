@@ -18,7 +18,7 @@ package com.sandy.ecp.framework.session;
 import com.sandy.ecp.framework.vo.AbstractVO;
 
 /**
- * Session Value Object
+ * Enterprise Cloud Platform Session Value Object
  * @author Sandy
  * @param <PK>
  * @version 1.0.0
@@ -30,13 +30,29 @@ public class SessionVO extends AbstractVO<String> {
 
 	public static final String KEY = "SESSIONVO_AUTH_KEY";
 	
+	public static final String TEMPORARY_KEY = "TEMPORARY_SESSIONVO_KEY";
+	
 	public static final String BG_KEY = "BG_SESSIONVO_AUTH_KEY";
+	
+	public static final String BG_TEMPORARY_KEY = "BG_TEMPORARY_SESSIONVO_KEY";
 	
 	private Long userId;
 	private String account;
 	private String mobile;
 	private String nickName;
-	private String userSmTwoPublicKey;
+	/**
+	 * 密码学公钥
+	 */
+	private String publicKey;
+	/**
+	 * 密码学私钥
+	 */
+	private String privateKey;
+	/**
+	 * 用户公钥
+	 */
+	private String userPublicKey;
+	private String sm4;
 	public Long getUserId() {
 		return userId;
 	}
@@ -61,11 +77,29 @@ public class SessionVO extends AbstractVO<String> {
 	public void setNickName(String nickName) {
 		this.nickName = nickName;
 	}
-	public String getUserSmTwoPublicKey() {
-		return userSmTwoPublicKey;
+	public String getPublicKey() {
+		return publicKey;
 	}
-	public void setUserSmTwoPublicKey(String userSmTwoPublicKey) {
-		this.userSmTwoPublicKey = userSmTwoPublicKey;
+	public void setPublicKey(String publicKey) {
+		this.publicKey = publicKey;
+	}
+	public String getPrivateKey() {
+		return privateKey;
+	}
+	public void setPrivateKey(String privateKey) {
+		this.privateKey = privateKey;
+	}
+	public String getUserPublicKey() {
+		return userPublicKey;
+	}
+	public void setUserPublicKey(String userPublicKey) {
+		this.userPublicKey = userPublicKey;
+	}
+	public String getSm4() {
+		return sm4;
+	}
+	public void setSm4(String sm4) {
+		this.sm4 = sm4;
 	}
 	@Override
 	public String toString() {

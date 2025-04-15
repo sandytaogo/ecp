@@ -40,14 +40,19 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import com.sandy.ecp.framework.exception.HttpException;
 import com.sandy.ecp.framework.http.ssl.NoopHostnameVerifier;
-import com.sandy.ecp.framework.web.exception.HttpException;
 
 import sun.net.www.protocol.http.HttpURLConnection;
 import sun.net.www.protocol.https.Handler;
 import sun.net.www.protocol.https.HttpsURLConnectionImpl;
 
-@SuppressWarnings("restriction")
+/**
+ * Hypertext Transfer Protocol.
+ *
+ * @author Sandy
+ * @Since 1.0.0 14th 05 2018
+ */
 public class WebUtil {
 	
 	public static int CONNECT_TIMEOUT = 3000;

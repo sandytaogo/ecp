@@ -48,13 +48,12 @@ public class SearchFilter {
 
 	public SearchFilter(String fieldName, Operator operator, Object value) {
 		this.fieldName = fieldName;
-		this.value = value;
 		this.operator = operator;
+		this.value = value;
 	}
 
 	public static Map<String, SearchFilter> parse(Map<String, Object> searchParams) {
 		Map<String, SearchFilter> filters = new HashMap<String, SearchFilter>();
-
 		for (Entry<String, Object> entry : searchParams.entrySet()) {
 			String key = entry.getKey();
 			Object value = entry.getValue();

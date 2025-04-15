@@ -15,7 +15,6 @@
  */
 package com.sandy.ecp.wechat.utils;
 
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.security.GeneralSecurityException;
 import java.security.InvalidAlgorithmParameterException;
@@ -26,6 +25,7 @@ import java.util.Base64;
 import javax.crypto.Cipher;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.GCMParameterSpec;
+import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
 /**
@@ -44,7 +44,7 @@ public class WeChatAesUtil {
 		this.aesKey = key;
 	}
 
-	public String decryptToString(byte[] associatedData, byte[] nonce, String ciphertext) throws GeneralSecurityException, IOException {
+	public String decryptToString(byte[] associatedData, byte[] nonce, String ciphertext) throws GeneralSecurityException {
 		try {
 			Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");
 			SecretKeySpec key = new SecretKeySpec(aesKey, "AES");
@@ -56,6 +56,34 @@ public class WeChatAesUtil {
 			throw new IllegalStateException(e);
 		} catch (InvalidKeyException | InvalidAlgorithmParameterException e) {
 			throw new IllegalArgumentException(e);
+		}
+	}
+	
+	public static byte[] aes128CbcEncode(String data, String ivKey, String secretKey) throws GeneralSecurityException {
+		try {
+			Cipher cipher = Cipher.getInstance("AES/CBC/PKCS7Padding");
+			byte[] raw = secretKey.getBytes();
+			SecretKeySpec skeySpec = new SecretKeySpec(raw, "AES");
+			IvParameterSpec iv = new IvParameterSpec(ivKey.getBytes());// 使用CBC模式，需要一个向量iv，可增加加密算法的强度
+			cipher.init(Cipher.ENCRYPT_MODE, skeySpec, iv);
+			byte[] encrypted = cipher.doFinal(data.getBytes(StandardCharsets.UTF_8));
+			return encrypted;
+		} catch (Exception e) {
+			throw new GeneralSecurityException(e.getMessage(), e);
+		}
+	}
+	
+	public static String aes128CbcDecode(byte[] data, byte[] ivs, byte[] secretKey) throws GeneralSecurityException {
+		try {
+			SecretKeySpec skeySpec = new SecretKeySpec(secretKey, "AES");
+			Cipher cipher = Cipher.getInstance("AES/CBC/PKCS7Padding");
+			IvParameterSpec iv = new IvParameterSpec(ivs);
+			cipher.init(Cipher.DECRYPT_MODE, skeySpec, iv);
+			byte[] original = cipher.doFinal(data);
+			String originalString = new String(original, StandardCharsets.UTF_8);
+			return originalString;
+		} catch (Exception e) {
+			throw new GeneralSecurityException(e.getMessage(), e);
 		}
 	}
 }

@@ -116,8 +116,8 @@ public class SessionManagementFilter extends GenericFilterBean {
 			String authCenter = super.getEnvironment().getProperty("auth.center.domain");
 			String appDomain = super.getEnvironment().getProperty("application.domain");
 			if (isHttps) {
-				authCenter.replace("http", "https");
-				appDomain.replace("http", "https");
+//				authCenter.replace("http", "https");
+//				appDomain.replace("http", "https");
 			}
 			StringBuilder url = new StringBuilder(128);
 			url.append(appDomain);
