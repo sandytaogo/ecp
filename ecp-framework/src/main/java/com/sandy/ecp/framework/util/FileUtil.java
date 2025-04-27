@@ -19,10 +19,10 @@ import java.io.File;
 import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.nio.file.attribute.PosixFilePermission;
 import java.nio.file.attribute.PosixFilePermissions;
 import java.util.ArrayList;
@@ -33,13 +33,14 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.springframework.util.DigestUtils;
+
 import com.sandy.ecp.framework.exception.EcpRuntimeException;
 
 /**
  * File Utils
  * 
  * @author Sandy
- * @since 1.0.0 12th 12 2016
+ * @since 1.0.0 12th 12 2018
  */
 public final class FileUtil {
 	
@@ -71,16 +72,10 @@ public final class FileUtil {
 		return false;
 	}
 	
-	public static boolean copyAndRename(String from, String to) {
-        Path sourcePath      = Paths.get(from);
-        Path destinationPath = Paths.get(to);
-        try {
-            Files.copy(sourcePath, destinationPath);
-        } catch(FileAlreadyExistsException e) {
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return true;
+	public static Path copy(String from, String target) throws IOException {
+		Path sourcePath = Paths.get(from);
+        Path destinationPath = Paths.get(target);
+        return Files.copy(sourcePath, destinationPath, StandardCopyOption.REPLACE_EXISTING);
     }
 	
 	/**
@@ -94,11 +89,9 @@ public final class FileUtil {
         if (!dir.exists()) {
             throw new EcpRuntimeException("目录：" + dir + "不存在");
         }
-
         if (!dir.isDirectory()) {
             throw new EcpRuntimeException(dir + "不是目录");
         }
-
         FileFilter ff = null;
         if (fileType == null || fileType.length() == 0) {
             ff = new FileFilter() {

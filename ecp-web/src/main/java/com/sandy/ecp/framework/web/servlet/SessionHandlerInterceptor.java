@@ -69,7 +69,7 @@ public class SessionHandlerInterceptor implements HandlerInterceptor {
 			Result result = new Result();
 			result.setCode(401);
 			result.setMsg("尚未登录系统");
-			response.setHeader("Content-Type", MediaType.APPLICATION_JSON_UTF8_VALUE);
+			response.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
 			objectMapper.writeValue(response.getOutputStream(), result);
 		} else {
 			String path = request.getServletPath();

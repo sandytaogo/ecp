@@ -18,6 +18,10 @@ package com.sandy.ecp.feign.codec;
 import java.io.IOException;
 import java.lang.reflect.Type;
 
+import org.springframework.beans.factory.ObjectFactory;
+import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
+import org.springframework.cloud.openfeign.support.SpringDecoder;
+
 import feign.FeignException;
 import feign.Response;
 import feign.codec.DecodeException;
@@ -28,16 +32,18 @@ import feign.codec.Decoder;
  * @author Sandy
  * @since 1.0.0 2024-09-12 12:12:12
  */
-public class EcpStreamDecoder implements Decoder {
+public class EcpStreamDecoder extends SpringDecoder implements Decoder {
+
+	public EcpStreamDecoder(ObjectFactory<HttpMessageConverters> messageConverters) {
+		super(messageConverters);
+	}
 
 	@Override
 	public Object decode(Response response, Type type) throws IOException, DecodeException, FeignException {
-		// 1、如果body为null，那就return null喽
-	    Response.Body body = response.body();
-	    if (body == null) {
-	      return null;
+	    if (response.status() == 200) {
+	    	response = response.toBuilder().build();
 	    }
-		return body;
+		return super.decode(response, type);
 	}
 
 }

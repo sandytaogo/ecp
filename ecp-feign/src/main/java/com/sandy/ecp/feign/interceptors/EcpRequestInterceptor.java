@@ -29,7 +29,13 @@ import feign.RequestTemplate;
  * @author Sandy
  * @since 1.0.0 2024-09-12 12:12:12
  */
+//@Component
+//@ConditionalOnClass(RequestInterceptor.class)
 public class EcpRequestInterceptor implements RequestInterceptor {
+	
+    public EcpRequestInterceptor() {
+    	super();
+    }
 
 	/**
 	 * 拦截请求流式编程设计理念.
@@ -38,8 +44,12 @@ public class EcpRequestInterceptor implements RequestInterceptor {
 	@Override
 	public void apply(RequestTemplate template) {
 		RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
+		HttpServletRequest request = null;
 		if (requestAttributes != null) {
-			 final HttpServletRequest request = ((ServletRequestAttributes) requestAttributes).getRequest();
+			request = ((ServletRequestAttributes) requestAttributes).getRequest();
+		}
+		//RequestMapping requestMapping = AnnotationUtils.findAnnotation(method, RequestMapping.class);
+		if (request != null) {
 			 String cookie = request.getHeader("cookie");
 			 template.header("Cookie", cookie);
 		}

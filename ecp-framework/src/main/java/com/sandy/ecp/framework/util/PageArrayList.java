@@ -45,13 +45,15 @@ public class PageArrayList<E> implements PageList<E>, Serializable {
 	
 	public PageArrayList() {
 		super();
-		this.data = new ArrayList<E>();
-        this.total = 0;
+		this.total = 0;
+		this.pageSize = DEFAULT_PAGE_SIZE;
+        this.data = new ArrayList<E>();
 	}
 	
 	public PageArrayList(List<E> data, int total) {
 		super();
 		this.data = data;
+		this.pageSize = DEFAULT_PAGE_SIZE;
         this.total = total;
 	}
 	
@@ -97,6 +99,9 @@ public class PageArrayList<E> implements PageList<E>, Serializable {
 	}
 	
 	public void setPageSize(int pageSize) {
+		if (pageSize < 1) {
+			pageSize = DEFAULT_PAGE_SIZE;
+		}
 		this.pageSize = pageSize;
 	}
 	public int getPages() {
