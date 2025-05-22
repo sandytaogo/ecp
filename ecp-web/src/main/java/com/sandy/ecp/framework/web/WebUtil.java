@@ -53,6 +53,7 @@ import sun.net.www.protocol.https.HttpsURLConnectionImpl;
  * @author Sandy
  * @Since 1.0.0 14th 05 2018
  */
+@SuppressWarnings("restriction")
 public class WebUtil {
 	
 	public static int CONNECT_TIMEOUT = 3000;

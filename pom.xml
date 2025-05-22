@@ -133,6 +133,7 @@
         <artifactId>selenium-ie-driver</artifactId>
         <version>${selenium.version}</version>
       </dependency>
+      
       <dependency>
         <groupId>org.seleniumhq.selenium</groupId>
         <artifactId>selenium-java</artifactId>
@@ -184,6 +185,7 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  
   <modules>
     <module>ecp-cache</module>
     <module>ecp-jpa</module>
@@ -193,6 +195,7 @@
     <module>ecp-media</module>
     <module>ecp-boot</module>
     <module>ecp-web</module>
+    <module>ecp-websocket</module>
     <module>ecp-zuul</module>
     <module>ecp-cloud</module>
     <module>ecp-gateway</module>
@@ -204,6 +207,7 @@
     <module>ecp-mqtt</module>
     <module>ecp-feign</module>
   </modules>
+  
   <distributionManagement>
     <repository>
       <id>localRepository</id>

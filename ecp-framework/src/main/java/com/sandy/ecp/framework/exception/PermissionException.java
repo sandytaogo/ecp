@@ -16,20 +16,20 @@
 package com.sandy.ecp.framework.exception;
 
 /**
- * 企业云平台运行时异常声明.
+ * 企业云平台权限异常声明.
  * @author Sandy
  * @date 2022-04-04 13:12:12
  * @since 1.0.0
  */
-public class EcpRuntimeException extends RuntimeException {
+public class PermissionException extends EcpRuntimeException {
 
-	private static final long serialVersionUID = 1457558421552624756L;
+	private static final long serialVersionUID = 547677902738736537L;
 
 	/** Constructs a new runtime exception with {@code null} as its
      * detail message.  The cause is not initialized, and may subsequently be
      * initialized by a call to {@link #initCause}.
      */
-    public EcpRuntimeException() {
+    public PermissionException() {
         super();
     }
 
@@ -40,7 +40,7 @@ public class EcpRuntimeException extends RuntimeException {
      * @param   message   the detail message. The detail message is saved for
      *          later retrieval by the {@link #getMessage()} method.
      */
-    public EcpRuntimeException(String message) {
+    public PermissionException(String message) {
         super(message);
     }
 
@@ -58,7 +58,7 @@ public class EcpRuntimeException extends RuntimeException {
      *         unknown.)
      * @since  1.4
      */
-    public EcpRuntimeException(String message, Throwable cause) {
+    public PermissionException(String message, Throwable cause) {
         super(message, cause);
     }
 
@@ -74,7 +74,7 @@ public class EcpRuntimeException extends RuntimeException {
      *         unknown.)
      * @since  1.4
      */
-    public EcpRuntimeException(Throwable cause) {
+    public PermissionException(Throwable cause) {
         super(cause);
     }
 
@@ -93,7 +93,7 @@ public class EcpRuntimeException extends RuntimeException {
      *
      * @since 1.7
      */
-    protected EcpRuntimeException(String message, Throwable cause,
+    protected PermissionException(String message, Throwable cause,
                                boolean enableSuppression,
                                boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
