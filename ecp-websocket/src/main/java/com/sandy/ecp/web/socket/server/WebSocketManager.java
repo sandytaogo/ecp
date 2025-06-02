@@ -15,7 +15,10 @@
  */
 package com.sandy.ecp.web.socket.server;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 import javax.websocket.Session;
@@ -44,4 +47,22 @@ public class WebSocketManager {
 		return sessionManger.remove(key);
 	}
 	
+	public List<String> getPageUser(int page, int size) {
+		Set<String> keys = sessionManger.keySet();
+		String [] userIds = keys.toArray(new String[keys.size()]);
+		List<String> list = new ArrayList<String>(size);
+		int index = page - 1;
+		for (int i = 0; i < size; i++) {
+			if (index + i < userIds.length) {
+				list.add(userIds[index + i]);
+			} else {
+				break;
+			}
+		}
+		return list;
+	}
+	
+	public int getTotal() {
+		return sessionManger.size();
+	}
 }

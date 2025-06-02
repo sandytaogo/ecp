@@ -1,5 +1,5 @@
 /*
- * Copyright 2023-2030 the original author or authors.
+ * Copyright 2024-2030 the original author or authors.
  *
  * Licensed under the sandy License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,8 +17,15 @@ package com.sandy.ecp.framework.domain;
 
 import java.io.Serializable;
 
+/**
+ * 企业云平台分页对象.
+ * @author Sandy
+ * @since 1.0.0 2024-12-12 12:12:12
+ */
 public class PageRequest implements Paging, Serializable {
+	
     private static final long serialVersionUID = 6585040613400357967L;
+    
     private final int page;
     private final int size;
     private final Sort sort;

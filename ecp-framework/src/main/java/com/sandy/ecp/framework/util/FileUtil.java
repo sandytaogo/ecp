@@ -20,6 +20,7 @@ import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
@@ -258,5 +259,19 @@ public final class FileUtil {
 		Calendar calendar = Calendar.getInstance();
 		return value.append(calendar.get(Calendar.YEAR)).append("/").append((calendar.get(Calendar.MARCH) + 1))
 				.append("/").append(calendar.get(Calendar.DATE)).append("/").toString();
+	}
+	
+	/***
+	 * 删除文件.
+	 * @param filePath
+	 * @throws IOException
+	 */
+	public static boolean delete(String filePath) throws IOException {
+		Path path = Paths.get(filePath);
+		if (Files.exists(path, LinkOption.NOFOLLOW_LINKS)) {
+			Files.delete(path);
+			return true;
+		}
+		return false;
 	}
 }

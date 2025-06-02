@@ -24,6 +24,8 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -47,7 +49,13 @@ import com.sandy.ecp.framework.web.context.EcpWebSecurityContextHolder;
 public abstract class AbstractController {
 
 	protected Logger logger = LoggerFactory.getLogger(getClass());
+	
+	@Autowired(required = false)
+	private Environment environment;
 
+	/**
+	 * 线程本地变量.
+	 */
 	protected static final ThreadLocal<Object> THREAD_LOCAL = new InheritableThreadLocal<Object>();
 	
 	public HttpServletRequest getRequest() {
@@ -144,5 +152,18 @@ public abstract class AbstractController {
 			sb.append(line);
 		}
 		return sb.toString();
+	}
+	
+	/**
+	 * 系统之间通信许可.
+	 * @param request HttpServletRequest.
+	 * @return boolean
+	 */
+	public boolean accessSystemAllow(final HttpServletRequest request) {
+		String systemId = request.getHeader("systemid");
+		if (systemId != null ) {
+			return systemId.equals(environment.getProperty("system.id"));
+		}
+		return false;
 	}
 }

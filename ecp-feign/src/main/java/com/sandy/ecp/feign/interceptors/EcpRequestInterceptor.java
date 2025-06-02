@@ -21,6 +21,8 @@ import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import com.sandy.ecp.feign.EcpFeignConfiguration;
+
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
 
@@ -29,8 +31,8 @@ import feign.RequestTemplate;
  * @author Sandy
  * @since 1.0.0 2024-09-12 12:12:12
  */
-//@Component
-//@ConditionalOnClass(RequestInterceptor.class)
+//@Component       
+//@ConditionalOnClass(EcpRequestInterceptor.class)
 public class EcpRequestInterceptor implements RequestInterceptor {
 	
     public EcpRequestInterceptor() {
@@ -52,6 +54,10 @@ public class EcpRequestInterceptor implements RequestInterceptor {
 		if (request != null) {
 			 String cookie = request.getHeader("cookie");
 			 template.header("Cookie", cookie);
+		}
+		
+		if (EcpFeignConfiguration.getSystemId() != null) {
+			template.header("systemid", EcpFeignConfiguration.getSystemId());
 		}
 	}
 }

@@ -28,6 +28,7 @@ import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
 import org.springframework.cloud.openfeign.support.ResponseEntityDecoder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 
 import com.netflix.hystrix.strategy.HystrixPlugins;
 import com.netflix.hystrix.strategy.concurrency.HystrixConcurrencyStrategy;
@@ -55,6 +56,11 @@ public class EcpFeignConfiguration {
 
 	private Logger log = LoggerFactory.getLogger(getClass());
 
+	private static String systemId;
+	
+	@Autowired
+	private Environment environment;
+	
 	@Autowired
 	protected Feign.Builder builder;
 
@@ -66,6 +72,10 @@ public class EcpFeignConfiguration {
 
 	public EcpFeignConfiguration() {
 		super();
+	}
+	
+	public static String getSystemId() {
+		return systemId;
 	}
 
 	@Bean
@@ -90,6 +100,9 @@ public class EcpFeignConfiguration {
 
 	@PostConstruct
 	public void init() {
+		if (environment.getProperty("system.id") != null) {
+			EcpFeignConfiguration.systemId = environment.getProperty("system.id");
+		}
 		try {
 			HystrixConcurrencyStrategy strategy = HystrixPlugins.getInstance().getConcurrencyStrategy();
 			if (strategy instanceof EcpHystrixConcurrencyStrategy) {
@@ -103,9 +116,8 @@ public class EcpFeignConfiguration {
 			HystrixPropertiesStrategy propertiesStrategy = HystrixPlugins.getInstance().getPropertiesStrategy();
 			// 打印日志
 			if (log.isDebugEnabled()) {
-				log.debug(
-						"Current Hystrix plugins configuration is [concurrencyStrategy [{}], eventNotifier [{}], metricPublisher [{}], propertiesStrategy [{}]]",
-						hystrixConcurrencyStrategy, eventNotifier, metricsPublisher, propertiesStrategy);
+				log.debug("Current Hystrix plugins configuration is [concurrencyStrategy [{}], eventNotifier [{}], metricPublisher [{}], propertiesStrategy [{}]]",
+					hystrixConcurrencyStrategy, eventNotifier, metricsPublisher, propertiesStrategy);
 				log.debug("Registering Muses Hystrix Concurrency Strategy.");
 			}
 			// 重置再重新填充
