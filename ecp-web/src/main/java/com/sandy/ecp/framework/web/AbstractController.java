@@ -51,7 +51,7 @@ public abstract class AbstractController {
 	protected Logger logger = LoggerFactory.getLogger(getClass());
 	
 	@Autowired(required = false)
-	private Environment environment;
+	protected Environment environment;
 
 	/**
 	 * 线程本地变量.

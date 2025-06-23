@@ -86,8 +86,8 @@ public class DefaultMappService implements MappService {
 			contextPath = "";
 		}
 		String callServiceResult = getRestTemplate().getForObject(service.getUri().toString() + contextPath +"/countryItems" ,String.class);
-		if (logger.isInfoEnabled()) {
-			logger.info("Service id = {}, receive data: {}", service.getServiceId(), callServiceResult);
+		if (logger.isDebugEnabled()) {
+			logger.debug("Service id = {}, receive data: {}", service.getServiceId(), callServiceResult);
 		}
 		return null;
 	}

@@ -38,8 +38,9 @@ public class SessionVO extends AbstractVO<String> {
 	
 	private Long userId;
 	private String account;
-	private String mobile;
+	private String avatar;
 	private String nickName;
+	private String mobile;
 	/**
 	 * 密码学公钥
 	 */
@@ -65,17 +66,23 @@ public class SessionVO extends AbstractVO<String> {
 	public void setAccount(String account) {
 		this.account = account;
 	}
-	public String getMobile() {
-		return mobile;
+	public String getAvatar() {
+		return avatar;
 	}
-	public void setMobile(String mobile) {
-		this.mobile = mobile;
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
 	}
 	public String getNickName() {
 		return nickName;
 	}
 	public void setNickName(String nickName) {
 		this.nickName = nickName;
+	}
+	public String getMobile() {
+		return mobile;
+	}
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
 	}
 	public String getPublicKey() {
 		return publicKey;

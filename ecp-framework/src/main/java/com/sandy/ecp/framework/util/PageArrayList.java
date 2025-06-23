@@ -110,7 +110,7 @@ public class PageArrayList<E> implements PageList<E>, Serializable {
 		
 		return (int) (total / pageSize) + (0 ==(total % pageSize) ? 0 : 1);
 	}
-	public long getTotal() {
+	public int getTotal() {
 		return total;
 	}
 	

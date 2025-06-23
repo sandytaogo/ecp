@@ -52,6 +52,6 @@ public interface PageList<E> extends Iterable<E> {
 	 * 
 	 * @return total
 	 */
-	public long getTotal();
+	public int getTotal();
 	
 }
