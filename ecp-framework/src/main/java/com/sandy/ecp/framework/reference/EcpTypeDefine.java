@@ -21,6 +21,14 @@ package com.sandy.ecp.framework.reference;
  * @author Sandy
  * @date 2024-12-12 12:12:12
  */
-public class TypeDefine {
+public class EcpTypeDefine {
 
+	
+	
+	
+	
+	
+	
+
+	
 }

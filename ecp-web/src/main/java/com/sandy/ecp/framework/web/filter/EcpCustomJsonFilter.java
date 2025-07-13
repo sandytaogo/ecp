@@ -27,12 +27,12 @@ import com.fasterxml.jackson.databind.ser.PropertyWriter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 
 /**
- * json 字段过滤器.
+ * 平台JSON 序列化字段过滤器.
  * @author Sandy
  * @date 2023-05-05 12:12:12
  */
 @SuppressWarnings("deprecation")
-public class CustomJsonFilter extends FilterProvider {
+public class EcpCustomJsonFilter extends FilterProvider {
 	
 	private static final ThreadLocal<Map<Class<?>, String[]>> include = new ThreadLocal<Map<Class<?>, String[]>>();
 

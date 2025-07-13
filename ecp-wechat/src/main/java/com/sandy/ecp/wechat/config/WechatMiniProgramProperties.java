@@ -15,7 +15,11 @@
  */
 package com.sandy.ecp.wechat.config;
 
-
+/**
+ * WECHAT MINI Program Properties
+ * @author Sandy
+ * @since 1.0.0 2024-12-12 12:12:12
+ */
 public class WechatMiniProgramProperties {
 
 	/**

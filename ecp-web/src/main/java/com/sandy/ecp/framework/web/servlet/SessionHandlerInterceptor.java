@@ -29,6 +29,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sandy.ecp.framework.net.URLEncoder;
 import com.sandy.ecp.framework.session.SessionVO;
 import com.sandy.ecp.framework.vo.Result;
 import com.sandy.ecp.framework.web.context.EcpWebSecurityContextHolder;
@@ -83,7 +84,7 @@ public class SessionHandlerInterceptor implements HandlerInterceptor {
 			StringBuilder url = new StringBuilder(128);
 			url.append(appDomain);
 			url.append(path);
-			response.sendRedirect(authCenter + "?oauth_callback=" + url.toString());
+			response.sendRedirect(authCenter + "?oauth_callback=" + URLEncoder.encode(url.toString()));
 		}
 		return false;
 	}

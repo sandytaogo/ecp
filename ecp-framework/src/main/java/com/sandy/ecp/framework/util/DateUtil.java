@@ -26,6 +26,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.regex.Pattern;
 
+/**
+ * 日期工具处理类- 类型转换-日期转换
+ * @author Sandy
+ * @since 1.0.0 2025-04-20 12:12:12
+ */
 public class DateUtil {
 	
 	protected static final String DATE_REGEX = "^([1-9]\\d{3}-)(([0]{0,1}[1-9]-)|([1][0-2]-))(([0-3]{0,1}[0-9]))$";

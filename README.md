@@ -47,11 +47,30 @@
 
 #### MQTT Abstract:
 
+https://mqtt.org/
+
 MQTT is a Client Server publish/subscribe messaging transport protocol. It is light weight, open,
 simple, and designed so as to be easy to implement. These characteristics make it ideal for use
 in many situations, including constrained environments such as for communication in Machine to
 Machine (M2M) and Internet of Things (IoT) contexts where a small code footprint is required
 and/or network bandwidth is at a premium.
+
+#### About FFmpeg
+
+https://ffmpeg.org/
+
+FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations.
+
+
+#### OpenCV About
+
+https://opencv.org/
+
+OpenCV (Open Source Computer Vision Library) is an open source computer vision and machine learning software library. OpenCV was built to provide a common infrastructure for computer vision applications and to accelerate the use of machine perception in the commercial products. Being an Apache 2 licensed product, OpenCV makes it easy for businesses to utilize and modify the code.
+
+
+The library has more than 2500 optimized algorithms, which includes a comprehensive set of both classic and state-of-the-art computer vision and machine learning algorithms. These algorithms can be used to detect and recognize faces, identify objects, classify human actions in videos, track camera movements, track moving objects, extract 3D models of objects, produce 3D point clouds from stereo cameras, stitch images together to produce a high resolution image of an entire scene, find similar images from an image database, remove red eyes from images taken using flash, follow eye movements, recognize scenery and establish markers to overlay it with augmented reality, etc. OpenCV has more than 47 thousand people of user community and estimated number of downloads exceeding 18 million. The library is used extensively in companies, research groups and by governmental bodies.
+
 
 #### Vosk Recognition 
 

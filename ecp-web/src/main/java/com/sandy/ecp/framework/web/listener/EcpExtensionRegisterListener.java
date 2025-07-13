@@ -24,39 +24,40 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+
 /**
  * 企业云平台 扩展监听器.
+ * 
  * @author Sandy
  * @date 2024-05-05 12:12:12
  */
 public class EcpExtensionRegisterListener implements ServletContextListener {
-	
-    private static final String PLUGIN = "classpath*:/META-INF/config/plugin.xml";
-    
-    /** Logger available to subclasses */
+
+	private static final String PLUGIN = "classpath*:/META-INF/config/plugin.xml";
+
+	/** Logger available to subclasses */
 	protected final Logger logger = LoggerFactory.getLogger(getClass());
 
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
 		final PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        Resource[] resources = null;
-        try {
-            resources = resolver.getResources(PLUGIN);
-            for (final Resource resource : resources) {
-            	if (logger.isInfoEnabled()) {
-            		logger.info("contextInitialized plugin={}", resource.getURL());
-            	}
-            }
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
+		Resource[] resources = null;
+		try {
+			resources = resolver.getResources(PLUGIN);
+			for (final Resource resource : resources) {
+				if (logger.isInfoEnabled()) {
+					logger.info("contextInitialized plugin={}", resource.getURL());
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public void contextDestroyed(ServletContextEvent sce) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
