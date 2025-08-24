@@ -66,11 +66,45 @@ public final class FileUtil {
 				perms.add(PosixFilePermission.OWNER_EXECUTE);
 				perms.add(PosixFilePermission.OTHERS_READ);
 				Path path = Paths.get(file.getPath());
+				//Files.createFile(Paths.get("/path/to/your/file"), PosixFilePermissions.asFileAttribute(PosixFilePermissions.fromString("rw-rw-r--")));
 				Files.createDirectories(path, PosixFilePermissions.asFileAttribute(perms));
 				return true;
 			}
 		}
 		return false;
+	}
+	
+	/**
+	 * 修改权限.
+	 * @param dirFile
+	 * @return Path
+	 * @throws IOException
+	 */
+	public static Path changePermission(File dirFile) throws IOException {
+		Set<PosixFilePermission> perms = new HashSet<PosixFilePermission>();
+		perms.add(PosixFilePermission.OWNER_READ);
+		perms.add(PosixFilePermission.OWNER_WRITE);
+		perms.add(PosixFilePermission.OWNER_EXECUTE);
+		
+		perms.add(PosixFilePermission.GROUP_READ);
+		perms.add(PosixFilePermission.GROUP_WRITE);
+		
+		perms.add(PosixFilePermission.OTHERS_READ);
+
+		Path path = Paths.get(dirFile.getAbsolutePath());
+		return Files.setPosixFilePermissions(path, perms);
+	}
+	
+	/**
+	 * 修改权限.
+	 * @param dirFile
+	 * @param perms Set<PosixFilePermission>.
+	 * @return Path
+	 * @throws IOException
+	 */
+	public Path changePermission(File dirFile, Set<PosixFilePermission> perms) throws IOException {
+		Path path = Paths.get(dirFile.getAbsolutePath());
+		return Files.setPosixFilePermissions(path, perms);
 	}
 	
 	public static Path copy(String from, String target) throws IOException {

@@ -74,6 +74,15 @@ public class StringUtil extends StringUtils {
 	public static String unescapeHtml4(String input) {
 		return StringEscapeUtils.unescapeHtml4(input);
 	}
+	
+	/**
+     * 是否为http(s)://开头
+     * @param link 链接
+     * @return boolean.
+     */
+    public static boolean ishttp(String link) {
+        return StringUtils.startsWithAny(link, "http://", "https://");
+    }
 
 	public static int hashCode(String v) {
 		int h = 0;
