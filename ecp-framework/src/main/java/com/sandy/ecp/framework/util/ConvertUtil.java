@@ -761,6 +761,19 @@ public final class ConvertUtil {
         return String.valueOf(object);
     }
     
+    /**
+     * 转换字符串.
+     * @param object 转换对象
+     * @param defaultValue 转换错误时的默认值
+     * @return 转换结果.
+     */
+    public static String toString(final Object object, String defaultValue) {
+        if (object == null) {
+            return defaultValue;
+        }
+        return String.valueOf(object);
+    }
+    
     public static Timestamp toTimestamp(final Object value) {
         if (value == null) {
             return null;

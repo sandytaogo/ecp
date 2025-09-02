@@ -17,6 +17,7 @@ package com.sandy.ecp.framework.vo;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sandy.ecp.framework.model.ModelState;
 
 /**
@@ -37,6 +38,7 @@ public abstract class AbstractVO<PK> implements Serializable, Cloneable {
 	
 	private int modelState = ModelState.DEFAULT;
 	
+	@JsonFormat(shape = JsonFormat.Shape.STRING)
 	public PK getId() {
 		return id;
 	}

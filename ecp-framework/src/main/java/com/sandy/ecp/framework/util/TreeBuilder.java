@@ -18,6 +18,7 @@ package com.sandy.ecp.framework.util;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.stream.Collectors;
 
 /**
  * Tree (view object)
@@ -38,8 +39,9 @@ public class TreeBuilder {
 	
 	protected static List<Node> loadRoot(List<? extends Node> list) {
 		List<Node> rootlist = new ArrayList<Node>();
+		List<?> tempList = list.stream().map(Node::getId).collect(Collectors.toList());
 		for (Node item : list) {
-			if (null == item.getPid()) {
+			if (!tempList.contains(item.getPid())) {
 				rootlist.add(item);
 			}
 		}

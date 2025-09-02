@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 the original author or authors.
+ * Copyright 2023-2035 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,13 +15,13 @@
  */
 package com.sandy.ecp.framework.util;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.YearMonth;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.regex.Pattern;
@@ -41,8 +41,10 @@ public class DateUtil {
 		if (date == null) {
 			return "";
 		}
-		SimpleDateFormat sdf = new SimpleDateFormat(DATE_PATTERN);
-		return sdf.format(date);
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_PATTERN);
+		//SimpleDateFormat sdf = new SimpleDateFormat(DATE_PATTERN);
+		LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		return formatter.format(localDate);
 	}
 	
 	public static Date date() {
@@ -64,9 +66,11 @@ public class DateUtil {
 		if (date == null) {
 			return null;
 		}
-		SimpleDateFormat sdf = new SimpleDateFormat(pattern);
-		String text = sdf.format(date);
-		return text;
+		Instant instant = date.toInstant();
+        ZoneId zoneId = ZoneId.systemDefault();
+        LocalDateTime localDateTime = instant.atZone(zoneId).toLocalDateTime();
+		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(pattern);
+		return dateTimeFormatter.format(localDateTime);
 	}
 	
 	public static Date toDate(String date) {
@@ -78,9 +82,13 @@ public class DateUtil {
 			return null;
 		}
 		try {
-			SimpleDateFormat sdf = new SimpleDateFormat(DATE_PATTERN);
-			return sdf.parse(date);
-		} catch (ParseException | NumberFormatException e) {
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_PATTERN);
+			//LocalDateTime dateTime = LocalDateTime.parse(date, formatter);
+			//SimpleDateFormat sdf = new SimpleDateFormat(DATE_PATTERN);
+			// Date.from(dateTime.atZone(ZoneId.systemDefault()).toInstant());
+			LocalDate localDate = LocalDate.parse(date, formatter);
+			return Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		} catch (NumberFormatException e) {
 			System.err.println(String.format("日期:%s", date));
 			e.printStackTrace();
 		}
@@ -96,9 +104,17 @@ public class DateUtil {
 			return null;
 		}
 		try {
-			SimpleDateFormat sdf = new SimpleDateFormat(pattern);
-			return sdf.parse(date);
-		} catch (ParseException | NumberFormatException e) {
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
+			if (pattern.indexOf("H") >= 0 || pattern.indexOf("h") >= 0 || pattern.indexOf("m") >=0 
+					|| pattern.indexOf("s") >=0 || pattern.indexOf("S") >=0) {
+				LocalDateTime dateTime = LocalDateTime.parse(date, formatter);
+				return Date.from(dateTime.atZone(ZoneId.systemDefault()).toInstant());
+			}
+			//SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+			//DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern); 
+			LocalDate localDate = LocalDate.parse(date, formatter);
+			return Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		} catch (NumberFormatException e) {
 			System.err.println(String.format("日期=%s,pattern=%s", date, pattern));
 			e.printStackTrace();
 		}

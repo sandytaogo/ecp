@@ -17,6 +17,7 @@ package com.sandy.ecp.framework.vo;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
@@ -34,9 +35,14 @@ public abstract class AbstractDateVO<PK> extends AbstractVO<PK> {
 	 */
 	private static final long serialVersionUID = 5328039121267156624L;
 
+	@JsonFormat(shape = JsonFormat.Shape.STRING)
 	private Long createdId;
+	
 	private Date createdTime;
+	
+	@JsonFormat(shape = JsonFormat.Shape.STRING)
 	private Long updatedId;
+	
 	private Date updatedTime;
 	
 	public Long getCreatedId() {

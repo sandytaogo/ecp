@@ -38,8 +38,14 @@ import org.springframework.web.filter.GenericFilterBean;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sandy.ecp.framework.net.URLEncoder;
 import com.sandy.ecp.framework.session.SessionVO;
+import com.sandy.ecp.framework.util.StringUtil;
 import com.sandy.ecp.framework.vo.Result;
+import com.sandy.ecp.framework.web.JwtUtil;
 import com.sandy.ecp.framework.web.context.EcpWebSecurityContextHolder;
+import com.sandy.ecp.framework.web.security.SecurityConstants;
+import com.sandy.ecp.framework.web.security.SecurityUtils;
+
+import io.jsonwebtoken.Claims;
 
 /**
  * session 过滤器.
@@ -63,6 +69,18 @@ public class SessionManagementFilter extends GenericFilterBean {
 	public void setEnvironment(Environment environment) {
 		super.setEnvironment(environment);
 	}
+	
+	/**
+     * 获取请求token
+     */
+    private String getToken(HttpServletRequest request) {
+        String token = request.getHeader(SecurityConstants.AUTHORIZATION_HEADER);
+        // 如果前端设置了令牌前缀，则裁剪掉前缀
+        if (StringUtil.isNotEmpty(token) && token.startsWith(SecurityUtils.PREFIX)) {
+            token = token.replaceFirst(SecurityUtils.PREFIX, "");
+        }
+        return token;
+    }
 	
 //	@Override
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
@@ -99,6 +117,13 @@ public class SessionManagementFilter extends GenericFilterBean {
 		SessionVO vo = EcpWebSecurityContextHolder.getSessionVO();
 		if (vo != null) {
 			return true;
+		}
+		String token = getToken(request);
+		if (StringUtil.isNotEmpty(token)) {
+			Claims claims = JwtUtil.parseToken(token);
+	        if (claims != null) {
+	        	return true;
+	        }
 		}
 		return unauthorize(request, response);
 	}
