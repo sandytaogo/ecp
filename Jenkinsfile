@@ -31,7 +31,7 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CloneOption', noTags: true, reference: '', shallow: true]], gitTool: 'Default', submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/apache/ecp.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CloneOption', noTags: true, reference: '', shallow: true]], gitTool: 'Default', submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/sandytaogo/ecp.git']]])
             }
         }
 

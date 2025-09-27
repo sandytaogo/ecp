@@ -15,9 +15,9 @@
  */
 package com.sandy.cloud.gateway;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
-import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 
 import reactor.core.publisher.Mono;
@@ -25,7 +25,7 @@ import reactor.core.publisher.Mono;
  * @author Sandy
  * @since 1.0.0 2023-01-01 12:12:12 
  */
-@Component
+@ConditionalOnProperty(value = "app.gateway.filter.enabled", havingValue = "true")
 public class AppGatewayFilter implements GatewayFilter {
 
 	@Override

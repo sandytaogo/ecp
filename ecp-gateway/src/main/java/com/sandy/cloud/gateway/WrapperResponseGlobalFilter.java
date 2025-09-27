@@ -18,6 +18,7 @@ package com.sandy.cloud.gateway;
 import org.reactivestreams.Publisher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
@@ -26,7 +27,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.http.server.reactive.ServerHttpResponseDecorator;
-import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 
 import reactor.core.publisher.Flux;
@@ -35,7 +35,7 @@ import reactor.core.publisher.Mono;
  * @author Sandy
  * @since 1.0.0 2023-01-01 12:12:12 
  */
-@Component
+@ConditionalOnProperty(value = "wrapper.response.global.filter.enabled", havingValue = "true")
 public class WrapperResponseGlobalFilter implements GlobalFilter, Ordered {
 	
 	protected Logger logger = LoggerFactory.getLogger(getClass());
