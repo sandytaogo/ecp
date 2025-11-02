@@ -144,4 +144,27 @@ public class StringUtil extends StringUtils {
 		}
 		return pinyinStr;
 	}
+	
+//	public static String encodedText(String text) {
+//	    if (text == null) {
+//	        return text;
+//	    }
+//	    return text.replace(/&/g, "&amp;")
+//        .replace(/</g, "&lt;")
+//        .replace(/>/g, "&gt;")
+//        .replace(/"/g, "&quot;")
+//        .replace(/'/g, "&#039;");
+//	}
+//	              
+//	public static String decodedText(String text) {
+//	    if (text == null) {
+//	        return text;
+//	    }
+//	    return text.replace(/&amp;/g, "&")
+//        .replace(/&lt;/g, "<")
+//        .replace(/&gt;/g, ">")
+//        .replace(/&quot;/g, '"')
+//        .replace(/&#039;/g, "'");
+//	}
+	
 }
