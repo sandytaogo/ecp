@@ -37,7 +37,7 @@
     <springfox.version>2.9.2</springfox.version>
     <!--<guava.version>20.0</guava.version>-->
     <guava.version>27.0.1-jre</guava.version>
-    <mapstruct.version>1.6.0</mapstruct.version>
+    <mapstruct.version>1.3.0.Final</mapstruct.version>
     <jcoco.version>0.8.12</jcoco.version>
     <junit-jupiter.version>5.4.0</junit-jupiter.version>
     <junit-platform.version>1.4.0</junit-platform.version>
@@ -190,7 +190,7 @@
 	<dependency>
 	    <groupId>org.mapstruct</groupId>
 	    <artifactId>mapstruct-processor</artifactId>
-	    <scope>provided</scope>
+	   <!-- <scope>provided</scope>-->
 	    <version>${mapstruct.version}</version>
 	</dependency>
     

@@ -116,4 +116,62 @@ public class Sm2KeyGenerator {
 			logger.debug("解码标准={}", data);
 		}
 	}
+	
+	
+	
+	/**
+     * 生成证书请求和公私玥。
+     * @param subject  基本信息
+     * @param signAlg  签名算法
+     * @return
+     * @throws NoSuchAlgorithmException
+     * @throws InvalidKeyException
+     * @throws OperatorCreationException
+     * @throws IOException
+     * @throws NoSuchProviderException
+     * @throws InvalidAlgorithmParameterException
+     */
+//    public static byte[] genUserReq(CertSubject subject, String signAlg) throws Exception {
+//        //主题信息
+//        org.bouncycastle.asn1.x500.X500Name userDN = subject.buildDN();
+//        if (signAlg.equalsIgnoreCase(SignAlg.SIGN_ALGO_SM3WITHSM2)) {
+//            //公私钥对
+//            KeyPair userKP = Sm2Util.keyGenerator3();
+//            SM2PublicKey userPub = new SM2PublicKey(userKP.getPublic().getAlgorithm(), (BCECPublicKey) userKP.getPublic());
+//            //生成证书请求
+//            byte[] userCSR = CommonUtil.createCSR(userDN, userPub, userKP.getPrivate(), signAlg).getEncoded();
+//            //保存
+//            byte[] x = ((BCECPublicKey) userKP.getPublic()).getQ().getAffineXCoord().getEncoded();
+//            byte[] y = ((BCECPublicKey) userKP.getPublic()).getQ().getAffineYCoord().getEncoded();
+//            byte[] sk = ((BCECPrivateKey) userKP.getPrivate()).getD().toByteArray();
+//            GenReqResult genReqResult = new GenReqResult(userCSR, x, y, sk);
+//            return userCSR;
+//        } else if (signAlg.equalsIgnoreCase(SignAlg.SIGN_ALGO_SHA256WITHRSA)) {
+//            CertAndKeyGen gen = new CertAndKeyGen("RSA", SignAlg.SIGN_ALGO_SHA256WITHRSA);
+//            gen.generate(1024);//生成1024位密钥
+//            //生成证书请求
+//            byte[] userCSR = CommonUtil.createCSR(userDN, gen.getPublicKey(), gen.getPrivateKey(), signAlg).getEncoded();
+//            return userCSR;
+//        } else if (signAlg.equalsIgnoreCase(SignAlg.SIGN_ALGO_SHA384WITHRSA)) {
+//            CertAndKeyGen gen = new CertAndKeyGen("RSA", SignAlg.SIGN_ALGO_SHA384WITHRSA);
+//            gen.generate(1024);//生成1024位密钥
+//            //生成证书请求
+//            byte[] userCSR = CommonUtil.createCSR(userDN, gen.getPublicKey(), gen.getPrivateKey(), signAlg).getEncoded();
+//            return userCSR;
+//        } else if (signAlg.equalsIgnoreCase(SignAlg.SIGN_ALGO_SHA512WITHRSA)) {
+//            CertAndKeyGen gen = new CertAndKeyGen("RSA", SignAlg.SIGN_ALGO_SHA512WITHRSA);
+//            gen.generate(1024);//生成1024位密钥
+//            //生成证书请求
+//            byte[] userCSR = CommonUtil.createCSR(userDN, gen.getPublicKey(), gen.getPrivateKey(), signAlg).getEncoded();
+//            return userCSR;
+//        } else if (signAlg.equalsIgnoreCase(SignAlg.SIGN_ALGO_SHA1WITHRSA)) {
+//            CertAndKeyGen gen = new CertAndKeyGen("RSA", SignAlg.SIGN_ALGO_SHA1WITHRSA);
+//            gen.generate(1024);//生成1024位密钥
+//            //生成证书请求
+//            byte[] userCSR = CommonUtil.createCSR(userDN, gen.getPublicKey(), gen.getPrivateKey(), signAlg).getEncoded();
+//            return userCSR;
+//        }
+//        return null;
+//    }
+	
 }

@@ -148,6 +148,12 @@ public class Sm2Util {
 		return keys;
 	}
 	
+	public static ECKeyPairGenerator keyGenerator3() {
+		ECDomainParameters domainParameters = new ECDomainParameters(sm2X9ecParameters.getCurve(), sm2X9ecParameters.getG(), sm2X9ecParameters.getN());
+	    ECKeyPairGenerator keyPairGenerator = new ECKeyPairGenerator();
+		return keyPairGenerator;
+	}
+	
 	/**
      * SM2加密算法
      * @param publicKey 公钥
