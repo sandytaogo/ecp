@@ -93,6 +93,19 @@ public class CurrencyUtil {
 	
 	/**
 	 * 
+	 * @param amount
+	 * @param currencyCode
+	 * @return
+	 */
+	public static BigDecimal currencyNoDecimalToDecimal(Long amount, String currencyCode) {
+		Currency currency = Currency.getInstance(currencyCode);  // ISO 4217 codes
+		BigDecimal bigD = BigDecimal.valueOf(amount);
+		BigDecimal smallD = bigD.movePointLeft(currency.getDefaultFractionDigits());
+	    return smallD;
+	}
+	
+	/**
+	 * 
 	 * @param a 总数
 	 * @param b divide.
 	 * @return 商

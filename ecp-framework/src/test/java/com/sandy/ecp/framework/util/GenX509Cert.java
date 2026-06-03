@@ -24,8 +24,6 @@ import java.util.Vector;
 
 import sun.security.x509.X500Name;
 import com.sandy.ecp.framework.security.X500Signer;
-import com.sandy.ecp.framework.security.x509.CertAndKeyGen;
-
 import sun.misc.BASE64Encoder;
 import sun.security.util.ObjectIdentifier;
 import sun.security.x509.AlgorithmId;
@@ -40,7 +38,6 @@ import sun.security.x509.Extension;
 import sun.security.x509.KeyIdentifier;
 import sun.security.x509.KeyUsageExtension;
 import sun.security.x509.SubjectKeyIdentifierExtension;
-
 import sun.security.x509.X509CertImpl;
 import sun.security.x509.X509CertInfo;
 

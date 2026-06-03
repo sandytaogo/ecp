@@ -46,9 +46,7 @@ public abstract class AbstractDaoSupport<T> {
 	 */
 	@SuppressWarnings("unchecked")
 	public List<T> queryNativeByCondition(String sql, Map<String, Object> paramMap, int offset, int maxResult, Class<T> resultClass) {
-		
 		Query query = em.createNativeQuery(sql, resultClass);
-		
 		paramMap.entrySet().stream().forEach((entry) -> {
 			query.setParameter(entry.getKey(), entry.getValue());
 		});
