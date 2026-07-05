@@ -105,12 +105,6 @@ There are five model sizes, four with English-only versions, offering speed and 
 | large  |   1550 M   |        N/A         |      `large`       |    ~10 GB     |       1x       |
 
 
-
-#### About FFmpeg
-
-FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations.
-
-
 #### JBoss Rules Engine Drools规则引擎 
 
 Rete算法是利用规则之间各个域的公用部分达到减少规则存储的目的，同时保存匹配过程的临时结果以加快匹配速度。为了达到这种目标，算法将规则进行拆分，将规则中的每个匹配条件，作为基本单位（节点）连接成一个数据辨别网络，然后将事实经过网络筛选并进行传播，最终所有条件都有事实匹配的规则被激活。 

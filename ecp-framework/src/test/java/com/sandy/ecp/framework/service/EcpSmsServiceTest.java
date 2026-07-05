@@ -1,6 +1,5 @@
 package com.sandy.ecp.framework.service;
 
-
 import org.junit.jupiter.api.Test;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;

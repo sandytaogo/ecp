@@ -91,10 +91,10 @@ public final class WeChatSignUtil {
     private static String byteToHexString(byte [] bytes) {
         char[] digit = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
         StringBuilder digest = new StringBuilder();
-        for (int i = 0; i < bytes.length; i++) {
-        	char[] str = new char[2];
-        	str[0] = digit[(bytes[i] >>> 4) & 0X0F];
-        	str[1] = digit[bytes[i] & 0X0F];
+        for (byte aByte : bytes) {
+            char[] str = new char[2];
+            str[0] = digit[(aByte >>> 4) & 0X0F];
+            str[1] = digit[aByte & 0X0F];
             digest.append(str);
         }
         return digest.toString();
