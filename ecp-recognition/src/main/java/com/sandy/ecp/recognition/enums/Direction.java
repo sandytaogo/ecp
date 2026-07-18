@@ -31,6 +31,8 @@ public enum Direction {
     Direction(String code, String desc) {
         this.code = code;
         this.desc = desc;
+        
+        
     }
 
     public static String getDesc(String code) {
