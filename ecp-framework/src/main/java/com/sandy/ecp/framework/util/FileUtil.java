@@ -92,8 +92,41 @@ public final class FileUtil {
 		perms.add(PosixFilePermission.OTHERS_READ);
 
 		Path path = Paths.get(dirFile.getAbsolutePath());
-		return Files.setPosixFilePermissions(path, perms);
+		String system = System.getProperty("os.name");
+		if (system != null && system.indexOf("Window") == -1) {
+			return Files.setPosixFilePermissions(path, perms);
+		}
+		return path;
 	}
+	
+	/**
+	 * 修改权限.
+	 * @param dirFile
+	 * @return Path
+	 * @throws IOException
+	 */
+	public static Path changePermissionAll(File dirFile) throws IOException {
+		Set<PosixFilePermission> perms = new HashSet<PosixFilePermission>();
+		perms.add(PosixFilePermission.OWNER_READ);
+		perms.add(PosixFilePermission.OWNER_WRITE);
+		perms.add(PosixFilePermission.OWNER_EXECUTE);
+		
+		perms.add(PosixFilePermission.GROUP_READ);
+		perms.add(PosixFilePermission.GROUP_WRITE);
+		perms.add(PosixFilePermission.GROUP_EXECUTE);
+		
+		perms.add(PosixFilePermission.OTHERS_READ);
+		perms.add(PosixFilePermission.OTHERS_WRITE);
+		perms.add(PosixFilePermission.OTHERS_EXECUTE);
+
+		Path path = Paths.get(dirFile.getAbsolutePath());
+		String system = System.getProperty("os.name");
+		if (system != null && system.indexOf("Window") == -1) {
+			return Files.setPosixFilePermissions(path, perms);
+		}
+		return path;
+	}
+	
 	
 	/**
 	 * 修改权限.

@@ -15,14 +15,15 @@
  */
 package com.sandy.ecp.recognition.face;
 
-
 import java.util.List;
-
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfRect;
 import org.opencv.core.Rect;
 import org.opencv.objdetect.CascadeClassifier;
 
+/**
+ * 
+ */
 public class FaceDetector {
 	
     private CascadeClassifier faceDetector;
@@ -31,6 +32,7 @@ public class FaceDetector {
         // 加载预训练的人脸检测模型
         this.faceDetector = new CascadeClassifier(modelPath);
     }
+    
     public List<Rect> detectFaces(Mat image) {
         MatOfRect faceDetections = new MatOfRect();
         // 执行人脸检测（缩放因子1.1，最小邻居数5）
@@ -39,4 +41,5 @@ public class FaceDetector {
         System.out.println("检测到 " + faces.size() + " 张人脸");
         return faces;
     }
+    
 }

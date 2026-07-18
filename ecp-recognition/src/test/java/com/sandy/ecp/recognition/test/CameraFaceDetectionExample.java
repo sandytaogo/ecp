@@ -1,5 +1,5 @@
 /*
- * Copyright 2024-2030 the original author or authors.
+ * Copyright 2024-2040 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,11 +15,12 @@
  */
 package com.sandy.ecp.recognition.test;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.swing.JFrame;
-import org.bytedeco.opencv.opencv_core.*;
+
 import org.bytedeco.ffmpeg.global.avutil;
 import org.bytedeco.javacpp.Loader;
 import org.bytedeco.javacv.CanvasFrame;
@@ -30,18 +31,22 @@ import org.bytedeco.javacv.OpenCVFrameGrabber;
 import org.bytedeco.opencv.global.opencv_imgproc;
 import org.bytedeco.opencv.opencv_core.IplImage;
 import org.bytedeco.opencv.opencv_core.Mat;
+import org.bytedeco.opencv.opencv_core.Point;
 import org.bytedeco.opencv.opencv_core.Rect;
 import org.bytedeco.opencv.opencv_core.RectVector;
 import org.bytedeco.opencv.opencv_core.Scalar;
 import org.bytedeco.opencv.opencv_objdetect.CascadeClassifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 
-import com.sandy.ecp.recognition.CmdImageConvertString;
-
-public class FaceDetectionExample {
+/**
+ * @see https://github.com/opencv/opencv/tree/master/data/haarcascades
+ */
+public class CameraFaceDetectionExample {
 	
-	private final static Logger log = LoggerFactory.getLogger(CmdImageConvertString.class);
+	private final static Logger log = LoggerFactory.getLogger(CameraFaceDetectionExample.class);
 	 /**
      * 输出帧率
      */
@@ -61,7 +66,7 @@ public class FaceDetectionExample {
      */
     private static final OpenCVFrameConverter.ToIplImage openCVConverter = new OpenCVFrameConverter.ToIplImage();
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws IOException {
         long startTime = System.currentTimeMillis();
         Loader.load(org.bytedeco.opencv.opencv_java.class);
         // 设置ffmepg日志级别
@@ -82,7 +87,6 @@ public class FaceDetectionExample {
         previewCanvas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         previewCanvas.setAlwaysOnTop(true);
 
-
         log.info("初始化完成，耗时[{}]毫秒，帧率[{}]，图像宽度[{}]，图像高度[{}]",
                 System.currentTimeMillis()-startTime,
                 frameRate,
@@ -93,8 +97,11 @@ public class FaceDetectionExample {
         // 水印在图片上的位置
         org.bytedeco.opencv.opencv_core.Point point = new org.bytedeco.opencv.opencv_core.Point(15, 35);
         org.bytedeco.javacv.Frame captureFrame;
+        
+        Resource resource = new ClassPathResource("model/haarcascade_frontalface_alt.xml");
         // 下载模型文件
-        CascadeClassifier cascadeClassifier = new CascadeClassifier("F:\\workspace\\git\\ecp\\ecp-recognition\\src\\main\\resources\\model\\haarcascade_frontalface_alt.xml");
+        @SuppressWarnings("resource")
+		CascadeClassifier cascadeClassifier = new CascadeClassifier(resource.getFile().getPath());
         // 遍历每一帧
         while ((captureFrame = grabber.grab()) != null) {
             // 将帧对象转为IplImage对象
