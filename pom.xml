@@ -217,6 +217,7 @@
     <module>ecp-gateway</module>
     <module>ecp-mybatis</module>
     <module>ecp-recognition</module>
+    <module>ecp-ai</module>
     <module>ecp-test</module>
     <module>ecp-gpt</module>
     <module>ecp-wechat</module>

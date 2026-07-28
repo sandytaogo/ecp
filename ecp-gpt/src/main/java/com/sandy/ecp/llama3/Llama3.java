@@ -1,11 +1,29 @@
-/////usr/bin/env jbang "$0" "$@" ; exit $?
-////JAVA 21+
-////PREVIEW
-////COMPILE_OPTIONS --add-modules=jdk.incubator.vector
-////RUNTIME_OPTIONS --add-modules=jdk.incubator.vector
-////MAIN com.llama4j.Llama3
+/*
+ * Copyright 2018-2030 the original author or authors.
+ *
+ * Licensed under the company, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.company.com/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.sandy.ecp.llama3;
+
+import java.io.PrintStream;
+
+///usr/bin/env jbang "$0" "$@" ; exit $?
+//JAVA 21+
+//PREVIEW
+//COMPILE_OPTIONS --add-modules=jdk.incubator.vector
+//RUNTIME_OPTIONS --add-modules=jdk.incubator.vector
+//MAIN com.llama4j.Llama3
 //
-//package com.sandy.ecp.llama3;
 //
 //import jdk.incubator.vector.ByteVector;
 //import jdk.incubator.vector.FloatVector;
@@ -13,33 +31,33 @@
 //import jdk.incubator.vector.VectorSpecies;
 //import sun.misc.Unsafe;
 //
-//import java.io.IOException;
-//import java.io.PrintStream;
+import java.io.IOException;
+import java.io.PrintStream;
 //import java.lang.foreign.Arena;
 //import java.lang.foreign.MemorySegment;
 //import java.lang.foreign.ValueLayout;
-//import java.lang.reflect.Field;
-//import java.nio.ByteBuffer;
-//import java.nio.ByteOrder;
-//import java.nio.FloatBuffer;
-//import java.nio.channels.FileChannel;
-//import java.nio.charset.StandardCharsets;
-//import java.nio.file.Path;
-//import java.nio.file.Paths;
-//import java.util.*;
-//import java.util.concurrent.TimeUnit;
-//import java.util.function.IntConsumer;
-//import java.util.function.IntFunction;
+import java.lang.reflect.Field;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.*;
+import java.util.concurrent.TimeUnit;
+import java.util.function.IntConsumer;
+import java.util.function.IntFunction;
 //import java.util.random.RandomGenerator;
 //import java.util.random.RandomGeneratorFactory;
-//import java.util.regex.Matcher;
-//import java.util.regex.Pattern;
-//import java.util.stream.Collectors;
-//import java.util.stream.IntStream;
-//import java.util.stream.Stream;
-//
-//public class Llama3 {
-//
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+public class Llama3 {
+
 //    static Sampler selectSampler(int vocabularySize, float temperature, float topp, long rngSeed) {
 //        Sampler sampler;
 //        if (temperature == 0.0f) {
@@ -164,29 +182,32 @@
 //            }
 //        }
 //
-//        static void printUsage(PrintStream out) {
-//            out.println("Usage:  jbang Llama3.java [options]");
-//            out.println();
-//            out.println("Options:");
-//            out.println("  --model, -m <path>            required, path to .gguf file");
-//            out.println("  --interactive, --chat, -i     run in chat mode");
-//            out.println("  --instruct                    run in instruct (once) mode, default mode");
-//            out.println("  --prompt, -p <string>         input prompt");
-//            out.println("  --system-prompt, -sp <string> (optional) system prompt");
-//            out.println("  --temperature, -temp <float>  temperature in [0,inf], default 0.1");
-//            out.println("  --top-p <float>               p value in top-p (nucleus) sampling in [0,1] default 0.95");
-//            out.println("  --seed <long>                 random seed, default System.nanoTime()");
-//            out.println("  --max-tokens, -n <int>        number of steps to run for < 0 = limited by context length, default 512");
-//            out.println("  --stream <boolean>            print tokens during generation; may cause encoding artifacts for non ASCII text, default true");
-//            out.println("  --echo <boolean>              print ALL tokens to stderr, if true, recommended to set --stream=false, default false");
-//            out.println();
-//            out.println("Examples:");
-//            out.println("  jbang Llama3.java --model llama3-8b-q4_0.gguf --prompt \"Tell me a joke\"");
-//            out.println("  jbang Llama3.java --model llama3-8b-q4_0.gguf --system-prompt \"Reply concisely, in French\" --prompt \"Who was Marie Curie?\"");
-//            out.println("  jbang Llama3.java --model llama3-8b-q4_0.gguf --system-prompt \"Answer concisely\" --chat");
-//            out.println("  jbang Llama3.java --model llama3-8b-q4_0.gguf --chat");
-//            out.println("  jbang Llama3.java --model llama3-8b-q4_0.gguf --prompt \"Print 5 emojis\" --stream=false");
-//        }
+
+
+
+	static void printUsage(PrintStream out) {
+            out.println("Usage:  jbang Llama3.java [options]");
+            out.println();
+            out.println("Options:");
+            out.println("  --model, -m <path>            required, path to .gguf file");
+            out.println("  --interactive, --chat, -i     run in chat mode");
+            out.println("  --instruct                    run in instruct (once) mode, default mode");
+            out.println("  --prompt, -p <string>         input prompt");
+            out.println("  --system-prompt, -sp <string> (optional) system prompt");
+            out.println("  --temperature, -temp <float>  temperature in [0,inf], default 0.1");
+            out.println("  --top-p <float>               p value in top-p (nucleus) sampling in [0,1] default 0.95");
+            out.println("  --seed <long>                 random seed, default System.nanoTime()");
+            out.println("  --max-tokens, -n <int>        number of steps to run for < 0 = limited by context length, default 512");
+            out.println("  --stream <boolean>            print tokens during generation; may cause encoding artifacts for non ASCII text, default true");
+            out.println("  --echo <boolean>              print ALL tokens to stderr, if true, recommended to set --stream=false, default false");
+            out.println();
+            out.println("Examples:");
+            out.println("  jbang Llama3.java --model llama3-8b-q4_0.gguf --prompt \"Tell me a joke\"");
+            out.println("  jbang Llama3.java --model llama3-8b-q4_0.gguf --system-prompt \"Reply concisely, in French\" --prompt \"Who was Marie Curie?\"");
+            out.println("  jbang Llama3.java --model llama3-8b-q4_0.gguf --system-prompt \"Answer concisely\" --chat");
+            out.println("  jbang Llama3.java --model llama3-8b-q4_0.gguf --chat");
+            out.println("  jbang Llama3.java --model llama3-8b-q4_0.gguf --prompt \"Print 5 emojis\" --stream=false");
+        }
 //
 //        static Options parseOptions(String[] args) {
 //            String prompt = null;
@@ -2115,6 +2136,4 @@
 //            return name;
 //        }
 //    }
-//}
-//
-//
+}
