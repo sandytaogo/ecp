@@ -19,5 +19,9 @@ import java.io.Serializable;
 
 public class RecognitionProproties implements Serializable {
 
+	/**
+	 * serial version UID
+	 */
+	private static final long serialVersionUID = 8146756776903864235L;
 
 }

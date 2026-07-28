@@ -15,7 +15,6 @@
  */
 package com.sandy.ecp.recognition;
 
-
 import org.opencv.core.Mat;
 import org.opencv.core.Point;
 
@@ -33,7 +32,7 @@ import com.sandy.ecp.recognition.util.ImageUtil;
 public class Line {
     
     private Long id;
-
+    
     private Point start;
 
     private Point end;
