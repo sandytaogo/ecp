@@ -15,6 +15,8 @@
  */
 package com.sandy.ecp.mybatis.interceptors;
 
+import org.apache.ibatis.mapping.MappedStatement;
+import org.apache.ibatis.mapping.SqlCommandType;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.plugin.Invocation;
 /**
@@ -26,9 +28,19 @@ public class PageInterceptor implements Interceptor {
 
 	@Override
 	public Object intercept(Invocation invocation) throws Throwable {
-		
-		
-		return invocation.proceed();
+		Object[] args = invocation.getArgs();
+		MappedStatement ms = (MappedStatement) args[0];
+		Object parameter = args[1];
+		SqlCommandType commandType = ms.getSqlCommandType();
+		if(commandType == SqlCommandType.INSERT) {
+			System.out.println("====== insert ======");
+		}else if(commandType == SqlCommandType.UPDATE) {
+			System.out.println("====== update ======");
+		}else if(commandType == SqlCommandType.DELETE) {
+			
+		}
+		System.out.println(parameter);
+		Object result = invocation.proceed();
+		return result;
 	}
-
 }
