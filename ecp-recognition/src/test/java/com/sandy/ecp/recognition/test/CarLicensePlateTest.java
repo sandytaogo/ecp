@@ -22,6 +22,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import net.sourceforge.tess4j.ITessAPI.TessOcrEngineMode;
+import net.sourceforge.tess4j.ITessAPI.TessPageSegMode;
 import net.sourceforge.tess4j.ITesseract;
 import net.sourceforge.tess4j.Tesseract;
 import net.sourceforge.tess4j.TesseractException;
@@ -49,14 +50,27 @@ public class CarLicensePlateTest {
 	    instance.setLanguage("chi_sim");
 //	    instance.setVariable("tessedit_char_whitelist", "acekopxyABCEHKMOPTXY0123456789");
 	    //使用OSD进行自动页面分割以进行图像处理.
-//	    instance.setPageSegMode(1);
+//	   ‌0‌：仅定向和脚本检测（OSD Only）
+//	    ‌1‌：全自动分页 + OSD（默认推荐复杂文档）
+//	    ‌3‌：全自动分页（无 OSD，常规文档）
+//	    ‌4‌：假设单列文本（多栏排版如报纸）
+//	    ‌6‌：假设单一文本块（适合截图、简单文档）
+//	    ‌7‌：视为单行文本（标题、短标语、验证码）
+//	    ‌8‌：视为单个单词（孤立词、无空格验证码）
+//	    ‌10‌：视为单个字符（车牌单字、符号）
+//	    ‌11‌：稀疏文本（分散标签、水印）
+	    //setPageSegMode(10)：启用单字符分割模式，提升复杂排版识别率
+	  	instance.setPageSegMode(TessPageSegMode.PSM_AUTO_OSD);
 	    //设置引擎模式是网络LSTM引擎
-	    instance.setOcrEngineMode(TessOcrEngineMode.OEM_LSTM_ONLY);
-//	    instance.setOcrEngineMode(TessOcrEngineMode.OEM_DEFAULT);
+	    //instance.setOcrEngineMode(TessOcrEngineMode.OEM_LSTM_ONLY);
+	    //setOcrEngineMode(3)：选择LSTM+字典模式，平衡速度与精度
+	    instance.setOcrEngineMode(TessOcrEngineMode.OEM_DEFAULT);
 	    // 指定识别图片
 	    File imgDir = new File("C:\\Users\\Sandy\\Desktop\\car.jpg");
 	    imgDir = new File("C:\\Users\\Sandy\\Desktop\\8jd5vfe42g.jpeg");
-	    imgDir = new File("C:\\Users\\Sandy\\Desktop\\aa.jpg");
+	    imgDir = new File("F:\\mnt\\recognition\\20260715\\6b462607dbf043d39b3dd3e48500dd43.jpg");
+	    
+	    imgDir = new File("C:\\Users\\Sandy\\Desktop\\cgd.png");
 //	    imgDir = new File("C:\\Users\\Sandy\\Desktop\\aa.jpg");
 //	    imgDir = new File("C:\\Users\\Sandy\\Desktop\\cc.jpg");
 //	    imgDir = new File("C:\\Users\\Sandy\\Desktop\\ddd.jpg");
@@ -67,7 +81,7 @@ public class CarLicensePlateTest {
 		try {
 			BufferedImage fi = ImageIO.read(imgDir);
 			ocrResult = instance.doOCR(fi);
-		} catch (TesseractException e) {
+		} catch (TesseractException e) { 
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -82,7 +96,7 @@ public class CarLicensePlateTest {
 	public static void main(String[] args) {
 		int counter = 0;
 		for (;;) {
-			if (100 < counter) {
+			if (0 < counter) {
 				break;
 			}
 			new CarLicensePlateTest().toString();
